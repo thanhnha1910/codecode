@@ -4560,11 +4560,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/nha/Documents/Term3/API/Karnel-Api/Karnel-Api/Karnel-Api.csproj",
+      "projectUniqueName": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/Karnel-Api.csproj",
       "projectName": "Karnel-Api",
-      "projectPath": "/Users/nha/Documents/Term3/API/Karnel-Api/Karnel-Api/Karnel-Api.csproj",
+      "projectPath": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/Karnel-Api.csproj",
       "packagesPath": "/Users/nha/.nuget/packages/",
-      "outputPath": "/Users/nha/Documents/Term3/API/Karnel-Api/Karnel-Api/obj/",
+      "outputPath": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/nha/.nuget/NuGet/NuGet.Config"

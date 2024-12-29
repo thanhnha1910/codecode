@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "jSwhwr7lVII=",
+  "dgSpecHash": "24WvxBSLjFEHdtzH3ffYQlOv7l61Th+8hYVMBbWZTWcGzLp0TOIopwtdKLK3V3+AJcwZbrcNUZ9wtc0WbjeWVA==",
   "success": true,
-  "projectFilePath": "/Users/nha/Documents/Term3/API/Karnel-Api/Karnel-Api/Karnel-Api.csproj",
+  "projectFilePath": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/Karnel-Api.csproj",
   "expectedPackageFiles": [
     "/Users/nha/.nuget/packages/azure.core/1.35.0/azure.core.1.35.0.nupkg.sha512",
     "/Users/nha/.nuget/packages/azure.identity/1.10.3/azure.identity.1.10.3.nupkg.sha512",

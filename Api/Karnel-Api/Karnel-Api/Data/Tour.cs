@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Karnel_Api.Data;
 
@@ -10,6 +11,7 @@ public class Tour
     public string Description { get; set; }
     public string Detail { get; set; }
     public int Duration { get; set; }
+    [Column(TypeName = "decimal(18,2)")]
     public decimal Price { get; set; }
     public int Seat { get; set; }
     public DateTime StartDate { get; set; }

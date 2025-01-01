@@ -13,7 +13,11 @@ public class User
     public bool IsEmailConfirmed { get; set; }
     public DateTime CreatedAt { get; set; }
     public bool Status { get; set; }
-    public string ImageUrl { get; set; }
+    public string? ImageUrl { get; set; }
+    public string? EmailVerificationToken { get; set; }
+    public DateTime? EmailVerificationTokenExpires { get; set; }
+    public string? ResetPasswordToken { get; set; }
+    public DateTime? ResetPasswordTokenExpires { get; set; }
     
     public ICollection<Booking> Bookings { get; set; }
     public ICollection<Review> Reviews { get; set; }

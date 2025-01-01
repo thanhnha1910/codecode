@@ -1,17 +1,15 @@
-using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations;
 
-namespace Karnel_Api.DTO;
+    namespace Karnel_Api.DTO;
 
-public class RegisterDTO
-{
-    [Key]
-    public int Id { get; set; }
-    public string Name { get; set; }
-    public string Email { get; set; }
-    public string Password { get; set; }
-    public string Role { get; set; } // User/Employee/Admin
-    public bool IsEmailConfirmed { get; set; }
-    public DateTime CreatedAt { get; set; }
-    public bool Status { get; set; }
-    public string ImageUrl { get; set; }
-}
+    public class RegisterDTO
+    {
+        [Key]
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+        public string ConfirmPassword {get; set; }
+
+        public string Role { get; set; } // User/Employee/Admin
+       
+    }

@@ -38,7 +38,12 @@ namespace Karnel_Api.Controller
             try
             {
                 var user = await _authService.Login(loginDto);
-                return Ok(user);
+                return Ok(new
+                {
+                  
+                  
+                    name = user.Name
+                });
             }
             catch (Exception e)
             {
@@ -94,5 +99,19 @@ namespace Karnel_Api.Controller
             var user = await _authService.GetAll();
             return Ok(user);
         }
+        [HttpPost("verify-reset-token")]
+        public async Task<IActionResult> VerifyResetToken([FromBody] string token)
+        {
+            try
+            {
+                await _authService.VerifyResetToken(token);
+                return Ok(new { message = "Valid reset code" });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+        }
     }
+    
 }

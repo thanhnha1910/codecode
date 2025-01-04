@@ -22,34 +22,6 @@ namespace Karnel_Api.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Karnel_Api.Data.Accommodation", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Star")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Accommodations");
-                });
-
             modelBuilder.Entity("Karnel_Api.Data.Booking", b =>
                 {
                     b.Property<int>("Id")
@@ -304,6 +276,12 @@ namespace Karnel_Api.Migrations
 
                     b.Property<bool>("IsEmailConfirmed")
                         .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LockoutEnd")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("LoginAttempts")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()

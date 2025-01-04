@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import authApi from "../../services/AuthService.js";
+import authApi from "../../services/AuthService.jsx";
 import { useNavigate } from "react-router-dom";
 
 function RequestResetPassword() {
@@ -15,10 +15,11 @@ function RequestResetPassword() {
 
   const handleEmailSubmit = async (e) => {
     e.preventDefault();
+    if (isSubmitting) return;
+    setIsSubmitting(true);
     try {
         await authApi.requestPasswordReset(email);
-        toast.success("Reset code sent to your verified email!");
-        setStep(2);
+        toast.success("Reset code sent to your verified email! The code will expire in 3 minutes.");        setStep(2);
     } catch (err) {
         // Extract the error message properly
         const errorMessage = err.response?.data?.message || 
@@ -38,17 +39,31 @@ function RequestResetPassword() {
                 
         // Don't proceed to next step
         setStep(1);
-    }
+        
+    } finally {
+      // Reset trạng thái submit
+      setIsSubmitting(false);
+  }
 };
   const handleTokenSubmit = async (e) => {
     e.preventDefault();
     if (isSubmitting) return;
+    setIsSubmitting(true);
+
     try {
+      await authApi.verifyResetToken(token);
+
       // Store token in localStorage for the reset password page
       localStorage.setItem("resetToken", token);
+      toast.success("Code verified successfully!");
+
       navigate("/reset-password");
     } catch (error) {
-      toast.error("Invalid reset code");
+      const errorMessage = error.response?.data?.message || 
+      "Reset code has expired or is invalid";
+      toast.error(errorMessage);
+      setStep(1);
+      setToken("");
     } finally {
       setIsSubmitting(false);
     }

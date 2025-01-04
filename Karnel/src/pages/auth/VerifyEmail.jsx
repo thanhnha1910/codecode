@@ -1,7 +1,7 @@
 import  { useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import authApi from '../../services/AuthService.js';
+import authApi from '../../services/AuthService.jsx';
 
 function VerifyEmail() {
     const [searchParams] = useSearchParams();
@@ -9,17 +9,20 @@ function VerifyEmail() {
     const token = searchParams.get('token');
 
     useEffect(() => {
+      
         const verifyEmail = async () => {
             if (!token) return;
             
             try {
                 const response = await authApi.verifyEmail(token);
                 console.log('Verification response:', response); // Add this log
-                toast.success('Email verification successful!');
+               
                 navigate('/login', { replace: true });
             } catch (error) {
+                const errorMessage = error.response?.data?.message || 
+                                   "Verification link has expired or is invalid";
                 console.log('Verification error:', error); // Add this log
-                toast.success('Email verification successful. ');
+               
                 navigate('/login', { replace: true });
             }
         };

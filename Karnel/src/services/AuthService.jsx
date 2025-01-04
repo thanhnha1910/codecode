@@ -19,7 +19,8 @@ const authApi = {
         try {
             const response = await axios.post(`${API_URL}/login`, loginData);
             if (response.data) {
-                localStorage.setItem('token', response.data);
+                localStorage.setItem('token', response.data.token);
+                localStorage.setItem('user', JSON.stringify(response.data));   
             }
             return response.data;
         } catch (error) {
@@ -62,6 +63,22 @@ const authApi = {
             return response.data;
         } catch (error) {
             throw error.response?.data || 'Password reset failed';
+        }
+    },
+    verifyResetToken: async (token) => {
+        try {
+            const response = await axios.post(`${API_URL}/verify-reset-token`, JSON.stringify(token), {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            return response.data;
+        } catch (error) {
+            // Xử lý lỗi và đảm bảo trả về message error từ server
+            const errorMessage = error.response?.data?.message || 
+                               error.response?.data || 
+                               'Invalid or expired reset code';
+            throw errorMessage;
         }
     }
 };

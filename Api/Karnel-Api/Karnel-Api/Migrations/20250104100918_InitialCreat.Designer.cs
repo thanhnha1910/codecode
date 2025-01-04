@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Karnel_Api.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20241230032531_InitialCreat4")]
-    partial class InitialCreat4
+    [Migration("20250104100918_InitialCreat")]
+    partial class InitialCreat
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -307,6 +307,12 @@ namespace Karnel_Api.Migrations
 
                     b.Property<bool>("IsEmailConfirmed")
                         .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LockoutEnd")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("LoginAttempts")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()

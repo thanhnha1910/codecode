@@ -18,6 +18,9 @@ public class User
     public DateTime? EmailVerificationTokenExpires { get; set; }
     public string? ResetPasswordToken { get; set; }
     public DateTime? ResetPasswordTokenExpires { get; set; }
+    public int LoginAttempts { get; set; } //Số lần đăng nhập thất bại.
+    public DateTime? LockoutEnd { get; set; } //Thời điểm kết thúc khóa tài khoản.
+
     
     public ICollection<Booking> Bookings { get; set; }
     public ICollection<Review> Reviews { get; set; }

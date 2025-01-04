@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Karnel_Api.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class InitialCreat : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -89,7 +89,13 @@ namespace Karnel_Api.Migrations
                     IsEmailConfirmed = table.Column<bool>(type: "bit", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Status = table.Column<bool>(type: "bit", nullable: false),
-                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    EmailVerificationToken = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    EmailVerificationTokenExpires = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ResetPasswordToken = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ResetPasswordTokenExpires = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    LoginAttempts = table.Column<int>(type: "int", nullable: false),
+                    LockoutEnd = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {

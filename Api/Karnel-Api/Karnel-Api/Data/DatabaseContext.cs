@@ -11,7 +11,6 @@ public class DatabaseContext : DbContext
     }
 
     public DbSet<Location> Locations { get; set; }
-    public DbSet<Accommodation> Accommodations { get; set; }
     public DbSet<User> Users { get; set; }
     public DbSet<Tour> Tours { get; set; }
     public DbSet<Booking> Bookings { get; set; }

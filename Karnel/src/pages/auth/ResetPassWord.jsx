@@ -1,17 +1,12 @@
-import React, { useState } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
-import axios from 'axios';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import authApi from "../../services/AuthService.js";
-import { useEffect } from 'react';
-
-
-function ResetPassWord() {
+import authApi from "../../services/AuthService.jsx";
+function ResetPassword() {
     const token = localStorage.getItem('resetToken');
     const navigate = useNavigate();
-    const [isSubmitting, setIsSubmitting] = useState(false); 
-    
+    const [isSubmitting, setIsSubmitting] = useState(false);
     const [formData, setFormData] = useState({
         newPassword: '',
         confirmPassword: ''
@@ -22,7 +17,6 @@ function ResetPassWord() {
     useEffect(() => {
         if (!token) {
             toast.error('Invalid or missing reset token');
-           
         }
     }, [token, navigate]);
 
@@ -35,27 +29,31 @@ function ResetPassWord() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (isSubmitting) return; 
-    
+        if (isSubmitting) return;
+
         if (formData.newPassword !== formData.confirmPassword) {
             toast.error('Passwords do not match');
             return;
         }
-    
+
         setIsSubmitting(true);
         try {
-            const response = await authApi.resetPassword(token, formData.newPassword, formData.confirmPassword);
+            await authApi.resetPassword(token, formData.newPassword, formData.confirmPassword);
             
-            setSuccess('Password reset successful!');   
-            toast.success('Password has been reset successfully')
+            setSuccess('Password reset successful!');
+            toast.success('Password has been reset successfully');
             
-            // Chỉ xóa resetToken, không xóa token chính
             localStorage.removeItem('resetToken');
             
             setTimeout(() => {
-                navigate('/login', { state: { fromReset: true } }); // Thêm state để đánh dấu
+                navigate('/login', {
+                    state: {
+                        fromReset: true,
+                        resetSuccess: true
+                    }
+                });
             }, 2000);
-    
+
         } catch (err) {
             const errorMessage = err.response?.data?.message || err.message || 'Password reset failed';
             toast.error(errorMessage);
@@ -65,7 +63,6 @@ function ResetPassWord() {
         }
     };
 
-    
     if (!token) {
         return null;
     }
@@ -135,5 +132,4 @@ function ResetPassWord() {
         </div>
     );
 }
-
-export default ResetPassWord;
+export default ResetPassword;

@@ -5,7 +5,7 @@
 namespace Karnel_Api.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreat5 : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

@@ -1,26 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "/home/fredmt1n/Projects/Project3-KarnelTravel/Api/Karnel-Api/Karnel-Api/Karnel-Api.csproj": {}
+    "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/Karnel-Api.csproj": {}
   },
   "projects": {
-    "/home/fredmt1n/Projects/Project3-KarnelTravel/Api/Karnel-Api/Karnel-Api/Karnel-Api.csproj": {
+    "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/Karnel-Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/fredmt1n/Projects/Project3-KarnelTravel/Api/Karnel-Api/Karnel-Api/Karnel-Api.csproj",
+        "projectUniqueName": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/Karnel-Api.csproj",
         "projectName": "Karnel-Api",
-        "projectPath": "/home/fredmt1n/Projects/Project3-KarnelTravel/Api/Karnel-Api/Karnel-Api/Karnel-Api.csproj",
-        "packagesPath": "/home/fredmt1n/.nuget/packages/",
-        "outputPath": "/home/fredmt1n/Projects/Project3-KarnelTravel/Api/Karnel-Api/Karnel-Api/obj/",
+        "projectPath": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/Karnel-Api.csproj",
+        "packagesPath": "/Users/nha/.nuget/packages/",
+        "outputPath": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/fredmt1n/.nuget/NuGet/NuGet.Config"
+          "/Users/nha/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "/usr/lib64/dotnet/library-packs": {},
+          "/usr/local/share/dotnet/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -37,9 +37,8 @@
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
-          "auditMode": "all"
-        },
-        "SdkAnalysisLevel": "9.0.100"
+          "auditMode": "direct"
+        }
       },
       "frameworks": {
         "net8.0": {
@@ -91,12 +90,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.NETCore.App.Host.linux-x64",
-              "version": "[8.0.10, 8.0.10]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -105,7 +98,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/lib64/dotnet/sdk/9.0.100-rc.2.24474.1/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.204/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

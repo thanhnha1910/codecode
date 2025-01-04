@@ -1,7 +1,7 @@
 import React, { useState } from "react";import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
-import authApi from "../../services/AuthService.js";
+import authApi from "../../services/AuthService.jsx";
 
 
 
@@ -19,6 +19,7 @@ function Register() {
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
+   
     setFormData((prev) => ({
       ...prev,
       [name]: type === "checkbox" ? checked : value,
@@ -26,6 +27,7 @@ function Register() {
   };
 const handleSubmit = async (e) => {
     e.preventDefault();
+    
     if (formData.password !== formData.confirmPassword) {
         toast.error('Passwords do not match', {
             position: "top-center"
@@ -43,12 +45,12 @@ const handleSubmit = async (e) => {
 
     try {
         await authApi.register(registrationData);
-        toast.success('Registration successful! Please check your email for verification.', {
+        toast.success('Registration successful! Please check your email for verification. The verification link will expire in 3 minutes.', {
             position: "top-center",
             closeOnClick: true,
             draggable: true
         });
-        navigate('/');
+        navigate('/login');
     } catch (error) {
         toast.error(error.message || 'Registration failed', {
             position: "top-center"

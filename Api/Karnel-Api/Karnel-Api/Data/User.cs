@@ -24,7 +24,7 @@ public class User
     
     public ICollection<Booking> Bookings { get; set; }
     public ICollection<Review> Reviews { get; set; }
-    public ICollection<Payments> Payments { get; set; }
+    public ICollection<Payment> Payments { get; set; }
     public ICollection<Favorite> Favorites { get; set; }
     
 }

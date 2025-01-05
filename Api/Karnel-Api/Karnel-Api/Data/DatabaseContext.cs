@@ -2,96 +2,125 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Karnel_Api.Data;
 
-// Data/ApplicationDbContext.cs
-public class DatabaseContext : DbContext
+public class DatabaseContext:DbContext
 {
     public DatabaseContext(DbContextOptions<DatabaseContext> options)
         : base(options)
     {
     }
 
-    public DbSet<Location> Locations { get; set; }
+    public DbSet<City> Cities { get; set; }
+    public DbSet<Hotel> Hotels { get; set; }
+    public DbSet<Restaurant> Restaurants { get; set; }
+    public DbSet<Attraction> Attractions { get; set; }
+    public DbSet<Transportation> Transportations { get; set; }
     public DbSet<User> Users { get; set; }
     public DbSet<Tour> Tours { get; set; }
     public DbSet<Booking> Bookings { get; set; }
-    public DbSet<TourPrice> TourPrices { get; set; }
     public DbSet<Review> Reviews { get; set; }
-    public DbSet<TourLocation> TourLocations { get; set; }
-    public DbSet<Payments> Payments { get; set; }
-    public DbSet<Favorite> Favorites { get; set; }
+    public DbSet<Payment> Payments { get; set; }
+    public DbSet<Image> Images { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-       
-        ///
+        // Tour - City relationship
+        modelBuilder.Entity<Tour>()
+            .HasOne(t => t.City)
+            .WithMany(c => c.Tours)
+            .HasForeignKey(t => t.CityID)
+            .OnDelete(DeleteBehavior.Restrict);
 
-        // TourLocation (Many-to-Many relationship)
-        modelBuilder.Entity<TourLocation>()
-            .HasKey(tl => new { tl.TourId, tl.LocationId });
+        // Hotel - City relationship
+        modelBuilder.Entity<Hotel>()
+            .HasOne(h => h.City)
+            .WithMany(c => c.Hotels)
+            .HasForeignKey(h => h.CityID)
+            .OnDelete(DeleteBehavior.Restrict);
 
-        modelBuilder.Entity<TourLocation>()
-            .HasOne(tl => tl.Tour)
-            .WithMany(t => t.TourLocations)
-            .HasForeignKey(tl => tl.TourId);
+        // Restaurant - City relationship
+        modelBuilder.Entity<Restaurant>()
+            .HasOne(r => r.City)
+            .WithMany(c => c.Restaurants)
+            .HasForeignKey(r => r.CityID)
+            .OnDelete(DeleteBehavior.Restrict);
 
-        modelBuilder.Entity<TourLocation>()
-            .HasOne(tl => tl.Location)
-            .WithMany(l => l.TourLocations)
-            .HasForeignKey(tl => tl.LocationId);
+        // Attraction - City relationship
+        modelBuilder.Entity<Attraction>()
+            .HasOne(a => a.City)
+            .WithMany(c => c.Attractions)
+            .HasForeignKey(a => a.CityID)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        // TourAttraction (Many-to-Many relationship)
+        modelBuilder.Entity<TourAttraction>()
+            .HasKey(ta => new { ta.TourID, ta.AttractionID });
+
+        modelBuilder.Entity<TourAttraction>()
+            .HasOne(ta => ta.Tour)
+            .WithMany(t => t.TourAttractions)
+            .HasForeignKey(ta => ta.TourID);
+
+        modelBuilder.Entity<TourAttraction>()
+            .HasOne(ta => ta.Attraction)
+            .WithMany(a => a.TourAttractions)
+            .HasForeignKey(ta => ta.AttractionID);
+
+        // TourRestaurant (Many-to-Many relationship)
+        modelBuilder.Entity<TourRestaurant>()
+            .HasKey(tr => new { tr.TourID, tr.RestaurantID });
+
+        modelBuilder.Entity<TourRestaurant>()
+            .HasOne(tr => tr.Tour)
+            .WithMany(t => t.TourRestaurants)
+            .HasForeignKey(tr => tr.TourID);
+
+        modelBuilder.Entity<TourRestaurant>()
+            .HasOne(tr => tr.Restaurant)
+            .WithMany(r => r.TourRestaurants)
+            .HasForeignKey(tr => tr.RestaurantID);
 
         // User - Booking relationship
         modelBuilder.Entity<Booking>()
             .HasOne(b => b.User)
             .WithMany(u => u.Bookings)
-            .HasForeignKey(b => b.UserId)
+            .HasForeignKey(b => b.UserID)
             .OnDelete(DeleteBehavior.Restrict);
 
         // Tour - Booking relationship
         modelBuilder.Entity<Booking>()
             .HasOne(b => b.Tour)
             .WithMany(t => t.Bookings)
-            .HasForeignKey(b => b.TourId)
+            .HasForeignKey(b => b.TourID)
             .OnDelete(DeleteBehavior.Restrict);
 
         // Review relationships
         modelBuilder.Entity<Review>()
             .HasOne(r => r.User)
             .WithMany(u => u.Reviews)
-            .HasForeignKey(r => r.UserId)
+            .HasForeignKey(r => r.UserID)
             .OnDelete(DeleteBehavior.Restrict);
 
         modelBuilder.Entity<Review>()
             .HasOne(r => r.Tour)
             .WithMany(t => t.Reviews)
-            .HasForeignKey(r => r.TourId)
+            .HasForeignKey(r => r.TourID)
             .OnDelete(DeleteBehavior.Restrict);
 
         // Payment relationships
-        modelBuilder.Entity<Payments>()
+        modelBuilder.Entity<Payment>()
             .HasOne(p => p.User)
             .WithMany(u => u.Payments)
             .HasForeignKey(p => p.UserId)
             .OnDelete(DeleteBehavior.Restrict);
 
-        modelBuilder.Entity<Payments>()
+        modelBuilder.Entity<Payment>()
             .HasOne(p => p.Booking)
             .WithMany(b => b.Payments)
-            .HasForeignKey(p => p.BookingId)
+            .HasForeignKey(p => p.BookingID)
             .OnDelete(DeleteBehavior.Restrict);
-            
 
-        // Favorite relationships
-        modelBuilder.Entity<Favorite>()
-            .HasOne(f => f.User)
-            .WithMany(u => u.Favorites)
-            .HasForeignKey(f => f.UserId);
-
-        modelBuilder.Entity<Favorite>()
-            .HasOne(f => f.Tour)
-            .WithMany(t => t.Favorites)
-            .HasForeignKey(f => f.TourId);
-
-    
-     
+        // Image relationships (polymorphic entity)
+        modelBuilder.Entity<Image>()
+            .HasIndex(i => new { i.EntityID, i.EntityType });
     }
 }

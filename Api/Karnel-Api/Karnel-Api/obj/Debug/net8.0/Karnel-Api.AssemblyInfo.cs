@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Karnel-Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e7d0ad5f8ac6f4b9f6565e122a9c9bfea94837df")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+be4ff991f4a9af27ddf452dcc0c965c455623c56")]
 [assembly: System.Reflection.AssemblyProductAttribute("Karnel-Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Karnel-Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

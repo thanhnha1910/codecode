@@ -20,7 +20,14 @@ const authApi = {
             const response = await axios.post(`${API_URL}/login`, loginData);
             if (response.data) {
                 localStorage.setItem('token', response.data.token);
-                localStorage.setItem('user', JSON.stringify(response.data));   
+               
+                const userData = {
+                    id: response.data.id,
+                    name: response.data.name,
+                    email: response.data.email
+                };
+                localStorage.setItem('user', JSON.stringify(userData));  
+                 
             }
             return response.data;
         } catch (error) {

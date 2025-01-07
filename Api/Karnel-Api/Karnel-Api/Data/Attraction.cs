@@ -5,7 +5,7 @@ namespace Karnel_Api.Data;
 public class Attraction
 {
     [Key]
-    public int TourAttraction { get; set; }
+    public int AttractionID { get; set; }
     public string AttractionName { get; set; }
     public int? CityID { get; set; }
     public City City { get; set; }

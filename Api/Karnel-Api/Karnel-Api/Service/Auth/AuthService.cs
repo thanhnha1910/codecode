@@ -114,7 +114,8 @@
             {
                
                 Name = user.Name,
-              
+                Id = user.Id,
+                Email = user.Email
             };
         }
         

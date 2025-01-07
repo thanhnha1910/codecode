@@ -20,6 +20,7 @@ public class DatabaseContext:DbContext
     public DbSet<Review> Reviews { get; set; }
     public DbSet<Payment> Payments { get; set; }
     public DbSet<Image> Images { get; set; }
+    public DbSet<Favorite> Favorites { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -92,6 +93,15 @@ public class DatabaseContext:DbContext
             .WithMany(t => t.Bookings)
             .HasForeignKey(b => b.TourID)
             .OnDelete(DeleteBehavior.Restrict);
+        modelBuilder.Entity<Favorite>()
+                    .HasOne(f => f.User)
+                    .WithMany(u => u.Favorites)
+                    .HasForeignKey(f => f.UserID);
+        
+                modelBuilder.Entity<Favorite>()
+                    .HasOne(f => f.Tour)
+                    .WithMany()
+                    .HasForeignKey(f => f.TourID);
 
         // Review relationships
         modelBuilder.Entity<Review>()

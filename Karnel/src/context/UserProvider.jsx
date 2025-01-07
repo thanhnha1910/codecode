@@ -1,31 +1,42 @@
 import React, { createContext, useContext, useState, useEffect } from 'react'; // Thêm React vào import
+import axios from 'axios';
+
+
 //tao context chia se du lieu
 const UserContext=createContext();
 
-export function UserProvider({children}) {
-        const [user, setUser] = useState(()=>{
-            //kiem tra  xem co user hay khong
-            const saveUser=localStorage.getItem('user');
-            //neu co thi tra ve user
-            return saveUser ? JSON.parse(saveUser) : null;
-        });
-        useEffect(()=>{
-          if(user){
+export function UserProvider({ children }) {
+    const [user, setUser] = useState(() => {
+        const savedUser = localStorage.getItem('user');
+        if (savedUser) {
+            try {
+                return JSON.parse(savedUser);
+            } catch (error) {
+                console.error('Error parsing user data:', error);
+                return null;
+            }
+        }
+        return null;
+    });
+
+    useEffect(() => {
+        if (user) {
             localStorage.setItem('user', JSON.stringify(user));
-          }else{
-            localStorage.removeItem('user');
-          }
-            
-        }, [user]);
+        }
+    }, [user]);
+
+    const value = {
+        user,
+        setUser,
+    };
+
     return (
-        <div>
-        <UserContext.Provider value={{user, setUser}}>
-        {children}
+        <UserContext.Provider value={value}>
+            {children}
         </UserContext.Provider>
-            
-        </div>
     );
 }
+
 export function useUser() {
   const context = useContext(UserContext);
   if (!context) {

@@ -8,6 +8,7 @@ public class Hotel
     public string HotelName { get; set; }
     public int? CityID { get; set; }
     public City City { get; set; }
+    public string Address { get; set; }
     [Column(TypeName = "decimal(3, 2)")]
     public decimal Rating { get; set; }
     public string Description { get; set; }

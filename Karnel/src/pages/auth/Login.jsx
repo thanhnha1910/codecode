@@ -39,6 +39,7 @@ function Login() {
       console.log("Login response:", response);
       if (response) {
         const userData = {
+          id: response.id,
           name: response.name,
           email: response.email,
         };

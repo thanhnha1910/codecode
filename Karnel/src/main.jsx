@@ -15,7 +15,9 @@ import "react-toastify/dist/ReactToastify.css";
 import { UserProvider } from "./context/UserProvider.jsx";
 import Login from "./pages/auth/login.jsx";
 import ResetPassWord from "./pages/auth/ResetPassword.jsx";
-
+import Profile from "./pages/personal/profile.jsx";
+import ProtectedRoute from "./context/ProtectedRoute.jsx";
+// import Dashboard from "./pages/admin/dashboard.jsx";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <UserProvider>
@@ -27,10 +29,19 @@ ReactDOM.createRoot(document.getElementById("root")).render(
             <Route path="search" element={<Search />} />
             <Route path="about" element={<About />} />
             <Route path="contact" element={<Contact />} />
+
           </Route>
 
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
+          <Route 
+              path="profile" 
+              element={
+                <ProtectedRoute>
+                  <Profile />
+                </ProtectedRoute>
+              } 
+            />
           <Route path="verify-email" element={<VerifyEmail />} />
           <Route path="reset-password" element={<ResetPassWord />} />
           <Route

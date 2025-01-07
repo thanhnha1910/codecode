@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Karnel_Api.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialFix : Migration
+    public partial class InitialUpdat : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -52,10 +52,12 @@ namespace Karnel_Api.Migrations
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Role = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Gender = table.Column<bool>(type: "bit", nullable: false),
                     IsEmailConfirmed = table.Column<bool>(type: "bit", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Status = table.Column<bool>(type: "bit", nullable: false),
-                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Avatar = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     EmailVerificationToken = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     EmailVerificationTokenExpires = table.Column<DateTime>(type: "datetime2", nullable: true),
                     ResetPasswordToken = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -72,7 +74,7 @@ namespace Karnel_Api.Migrations
                 name: "Attractions",
                 columns: table => new
                 {
-                    TourAttraction = table.Column<int>(type: "int", nullable: false)
+                    AttractionID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     AttractionName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CityID = table.Column<int>(type: "int", nullable: true),
@@ -80,7 +82,7 @@ namespace Karnel_Api.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Attractions", x => x.TourAttraction);
+                    table.PrimaryKey("PK_Attractions", x => x.AttractionID);
                     table.ForeignKey(
                         name: "FK_Attractions_Cities_CityID",
                         column: x => x.CityID,
@@ -97,6 +99,7 @@ namespace Karnel_Api.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     HotelName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CityID = table.Column<int>(type: "int", nullable: true),
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Rating = table.Column<decimal>(type: "decimal(3,2)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
@@ -218,7 +221,7 @@ namespace Karnel_Api.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Favorite",
+                name: "Favorites",
                 columns: table => new
                 {
                     LikeID = table.Column<int>(type: "int", nullable: false)
@@ -229,15 +232,15 @@ namespace Karnel_Api.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Favorite", x => x.LikeID);
+                    table.PrimaryKey("PK_Favorites", x => x.LikeID);
                     table.ForeignKey(
-                        name: "FK_Favorite_Tours_TourID",
+                        name: "FK_Favorites_Tours_TourID",
                         column: x => x.TourID,
                         principalTable: "Tours",
                         principalColumn: "TourID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Favorite_Users_UserID",
+                        name: "FK_Favorites_Users_UserID",
                         column: x => x.UserID,
                         principalTable: "Users",
                         principalColumn: "Id",
@@ -287,7 +290,7 @@ namespace Karnel_Api.Migrations
                         name: "FK_TourAttraction_Attractions_AttractionID",
                         column: x => x.AttractionID,
                         principalTable: "Attractions",
-                        principalColumn: "TourAttraction",
+                        principalColumn: "AttractionID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_TourAttraction_Tours_TourID",
@@ -367,13 +370,13 @@ namespace Karnel_Api.Migrations
                 column: "UserID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Favorite_TourID",
-                table: "Favorite",
+                name: "IX_Favorites_TourID",
+                table: "Favorites",
                 column: "TourID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Favorite_UserID",
-                table: "Favorite",
+                name: "IX_Favorites_UserID",
+                table: "Favorites",
                 column: "UserID");
 
             migrationBuilder.CreateIndex(
@@ -441,7 +444,7 @@ namespace Karnel_Api.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Favorite");
+                name: "Favorites");
 
             migrationBuilder.DropTable(
                 name: "Images");

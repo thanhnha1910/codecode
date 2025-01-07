@@ -1,11 +1,19 @@
 {
   "Version": 1,
-  "Hash": "rfImvGfH5/vXJoyE65Fi1oN/l2NJkg2zFDyMZeHwnAw=",
+  "Hash": "0Qgd636n/X7tVZE5gV1LzYQSFVxNliewQz0sFRZsp3I=",
   "Source": "Karnel-Api",
   "BasePath": "_content/Karnel-Api",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "Karnel-Api/wwwroot",
+      "Source": "Karnel-Api",
+      "ContentRoot": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/",
+      "BasePath": "_content/Karnel-Api",
+      "Pattern": "**"
+    }
+  ],
   "Assets": []
 }

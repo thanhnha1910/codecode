@@ -23,8 +23,8 @@
         </PackageReference>
     </ItemGroup>
     <ItemGroup>
-      <Folder Include="Controller\" />
       <Folder Include="Migrations\" />
+      <Folder Include="wwwroot\uploads\avatars\" />
     </ItemGroup>
 
 </Project>

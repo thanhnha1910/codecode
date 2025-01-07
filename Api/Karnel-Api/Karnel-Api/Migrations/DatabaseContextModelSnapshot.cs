@@ -24,11 +24,11 @@ namespace Karnel_Api.Migrations
 
             modelBuilder.Entity("Karnel_Api.Data.Attraction", b =>
                 {
-                    b.Property<int>("TourAttraction")
+                    b.Property<int>("AttractionID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TourAttraction"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AttractionID"));
 
                     b.Property<string>("AttractionName")
                         .IsRequired()
@@ -41,7 +41,7 @@ namespace Karnel_Api.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("TourAttraction");
+                    b.HasKey("AttractionID");
 
                     b.HasIndex("CityID");
 
@@ -131,7 +131,7 @@ namespace Karnel_Api.Migrations
 
                     b.HasIndex("UserID");
 
-                    b.ToTable("Favorite");
+                    b.ToTable("Favorites");
                 });
 
             modelBuilder.Entity("Karnel_Api.Data.Hotel", b =>
@@ -141,6 +141,10 @@ namespace Karnel_Api.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("HotelID"));
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("CityID")
                         .HasColumnType("int");
@@ -409,7 +413,13 @@ namespace Karnel_Api.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("Avatar")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateOfBirth")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
@@ -422,8 +432,8 @@ namespace Karnel_Api.Migrations
                     b.Property<DateTime?>("EmailVerificationTokenExpires")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("ImageUrl")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("Gender")
+                        .HasColumnType("bit");
 
                     b.Property<bool>("IsEmailConfirmed")
                         .HasColumnType("bit");

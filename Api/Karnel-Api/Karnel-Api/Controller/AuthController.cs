@@ -41,7 +41,8 @@ namespace Karnel_Api.Controller
                 return Ok(new
                 {
                   
-                  
+                  id=user.Id,
+                  email=user.Email,
                     name = user.Name
                 });
             }

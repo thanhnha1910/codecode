@@ -1,5 +1,5 @@
 import { use, useEffect } from "react";
-import { NavLink, Outlet ,useNavigate} from "react-router";
+import { NavLink, Outlet, useNavigate } from "react-router";
 import { useUser } from "../context/UserProvider.jsx";
 import { toast } from "react-toastify";
 
@@ -13,7 +13,7 @@ export default function HomeLayout() {
     toast.success("Logged out successfully");
     navigate("/login");
     useEffect(() => {
-        console.log('Current user in HomeLayout:', user); // Thêm log để kiểm tra
+      console.log("Current user in HomeLayout:", user); // Thêm log để kiểm tra
     }, [user]);
   };
   return (
@@ -85,10 +85,21 @@ export default function HomeLayout() {
             </div>
             {user ? (
               <div className="d-flex align-items-center ms-4">
-                <span className="text-primary me-3">Welcome, {user.name}</span>
+                <NavLink to="/profile" className="nav-link">
+                  <img
+                    src={user.avatar || "/img/User_icon_2.svg.png"}
+                    alt="Profile"
+                    className="rounded-circle"
+                    style={{
+                      width: "40px",
+                      height: "40px",
+                      objectFit: "cover",
+                    }}
+                  />
+                </NavLink>
                 <button
                   onClick={handleLogout}
-                  className="btn btn-primary rounded-pill py-2 px-4"
+                  className="btn btn-primary rounded-pill py-2 px-4 ms-3"
                 >
                   Logout
                 </button>

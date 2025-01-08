@@ -1,53 +1,40 @@
 import axios from 'axios';
 
 const API_URL = 'http://localhost:5128/api/PersonalPage';
+
 const profileApi = {
-    updateProfile: async (userId, formData) => {
-        try {
-            const token = localStorage.getItem('token');
-            if (!token) {
-                window.location.href = '/login';
-                return;
-            }
+  updateProfile: async (userId, formData) => {
+    const token = localStorage.getItem('token');
+    console.log("Token:", token);
     
-            const config = {
-                headers: {
-                    'Authorization': `Bearer ${token}`,
-                    'Content-Type': 'multipart/form-data'
-                }
-            };
+    const config = {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        'Authorization': `Bearer ${token}`
+      },
+    };
+    console.log('Request config:', config);
+    console.log('FormData contents:', Array.from(formData.entries()));
     
-            // Only append fields that have values
-            const validatedFormData = new FormData();
-            if (formData.get('name')) validatedFormData.append('name', formData.get('name'));
-            if (formData.get('gender') !== null) validatedFormData.append('gender', formData.get('gender'));
-            if (formData.get('dateOfBirth')) validatedFormData.append('dateOfBirth', formData.get('dateOfBirth'));
-            if (formData.get('avatar')) validatedFormData.append('avatar', formData.get('avatar'));
-    
-            const response = await axios.put(`${API_URL}/${userId}`, validatedFormData, config);
-            return response.data;
-        } catch (error) {
-            throw error;
-        }
-    },
-    
-    getUserProfile: async (userId) => {
-        try {
-            const token = localStorage.getItem('token');
-            if (!token) {
-                throw new Error('No authentication token found');
-            }
-            
-            const config = {
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                }
-            };
-            
-            const response = await axios.get(`${API_URL}/${userId}`, config);
-            return response.data;
-        } catch (error) {
-            throw error;
-        }
+    const response = await axios.put(`${API_URL}/update/${userId}`, formData, config);
+    console.log('Update profile response:', response.data);
+    return response.data;
+  },
+  getUserProfile: async (userId) => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      throw new Error('No authentication token found');
     }
-};export default profileApi;
+
+    const config = {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+      },
+    };
+
+    const response = await axios.get(`${API_URL}/${userId}`, config);
+    return response.data;
+  },
+};
+
+export default profileApi;

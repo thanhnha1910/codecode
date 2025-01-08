@@ -1,31 +1,34 @@
-import { use, useEffect } from "react";
-import { NavLink, Outlet, useNavigate } from "react-router";
-import { useUser } from "../context/UserProvider.jsx";
+import { useEffect } from "react";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
+import { useUser } from "../context/UserProvider";
 import { toast } from "react-toastify";
 
 export default function HomeLayout() {
   const { user, setUser } = useUser();
   const navigate = useNavigate();
+
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
     setUser(null);
-    toast.success("Logged out successfully");
+    toast.success("logged out successfully");
     navigate("/login");
-    useEffect(() => {
-      console.log("Current user in HomeLayout:", user); // Thêm log để kiểm tra
-    }, [user]);
   };
+
+  useEffect(() => {
+    console.log("Current user in HomeLayout:", user); // Thêm log để kiểm tra
+  }, [user]);
+
   return (
     <>
-      {/*
-            <div id="spinner"
-                 className="show bg-white fixed inset-0 flex items-center justify-center">
-                <div className="spinner-border text-primary w-12 h-12" role="status">
-                    <span className="sr-only">Loading...</span>
-                </div>
-            </div>
-            */}
+      {/* 
+      <div id="spinner"
+           className="show bg-white fixed inset-0 flex items-center justify-center">
+          <div className="spinner-border text-primary w-12 h-12" role="status">
+              <span className="sr-only">Loading...</span>
+          </div>
+      </div>
+      */}
 
       <div className="container-fluid position-relative p-0">
         <nav className="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
@@ -151,7 +154,9 @@ export default function HomeLayout() {
             </div>
           </div>
         </div>
+
         <Outlet />
+
         <div
           className="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn"
           data-wow-delay="0.1s"

@@ -1,5 +1,5 @@
+using System.Text.Json;
 using Karnel_Api.Data;
-using Karnel_Api.DTO.Favorite;
 using Karnel_Api.DTO.UserDTO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -13,17 +13,20 @@ namespace Karnel_Api.Controller
     {
         private readonly DatabaseContext _context;
         public IWebHostEnvironment Environment;
+        public readonly ILogger<PersonalPageController> _logger;
+        
 
-        public PersonalPageController(DatabaseContext context, IWebHostEnvironment environment)
+        public PersonalPageController(DatabaseContext context, IWebHostEnvironment environment, ILogger<PersonalPageController> logger)
         {
             _context = context;
             Environment = environment;
+            _logger = logger;
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetProfile(int id)
         {
-            var user = await _context.Users.Include(u => u.Favorites).FirstOrDefaultAsync(x => x.Id == id);
+            var user = await _context.Users.FirstOrDefaultAsync(x => x.Id == id);
             if (user == null)
             {
                 return NotFound();
@@ -42,14 +45,17 @@ namespace Karnel_Api.Controller
 
         }
 
-       [HttpPut("{id}")]
+       [HttpPut("update/{id}")]
 public async Task<IActionResult> UpdateProfile(int id, [FromForm] UserDTO userDto)
 {
+    
     try
     {
+       
         var user = await _context.Users.FindAsync(id);
         if (user == null)
             return NotFound("User not found");
+        _logger.LogInformation($"Received data for user {id}: {JsonSerializer.Serialize(userDto)}");
 
         // Validation
         if (string.IsNullOrEmpty(userDto.Name))
@@ -58,8 +64,8 @@ public async Task<IActionResult> UpdateProfile(int id, [FromForm] UserDTO userDt
         // Update basic info
         user.Name = userDto.Name;
         user.Gender = userDto.Gender;
-        user.DateOfBirth = userDto.DateOfBirth;
-        
+       user.DateOfBirth=userDto.DateOfBirth;
+       
         // Handle avatar upload
         var avatarFile = Request.Form.Files.GetFile("avatar");
         if (avatarFile != null && avatarFile.Length > 0)
@@ -110,7 +116,8 @@ public async Task<IActionResult> UpdateProfile(int id, [FromForm] UserDTO userDt
     }
     catch (Exception ex)
     {
-        return StatusCode(500, new { error = "Internal server error", details = ex.Message });
+        _logger.LogError($"Error updating profile: {ex.Message}");
+        return StatusCode(500, new { message = "Internal server error", details = ex.Message });
     }
 }
 }

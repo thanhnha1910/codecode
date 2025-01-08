@@ -43,7 +43,9 @@ namespace Karnel_Api.Controller
                   
                   id=user.Id,
                   email=user.Email,
-                    name = user.Name
+                    name = user.Name,
+                    avatar=user.Avatar,
+                    role=user.Role
                 });
             }
             catch (Exception e)

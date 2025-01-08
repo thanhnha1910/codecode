@@ -68,6 +68,7 @@ if (app.Environment.IsDevelopment())
 
 // Add this before app.Run()
 app.UseCors("AllowAll");
+app.UseStaticFiles();
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();

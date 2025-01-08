@@ -42,11 +42,18 @@ function Login() {
           id: response.id,
           name: response.name,
           email: response.email,
+          role: response.role 
         };
         setUser(userData);
         localStorage.setItem("user", JSON.stringify(userData));
         toast.success(`Welcome back ${userData.name}!`);
-        navigate("/");
+        if(userData.role === 'ADMIN') {
+          navigate("/admin");
+        } else {
+          navigate("/");
+        }
+       
+       
       } else {
         throw new Error("Login response is empty");
       }

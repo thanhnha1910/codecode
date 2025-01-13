@@ -11,8 +11,13 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Karnel_Api.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
+<<<<<<<< HEAD:Api/Karnel-Api/Karnel-Api/Migrations/20250108091010_SQLite.Designer.cs
     [Migration("20250108091010_SQLite")]
     partial class SQLite
+========
+    [Migration("20250107160914_InitialUpda")]
+    partial class InitialUpda
+>>>>>>>> 436cacd5cede5141dc3bdaae0af0d996214c7322:Api/Karnel-Api/Karnel-Api/Migrations/20250107160914_InitialUpda.Designer.cs
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

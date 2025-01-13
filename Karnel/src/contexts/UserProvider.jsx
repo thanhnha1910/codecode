@@ -1,45 +1,26 @@
-import React, { createContext, useContext, useState, useEffect } from 'react'; // Thêm React vào import
-import axios from 'axios';
+import React, { createContext, useContext, useState, useEffect } from "react";
 
+const UserContext = createContext();
 
-//tao context chia se du lieu
-const UserContext= createContext();
-export function UserProvider({ children }) {
-    const [user, setUser] = useState(() => {
-        const savedUser = localStorage.getItem('user');
-        if (savedUser) {
-            try {
-                return JSON.parse(savedUser);
-            } catch (error) {
-                console.error('Error parsing user data:', error);
-                return null;
-            }
-        }
-        return null;
-    });
+export const useUser = () => {
+  return useContext(UserContext);
+};
 
-    useEffect(() => {
-        if (user) {
-            localStorage.setItem('user', JSON.stringify(user));
-        }
-    }, [user]);
+export const UserProvider = ({ children }) => {
+  const [user, setUser] = useState(null);
 
-    const value = {
-        user,
-        setUser,
-    };
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    const user = JSON.parse(localStorage.getItem("user"));
 
-    return (
-        <UserContext.Provider value={value}>
-            {children}
-        </UserContext.Provider>
-    );
-}
+    if (token && user) {
+      setUser(user);
+    }
+  }, []);
 
-export function useUser() {
-  const context = useContext(UserContext);
-  if (!context) {
-      throw new Error('useUser must be used within a UserProvider');
-  }
-  return context;
-}
+  return (
+    <UserContext.Provider value={{ user, setUser }}>
+      {children}
+    </UserContext.Provider>
+  );
+};

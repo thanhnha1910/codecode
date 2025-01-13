@@ -115,7 +115,9 @@
                
                 Name = user.Name,
                 Id = user.Id,
-                Email = user.Email
+                Email = user.Email,
+                Avatar = user.Avatar,
+                Role = user.Role
             };
         }
         

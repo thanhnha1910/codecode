@@ -1,0 +1,25 @@
+{
+  "Files": [
+    {
+      "Id": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/735db163-d075-4604-8943-2d46790d8a21.jpeg",
+      "PackagePath": "staticwebassets/uploads/avatars/735db163-d075-4604-8943-2d46790d8a21.jpeg"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.Karnel-Api.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.build.Karnel-Api.props",
+      "PackagePath": "build\\Karnel-Api.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.Karnel-Api.props",
+      "PackagePath": "buildMultiTargeting\\Karnel-Api.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.Karnel-Api.props",
+      "PackagePath": "buildTransitive\\Karnel-Api.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

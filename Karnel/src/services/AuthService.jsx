@@ -24,7 +24,10 @@ const authApi = {
                 const userData = {
                     id: response.data.id,
                     name: response.data.name,
-                    email: response.data.email
+                    email: response.data.email,
+                    avatar: response.data.avatar,
+                    role: response.data.role 
+
                 };
                 localStorage.setItem('user', JSON.stringify(userData));  
                  

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useUser } from "../../context/UserProvider";
 import { toast } from "react-toastify";
 import profileApi from "../../services/ProfileService";
+import {useUser} from "@/contexts/UserProvider.jsx";
 
 export default function Profile() {
   const navigate = useNavigate();

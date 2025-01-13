@@ -12,11 +12,14 @@ import Search from "./pages/home/search.jsx";
 import About from "./pages/home/about.jsx";
 import Contact from "./pages/home/contact.jsx";
 import "react-toastify/dist/ReactToastify.css";
-import { UserProvider } from "./context/UserProvider.jsx";
-import Login from "./pages/auth/login.jsx";
-import ResetPassWord from "./pages/auth/ResetPassword.jsx";
+import { UserProvider } from "@/contexts/UserProvider.jsx";
+import Login from "./pages/auth/Login.jsx";
+import ResetPassWord from "./pages/auth/ResetPassWord.jsx";
 import Profile from "./pages/personal/profile.jsx";
-import ProtectedRoute from "./context/ProtectedRoute.jsx";
+import ProtectedRoute from "@/contexts/ProtectedRoute.jsx";
+import InfoLayout from "./layouts/info-layout.jsx";
+import Hotel from "./pages/info/hotel.jsx";
+import Tour from "./pages/home/tour.jsx";
 // import Dashboard from "./pages/admin/dashboard.jsx";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -29,7 +32,10 @@ ReactDOM.createRoot(document.getElementById("root")).render(
             <Route path="search" element={<Search />} />
             <Route path="about" element={<About />} />
             <Route path="contact" element={<Contact />} />
-
+            <Route path="tours" element={<Tour />} />
+            <Route element={<InfoLayout />}>
+              <Route path="hotels" element={<Hotel />} />
+            </Route>
           </Route>
 
           <Route path="login" element={<Login />} />

@@ -16,11 +16,12 @@ namespace Karnel_Api.Controller
         {
             _context = context;
         }
-//Kiem tra trang thai yeu thich
+
+        //Kiem tra trang thai yeu thich
         [HttpGet("check/{userId}/{tourId}")]
         public async Task<ActionResult<bool>> CheckFavorite(int userId, int tourId)
         {
-            var exist=await _context.Favorites.AnyAsync(c=>c.UserID==userId && c.TourID==tourId);
+            var exist = await _context.Favorites.AnyAsync(c => c.UserID == userId && c.TourID == tourId);
             return Ok(exist);
         }
 
@@ -62,17 +63,15 @@ namespace Karnel_Api.Controller
                 {
                     return BadRequest("Favorite tour not found");
                 }
+
                 _context.Favorites.Remove(fov);
                 await _context.SaveChangesAsync();
                 return Ok("Favorite deleted");
-                
-
             }
             catch (Exception e)
             {
                 return StatusCode(500, $"Internal server error: {e.Message}");
             }
-           
         }
 
         [HttpGet("user/{userId}")]
@@ -84,16 +83,11 @@ namespace Karnel_Api.Controller
                     .Where(f => f.UserID == userId)
                     .Include(f => f.Tour).ToListAsync();
                 return Ok(favorites);
-
-
             }
             catch (Exception e)
             {
                 return StatusCode(500, $"Internal server error: {e.Message}");
             }
-            
         }
-        
-        
     }
 }

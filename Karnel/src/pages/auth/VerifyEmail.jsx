@@ -22,7 +22,6 @@ function VerifyEmail() {
                 const errorMessage = error.response?.data?.message || 
                                    "Verification link has expired or is invalid";
                 console.log('Verification error:', error); // Add this log
-               
                 navigate('/login', { replace: true });
             }
         };

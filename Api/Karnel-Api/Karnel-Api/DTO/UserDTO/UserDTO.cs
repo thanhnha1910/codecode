@@ -14,5 +14,5 @@ public class UserDTO
     public string? Avatar { get; set; }
     public bool Gender { get; set; }
     public DateTime DateOfBirth { get; set; }
-    public List<FavoriteDTO> Favorites { get; set; }
+   
 }

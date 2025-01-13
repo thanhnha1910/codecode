@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "0Qgd636n/X7tVZE5gV1LzYQSFVxNliewQz0sFRZsp3I=",
+  "Hash": "h01Hyvduy5SypQ5m2yoS14R0AKXHZQyROFYgC4DPUfU=",
   "Source": "Karnel-Api",
   "BasePath": "_content/Karnel-Api",
   "Mode": "Default",
@@ -10,10 +10,11 @@
     {
       "Name": "Karnel-Api/wwwroot",
       "Source": "Karnel-Api",
-      "ContentRoot": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/",
+      "ContentRoot": "/home/fredmt1n/Projects/Project3-KarnelTravel/Api/Karnel-Api/Karnel-Api/wwwroot/",
       "BasePath": "_content/Karnel-Api",
       "Pattern": "**"
     }
   ],
-  "Assets": []
+  "Assets": [],
+  "Endpoints": []
 }

@@ -1,8 +1,12 @@
 {
   "Files": [
     {
-      "Id": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/735db163-d075-4604-8943-2d46790d8a21.jpeg",
+      "Id": "/home/fredmt1n/Projects/Project3-KarnelTravel/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/735db163-d075-4604-8943-2d46790d8a21.jpeg",
       "PackagePath": "staticwebassets/uploads/avatars/735db163-d075-4604-8943-2d46790d8a21.jpeg"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.Karnel-Api.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
     },
     {
       "Id": "obj/Debug/net8.0/staticwebassets/msbuild.Karnel-Api.Microsoft.AspNetCore.StaticWebAssets.props",

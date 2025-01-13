@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "SCoUGfEVUGj3AUwWl5ii7BVOBzJdM7+/OZCGMRiOt58=",
+  "Hash": "cE9Xb5yIRzawgW96pnZjO1KENlnZttVW/4JL3L4L000=",
   "Source": "Karnel-Api",
   "BasePath": "_content/Karnel-Api",
   "Mode": "Default",
@@ -10,30 +10,116 @@
     {
       "Name": "Karnel-Api/wwwroot",
       "Source": "Karnel-Api",
-      "ContentRoot": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/",
+      "ContentRoot": "/home/fredmt1n/Projects/Project3-KarnelTravel/Api/Karnel-Api/Karnel-Api/wwwroot/",
       "BasePath": "_content/Karnel-Api",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/735db163-d075-4604-8943-2d46790d8a21.jpeg",
+      "Identity": "/home/fredmt1n/Projects/Project3-KarnelTravel/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/735db163-d075-4604-8943-2d46790d8a21.jpeg",
       "SourceId": "Karnel-Api",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/",
+      "ContentRoot": "/home/fredmt1n/Projects/Project3-KarnelTravel/Api/Karnel-Api/Karnel-Api/wwwroot/",
       "BasePath": "_content/Karnel-Api",
-      "RelativePath": "uploads/avatars/735db163-d075-4604-8943-2d46790d8a21.jpeg",
+      "RelativePath": "uploads/avatars/735db163-d075-4604-8943-2d46790d8a21#[.{fingerprint}]?.jpeg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "lztn0o0bec",
+      "Integrity": "b+gUqIo0QV6chJ/+KTertS8BvzRtCkonZVGeUr44mBI=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/uploads/avatars/735db163-d075-4604-8943-2d46790d8a21.jpeg"
+    }
+  ],
+  "Endpoints": [
+    {
+      "Route": "uploads/avatars/735db163-d075-4604-8943-2d46790d8a21.jpeg",
+      "AssetFile": "/home/fredmt1n/Projects/Project3-KarnelTravel/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/735db163-d075-4604-8943-2d46790d8a21.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "6159"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"b+gUqIo0QV6chJ/+KTertS8BvzRtCkonZVGeUr44mBI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 13 Jan 2025 04:21:27 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-b+gUqIo0QV6chJ/+KTertS8BvzRtCkonZVGeUr44mBI="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/avatars/735db163-d075-4604-8943-2d46790d8a21.lztn0o0bec.jpeg",
+      "AssetFile": "/home/fredmt1n/Projects/Project3-KarnelTravel/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/735db163-d075-4604-8943-2d46790d8a21.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "6159"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"b+gUqIo0QV6chJ/+KTertS8BvzRtCkonZVGeUr44mBI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 13 Jan 2025 04:21:27 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "lztn0o0bec"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/avatars/735db163-d075-4604-8943-2d46790d8a21.jpeg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-b+gUqIo0QV6chJ/+KTertS8BvzRtCkonZVGeUr44mBI="
+        }
+      ]
     }
   ]
 }

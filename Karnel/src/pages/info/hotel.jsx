@@ -23,7 +23,7 @@ export default function Hotel() {
         fetchHotels();
     }, [hotels]);
     return (
-        <div className="flex flex-wrap justify-center mx-auto gap-4">
+        <div className="flex flex-wrap justify-between mx-auto gap-4">
             {hotels !== null && hotels.map((hotel) => (
                 <div
                     className="max-w-sm w-full bg-white overflow-hidden transform transition duration-500 hover:scale-105 hover:shadow-2xl"

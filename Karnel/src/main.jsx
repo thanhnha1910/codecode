@@ -20,7 +20,8 @@ import ProtectedRoute from "@/contexts/ProtectedRoute.jsx";
 import InfoLayout from "./layouts/info-layout.jsx";
 import Hotel from "./pages/info/hotel.jsx";
 import Tour from "./pages/home/tour.jsx";
-// import Dashboard from "./pages/admin/dashboard.jsx";
+import Test from "@/pages/test/test.jsx";
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <UserProvider>
@@ -33,10 +34,13 @@ ReactDOM.createRoot(document.getElementById("root")).render(
             <Route path="about" element={<About />} />
             <Route path="contact" element={<Contact />} />
             <Route path="tours" element={<Tour />} />
-            <Route element={<InfoLayout />}>
-              <Route path="hotels" element={<Hotel />} />
+            <Route path="/info">
+              <Route element={<InfoLayout />}>
+                <Route path="hotels" element={<Hotel />} />
+              </Route>
             </Route>
           </Route>
+          <Route path="test" element={<Test />}/>
 
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />

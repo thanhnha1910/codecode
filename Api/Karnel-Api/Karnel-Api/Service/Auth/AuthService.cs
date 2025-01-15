@@ -1,13 +1,12 @@
-    using System.Security.Cryptography;
-    using System.Text;
-    using Karnel_Api.Data;
-    using Karnel_Api.DTO;
-    using MailKit.Net.Smtp;
-    using Microsoft.AspNetCore.Mvc;
-    using Microsoft.EntityFrameworkCore;
-    using MimeKit;
+using System.Security.Cryptography;
+using System.Text;
+using Karnel_Api.Data;
+using Karnel_Api.DTO;
+using MailKit.Net.Smtp;
+using Microsoft.EntityFrameworkCore;
+using MimeKit;
 
-    namespace Karnel_Api.Service;
+namespace Karnel_Api.Service.Auth;
 
     public class AuthService
     {

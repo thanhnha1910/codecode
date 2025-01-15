@@ -1,6 +1,7 @@
 using Karnel_Api.Data;
 using Karnel_Api.DTO;
 using Karnel_Api.Service;
+using Karnel_Api.Service.Auth;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 

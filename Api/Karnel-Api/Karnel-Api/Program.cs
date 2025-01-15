@@ -1,6 +1,7 @@
 using System.Text;
 using Karnel_Api.Data;
 using Karnel_Api.Service;
+using Karnel_Api.Service.Auth;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;

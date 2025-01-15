@@ -1,0 +1,4 @@
+Program.cs
+appsettings.json
+*.db
+./Api/Karnel-Api/Karnel-Api/Migrations

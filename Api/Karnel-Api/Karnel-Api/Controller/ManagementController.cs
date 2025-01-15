@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace DoAn.Controllers
+namespace Karnel_Api.Controller
 {
     [Route("api/[controller]")]
     [ApiController]

@@ -2,7 +2,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import authApi from "../../services/AuthService.jsx";
 import { useState, useEffect } from "react";
-import { useUser } from "../../context/UserProvider.jsx";
+import { useUser } from "@/contexts/UserProvider.jsx";
 
 function Login() {
   const [credentials, setCredentials] = useState({

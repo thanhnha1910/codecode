@@ -12,13 +12,16 @@ import Search from "./pages/home/search.jsx";
 import About from "./pages/home/about.jsx";
 import Contact from "./pages/home/contact.jsx";
 import "react-toastify/dist/ReactToastify.css";
-import { UserProvider } from "./context/UserProvider.jsx";
-import ResetPassWord from "./pages/auth/ResetPassword.jsx";
-import Profile from "./pages/personal/profile.jsx";
-import ProtectedRoute from "./context/ProtectedRoute.jsx";
+import { UserProvider } from "@/contexts/UserProvider.jsx";
 import Login from "./pages/auth/Login.jsx";
-import AdminLayout from "./admin/AdminLayout.jsx";
-// import Dashboard from "./pages/admin/dashboard.jsx";
+import ResetPassWord from "./pages/auth/ResetPassWord.jsx";
+import Profile from "./pages/personal/profile.jsx";
+import ProtectedRoute from "@/contexts/ProtectedRoute.jsx";
+import InfoLayout from "./layouts/info-layout.jsx";
+import Hotel from "./pages/info/hotel.jsx";
+import Tour from "./pages/home/tour.jsx";
+import Test from "@/pages/test/test.jsx";
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <UserProvider>
@@ -30,29 +33,25 @@ ReactDOM.createRoot(document.getElementById("root")).render(
             <Route path="search" element={<Search />} />
             <Route path="about" element={<About />} />
             <Route path="contact" element={<Contact />} />
+            <Route path="tours" element={<Tour />} />
+            <Route path="/info">
+              <Route element={<InfoLayout />}>
+                <Route path="hotels" element={<Hotel />} />
+              </Route>
+            </Route>
           </Route>
+          <Route path="test" element={<Test />}/>
+
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
-          <Route
-            path="profile"
-            element={
-              <ProtectedRoute>
-                <Profile />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/admin"
-            element={
-            
-                <AdminLayout>
-                
-                
-                </AdminLayout>
-            
-            }
-          />
-           
+          <Route 
+              path="profile" 
+              element={
+                <ProtectedRoute>
+                  <Profile />
+                </ProtectedRoute>
+              } 
+            />
           <Route path="verify-email" element={<VerifyEmail />} />
           <Route path="reset-password" element={<ResetPassWord />} />
           <Route

@@ -1,8 +1,9 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import {Link, useLocation, useNavigate} from "react-router-dom";
 import { toast } from "react-toastify";
 import authApi from "../../services/AuthService.jsx";
 import { useState, useEffect } from "react";
 import { useUser } from "@/contexts/UserProvider.jsx";
+import {Button} from "@/components/ui/button.jsx";
 
 function Login() {
   const [credentials, setCredentials] = useState({
@@ -144,20 +145,17 @@ function Login() {
               />
               <label className="ml-2 text-sm text-gray-700">Remember me</label>
             </div>
-            <a
-              href="/request-reset-password"
-              className="text-sm text-blue-600 hover:text-blue-800 font-semibold"
+            <Link
+              to="/request-reset-password"
+              className="text-sm text-primary hover:text-primary/80 font-semibold"
             >
               Forgot password?
-            </a>
+            </Link>
           </div>
 
-          <button
-            type="submit"
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 ease-in-out transform hover:scale-[1.02]"
-          >
-            Sign in
-          </button>
+          <Button type="submit" className="w-full py-6">
+            Sign In
+          </Button>
 
           <div className="relative my-6">
             <div className="absolute inset-0 flex items-center">
@@ -206,7 +204,7 @@ function Login() {
               Don't have an account?{" "}
               <a
                 href="/register"
-                className="text-blue-600 hover:text-blue-800 font-semibold"
+                className="text-primary hover:text-primary/80 font-semibold"
               >
                 Sign up
               </a>

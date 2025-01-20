@@ -1,7 +1,7 @@
 import NavigationBar from "@/components/home/nav-bar.jsx";
 import HeroSection from "@/components/home/hero-section.jsx";
 import Footer from "@/components/home/footer.jsx";
-import TourPackage from "@/components/home/tour-package.jsx";
+import TourPackage from "@/components/tour/tour-package.jsx";
 
 const tourPackage = {
     tourId: 1,

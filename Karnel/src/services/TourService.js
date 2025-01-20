@@ -26,6 +26,14 @@ const tourApi = {
         } catch (error) {
             console.log("Error fetching top tour data", error);
         }
+    },
+    getTourById: async (id) => {
+        try {
+            const response = await axios.get(`${API_URL}/${id}`);
+            return response.data;
+        } catch (error) {
+            console.log("Error fetching tour data", error);
+        }
     }
 };
 

@@ -55,23 +55,50 @@ namespace Karnel_Api.Controller
         [HttpGet("{id:int}")]
         public async Task<ActionResult<TourDetailDto>> GetTour(int id)
         {
-            var tour = await context.Tours.Where(t => t.TourID == id).Select(
-                t => new TourDetailDto
-                {
-                    TourId = t.TourID,
-                    Name = t.TourName,
-                    Description = t.Description,
-                    Detail = t.Detail,
-                    Price = t.Price,
-                    AvailableSlots = t.AvailableSlots,
-                    StartDate = t.StartDate,
-                    EndDate = t.EndDate,
-                    CityName = t.City.CityName,
-                    HotelName = t.Hotel.HotelName
-                }
-            ).FirstOrDefaultAsync();
+            var tour = context.Tours.Include(t => t.City).Include(t => t.Hotel).Include(t => t.TourAttractions)
+                .ThenInclude(tourAttraction => tourAttraction.Attraction).Include(t => t.TourRestaurants)
+                .ThenInclude(tourRestaurant => tourRestaurant.Restaurant).Include(tour => tour.Reviews).ThenInclude(r => r.User).FirstOrDefault(t => t.TourID == id);
             if (tour == null) return NotFound();
-            return tour;
+            var tourImage = await context.Images.Where(i => i.EntityType == "Tour" && i.EntityID == tour.TourID).FirstOrDefaultAsync();
+            var hotelImage = await context.Images.Where(i => i.EntityType == "Hotel" && i.EntityID == tour.HotelID).FirstOrDefaultAsync();
+            return new TourDetailDto
+            {
+                TourId = tour.TourID,
+                Name = tour.TourName,
+                Description = tour.Description,
+                Detail = tour.Detail,
+                Price = tour.Price,
+                AvailableSlots = tour.AvailableSlots,
+                StartDate = tour.StartDate,
+                EndDate = tour.EndDate,
+                ImageUrl = tourImage?.ImageUrl,
+                AltText = tourImage?.AltText,
+                CityName = tour.City.CityName,
+                Hotel = new HotelOverviewDto {
+                    HotelId = tour.Hotel.HotelID,
+                    Name = tour.Hotel.HotelName,
+                    ImageUrl = hotelImage?.ImageUrl,
+                    AltText = hotelImage?.AltText
+                },
+                Attractions = tour.TourAttractions.Select(a => new AttractionOverviewDto
+                {
+                    AttractionId = a.AttractionID,
+                    Name = a.Attraction.AttractionName,
+                }).ToList(),
+                Restaurants = tour.TourRestaurants.Select(r => new RestaurantOverviewDto
+                {
+                    RestaurantId = r.RestaurantID,
+                    Name = r.Restaurant.RestaurantName,
+                }).ToList(),
+                Reviews = tour.Reviews.Select(r => new ReviewDto
+                {
+                    ReviewId = r.ReviewID,
+                    Feedback = r.Feedback,
+                    Rating = r.Rating,
+                    ReviewDate = r.ReviewDate,
+                    UserName = r.User.Name
+                }).ToList()
+            };
         }
 
         [HttpGet("count")]

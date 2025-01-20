@@ -89,8 +89,8 @@ export default function NavigationBar() {
         <header
             className={`${show ? 'animate-in slide-in-from-top visible' : 'animate-out slide-out-to-top invisible'} sticky transition-visibility delay-300 duration-500 ease-in-out inset-x-0 top-0 flex justify-between items-center px-4 py-3 border-b bg-background z-10`}>
             <Link to="/test">
-                <div className="flex items-center gap-0.5">
-                    <MapPin className="text-background fill-primary mb-2" size={40}/>
+                <div className="flex items-center gap-2">
+                    <img src="/karnel.svg" alt="Karnel Logo" className="h-10 mb-2" />
                     <h1 className="text-primary font-bold italic">Karnel</h1>
                 </div>
             </Link>

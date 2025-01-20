@@ -1,14 +1,12 @@
-import {Outlet} from "react-router";
 import NavigationBar from "@/components/home/nav-bar.jsx";
-import Footer from "@/components/home/footer.jsx";
 import HeroSection from "@/components/home/hero-section.jsx";
-import {useLocation} from "react-router-dom";
+import {Outlet} from "react-router";
+import Footer from "@/components/home/footer.jsx";
 
-export default function HomeLayout() {
+export default function TourLayout() {
     return (
         <div>
             <NavigationBar/>
-            <HeroSection />
             <Outlet/>
             <Footer/>
         </div>

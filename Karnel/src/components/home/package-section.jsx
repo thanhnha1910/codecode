@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import tourApi from "@/services/TourService.js";
-import TourPackage from "@/components/home/tour-package.jsx";
+import TourPackage from "@/components/tour/tour-package.jsx";
 
 export default function PackageSection() {
     const [tours, setTours] = useState([]);
@@ -17,10 +17,8 @@ export default function PackageSection() {
         fetchTours();
     }, []);
     return (
-        <section className="container mx-auto py-12">
-            <div className="animate-in fade-in slide-in-from-bottom duration-800">
-                <h1 className="text-center mb-5">Awesome Packages</h1>
-            </div>
+        <section>
+            <h1 className="text-center pb-12">Awesome Packages</h1>
 
             <div className="grid grid-cols-4 gap-x-4 gap-y-5">
                 {tours && tours.map((tour) => (

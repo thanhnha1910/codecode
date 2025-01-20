@@ -19,7 +19,7 @@ export default function HeroSection() {
     };
 
     return (
-        <section className="py-40 bg-[linear-gradient(rgba(20,20,31,0.7),rgba(20,20,31,0.7)),url('/images/home/bg-hero.jpg')] bg-no-repeat bg-cover bg-center">
+        <section className="py-44 bg-[linear-gradient(rgba(20,20,31,0.7),rgba(20,20,31,0.7)),url('/images/home/bg-hero.jpg')] bg-no-repeat bg-cover bg-center">
             <div className="container mx-auto">
                 <div className="flex-row justify-center items-center">
                     <div className="flex-col lg:pt-5 lg:mt-5 text-center">

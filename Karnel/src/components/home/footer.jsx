@@ -91,61 +91,49 @@ export default function Footer() {
                     {/* Third column: Gallery */}
                     <div className="flex-1">
                         <h4 className="pb-6">Gallery</h4>
-                        <div className="grid grid-cols-3 pr-12">
+                        <div className="grid grid-cols-3">
                             <div className="col-4">
                                 <img
-                                    className="img-fluid bg-light p-1"
-                                    src="images/home/placeholder.svg"
+                                    className="img-fluid bg-light p-1 max-h-[200px]"
+                                    src="images/home/package-1.jpg"
+                                    alt=""
+                                />
+                            </div>
+                            <div className="col-4">
+                                <img
+                                    className="img-fluid bg-light p-1 max-h-[200px]"
+                                    src="images/home/package-2.jpg"
                                     alt=""
                                 />
                             </div>
                             <div className="col-4">
                                 <img
                                     className="img-fluid bg-light p-1"
-                                    src="images/home/placeholder.svg"
+                                    src="images/home/package-3.jpg"
                                     alt=""
                                 />
                             </div>
                             <div className="col-4">
                                 <img
-                                    className="img-fluid bg-light p-1"
-                                    src="images/home/placeholder.svg"
+                                    className="img-fluid bg-light p-1 max-h-[200px]"
+                                    src="images/home/package-3.jpg"
                                     alt=""
                                 />
                             </div>
                             <div className="col-4">
                                 <img
-                                    className="img-fluid bg-light p-1"
-                                    src="images/home/placeholder.svg"
+                                    className="img-fluid bg-light p-1 max-h-[200px]"
+                                    src="images/home/package-2.jpg"
                                     alt=""
                                 />
                             </div>
                             <div className="col-4">
                                 <img
-                                    className="img-fluid bg-light p-1"
-                                    src="images/home/placeholder.svg"
+                                    className="img-fluid bg-light p-1 max-h-[200px]"
+                                    src="images/home/package-1.jpg"
                                     alt=""
                                 />
                             </div>
-                            <div className="col-4">
-                                <img
-                                    className="img-fluid bg-light p-1"
-                                    src="images/home/placeholder.svg"
-                                    alt=""
-                                />
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Fourth column: Newsletter */}
-                    <div className="flex-1">
-                        <h4 className="pb-6">Newsletter</h4>
-                        <p className="[&:not(:first-child)]:mt-0 pb-6">Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
-                        <div className="relative animate-in slide-in-from-top">
-                            <Input className="bg-background h-14 md:text-2xl" type="text" placeholder="Your Email" />
-                            <Button className="absolute top-1/2 -translate-y-1/2 right-0 mr-3">
-                                Sign Up
-                            </Button>
                         </div>
                     </div>
                 </div>

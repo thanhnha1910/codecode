@@ -22,7 +22,7 @@ export default function TourPackage({tourPackage}) {
         }
     }
     return (
-        <Card className="hover:cursor-pointer hover:shadow-lg duration-300 ease-in-out hover:scale-105">
+        <Card className="hover:cursor-pointer hover:shadow-lg duration-300 ease-in-out hover:scale-105 shadow-none border-none">
             <CardImage src="../images/home/placeholder.svg" alt="Package Image"/>
             <div className="flex text-sm border-b-2">
                 <div className="flex flex-auto justify-center items-center px-2 py-1 gap-1">
@@ -50,7 +50,7 @@ export default function TourPackage({tourPackage}) {
             </CardContent>
             <CardFooter className="flex gap-2 justify-center">
                 <Button size="sm" asChild>
-                    <Link to={`/tour/${tourPackage.id}`}>View More</Link>
+                    <Link to={`/tours/${tourPackage.tourId}`}>View More</Link>
                 </Button>
                 <Button size="sm">Book Now</Button>
             </CardFooter>

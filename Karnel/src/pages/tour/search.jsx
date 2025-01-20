@@ -1,8 +1,8 @@
 import tourApi from "@/services/TourService.js";
 import {useEffect, useState} from "react";
 import {useSearchParams} from "react-router-dom";
-import TourPackage from "@/components/home/tour-package.jsx";
-import PaginationNav from "@/components/home/pagination-nav.jsx";
+import TourPackage from "@/components/tour/tour-package.jsx";
+import PaginationNav from "@/components/ui/pagination-nav.jsx";
 
 export default function Search() {
     const [tours, setTours] = useState([]);
@@ -25,14 +25,19 @@ export default function Search() {
 
     return (
         <section className="container mx-auto py-12">
-            <div className="grid grid-cols-4 gap-x-4 gap-y-5">
-                {tours !== null && tours.map((tour) => (
-                    <TourPackage key={tour.tourId} tourPackage={tour}/>
-                ))}
-            </div>
-            <div className="pt-12">
-                <PaginationNav count={count} />
-            </div>
+            {tours ? (
+                    <>
+                        <div className="grid grid-cols-4 gap-x-4 gap-y-5">
+                            {tours.map((tour) => (
+                                <TourPackage key={tour.tourId} tourPackage={tour}/>
+                            ))}
+                        </div>
+                        <div className="pt-12">
+                            <PaginationNav count={count}/>
+                        </div>
+                    </>)
+                : <h3 className="text-center font-normal">There was an error getting the tours</h3>
+                }
         </section>
     )
 }

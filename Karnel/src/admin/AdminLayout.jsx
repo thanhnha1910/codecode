@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Sidebar from './SideBar';
 import Header from './Header';
+import {Outlet} from "react-router";
 const AdminLayout = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const toggleSidebar = () => {
@@ -15,7 +16,7 @@ const AdminLayout = ({ children }) => {
         
         <main>
           <div className="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
-            {children}
+              <Outlet />
           </div>
         </main>
       </div>

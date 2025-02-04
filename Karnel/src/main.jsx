@@ -23,6 +23,8 @@ import StatisticsPage from "@/admin/StatisticsPage.jsx";
 import TourDetail from "@/pages/tour/tour-detail.jsx";
 import TourLayout from "@/layouts/tour-layout.jsx";
 import ScrollToTop from "@/components/ui/scroll-to-top.jsx";
+import AdminLayout from "@/admin/AdminLayout.jsx";
+import TourCard from "@/components/info/tour-card.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
     <React.StrictMode>
@@ -45,7 +47,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
                     <Route path="tours" element={<TourLayout />}>
                         <Route path=":tourId" element={<TourDetail />}/>
                     </Route>
-                    <Route path="test" element={<TourDetail />}/>
+                    <Route path="test" element={<TourCard />}/>
 
                     <Route path="login" element={<Login/>}/>
                     <Route path="register" element={<Register/>}/>
@@ -63,7 +65,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
                         path="request-reset-password"
                         element={<RequestResetPassword/>}
                     />
-                    <Route path="stats" element={<StatisticsPage/>}/>
+                    <Route path="admin" element={<AdminLayout />}>
+                        <Route path="stats" element={<StatisticsPage/>}/>
+                    </Route>
                 </Routes>
             </BrowserRouter>
         </UserProvider>

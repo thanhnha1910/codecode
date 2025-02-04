@@ -12,17 +12,8 @@ import {Link} from 'react-router'
 import {Calendar, MapPin, User} from "lucide-react";
 
 export default function TourPackage({tourPackage}) {
-    const dateDiff = (start, end) => {
-        try {
-            let startDate = Date.parse(start);
-            let endDate = Date.parse(end);
-            return Math.floor((Math.abs(endDate - startDate) / (1000 * 60 * 60 * 24)));
-        } catch (error) {
-            console.log(error);
-        }
-    }
     return (
-        <Card className="hover:cursor-pointer hover:shadow-lg duration-300 ease-in-out hover:scale-105 shadow-none border-none">
+        <Card className="w-full hover:cursor-pointer hover:shadow-lg duration-300 ease-in-out hover:scale-105 shadow-none border-none">
             <CardImage src="../images/home/placeholder.svg" alt="Package Image"/>
             <div className="flex text-sm border-b-2">
                 <div className="flex flex-auto justify-center items-center px-2 py-1 gap-1">
@@ -31,7 +22,7 @@ export default function TourPackage({tourPackage}) {
                 </div>
                 <div className="flex flex-auto justify-center items-center px-2 py-1 gap-1 border-x-2">
                     <Calendar size={14} className="text-accent"/>
-                    {dateDiff(tourPackage.startDate, tourPackage.endDate)} days
+                    {tourPackage.duration} days
                 </div>
                 <div className="flex flex-auto justify-center items-center px-2 py-1 gap-1">
                     <User size={14} className="text-accent"/>

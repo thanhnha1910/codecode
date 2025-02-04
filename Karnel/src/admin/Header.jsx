@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useUser } from '../context/UserProvider';
+import { useUser } from '../contexts/UserProvider';
 
 const Header = ({ toggleSidebar }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);

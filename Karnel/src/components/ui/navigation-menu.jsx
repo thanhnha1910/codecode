@@ -31,7 +31,6 @@ const NavigationMenuList = React.forwardRef(({ className, ...props }, ref) => (
 NavigationMenuList.displayName = NavigationMenuPrimitive.List.displayName
 
 const NavigationMenuItem = React.forwardRef(({ className, children, ...props }, ref) => (
-  <li>
     <NavigationMenuPrimitive.Item
       ref={ref}
       className={cn(
@@ -41,12 +40,11 @@ const NavigationMenuItem = React.forwardRef(({ className, children, ...props }, 
       {...props}>
       {children}{" "}
     </NavigationMenuPrimitive.Item>
-  </li>
 ))
 NavigationMenuItem.displayName = NavigationMenuPrimitive.Item.displayName
 
 const navigationMenuTriggerStyle = cva(
-  "group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:border-b-4  hover:border-accent focus:border-b-4 focus:border-accent focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50"
+  "group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:border-b-4 hover:border-accent focus:border-b-4 focus:border-accent focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:border-b-4 data-[state=open]:border-accent"
 )
 
 const NavigationMenuTrigger = React.forwardRef(({ className, children, ...props }, ref) => (

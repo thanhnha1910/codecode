@@ -36,7 +36,7 @@ export default function Footer() {
                         <h4 className="pb-6">Company</h4>
                         {footerLinks.map((link) => {
                             return (
-                                <Link key={link.title} to={link.href} className="flex items-center hover:text-accent hover:tracking-wider duration-300 py-2">
+                                <Link key={link.title} to={link.href} className="flex items-center hover:text-accent hover:tracking-wider duration-300 py-2 w-fit">
                                     <ChevronRight />
                                     {link.title}
                                 </Link>

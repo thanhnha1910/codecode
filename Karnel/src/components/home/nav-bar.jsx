@@ -11,6 +11,7 @@ import {ListItem} from "@/components/home/list-item.jsx";
 import {MapPin} from "lucide-react";
 import {useUser} from "@/contexts/UserProvider.jsx";
 import {toast} from "react-toastify";
+import {Avatar, AvatarFallback, AvatarImage} from "@/components/ui/avatar.jsx";
 
 const pageList = [
     {
@@ -129,18 +130,12 @@ export default function NavigationBar() {
             </NavigationMenu>
 
             {user ? (
-                <div className="flex items-center ms-4">
-                    <NavLink to="/profile" className="nav-link">
-                        <img
-                            src={user.avatar || "/img/User_icon_2.svg.png"}
-                            alt="Profile"
-                            className="rounded-circle"
-                            style={{
-                                width: "40px",
-                                height: "40px",
-                                objectFit: "cover",
-                            }}
-                        />
+                <div className="flex items-center gap-3">
+                    <NavLink to="/profile" className="hover:bg-primary/90 rounded-full p-1">
+                        <Avatar>
+                            <AvatarImage src={user.avatar || "images/home/User_icon_2.svg.png"} />
+                            <AvatarFallback>MN</AvatarFallback>
+                        </Avatar>
                     </NavLink>
                     <Button onClick={handleLogout}>Logout</Button>
                 </div>

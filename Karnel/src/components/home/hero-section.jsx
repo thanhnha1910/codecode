@@ -2,20 +2,22 @@ import {useState} from "react";
 import {useNavigate} from "react-router";
 import {Button} from "@/components/ui/button.jsx";
 import {Input} from "@/components/ui/input.jsx";
+import {useSearchParams} from "react-router-dom";
 
 export default function HeroSection() {
     const [query, setQuery] = useState("");
     const navigate = useNavigate();
+    const [searchParams] = useSearchParams();
     const handleChange = (event) => {
         event.preventDefault();
         setQuery(event.target.value);
     }
     const handleSearch = (event) => {
         event.preventDefault();
-        if (query === "") {
-            return navigate("/search")
-        }
-        navigate(`/search?search=${query}`);
+        searchParams.set("q", query)
+        navigate({
+            search: searchParams.toString(),
+        });
     };
 
     return (
@@ -31,12 +33,10 @@ export default function HeroSection() {
                             ipsum lorem sit
                         </h3>
                         <div className="relative w-2/3 mx-auto animate-in slide-in-from-top">
-                            <form>
-                                <Input className="bg-background h-14 md:text-2xl" type="text" onChange={handleChange} placeholder="Eg: Thailand"/>
-                                <Button className="absolute top-1/2 -translate-y-1/2 right-0 mr-3" onClick={handleSearch}>
-                                    Search
-                                </Button>
-                            </form>
+                            <Input className="bg-background h-14 md:text-2xl" type="text" onChange={handleChange} placeholder="Eg: Thailand"/>
+                            <Button className="absolute top-1/2 -translate-y-1/2 right-0 mr-3" onClick={handleSearch}>
+                                Search
+                            </Button>
                         </div>
                     </div>
                 </div>

@@ -11,14 +11,6 @@ const tourApi = {
             console.log("Error fetching tour data", error);
         }
     },
-    getTourCount: async () => {
-        try {
-            const response = await axios.get(`${API_URL}/count`);
-            return response.data;
-        } catch (error) {
-            console.log("Error fetching tour count", error);
-        }
-    },
     getTopTours: async () => {
         try {
             const response = await axios.get(`${API_URL}/top`);

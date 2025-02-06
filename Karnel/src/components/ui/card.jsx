@@ -1,6 +1,8 @@
 import * as React from "react"
 
 import { cn } from "@/lib/utils"
+import {Carousel, CarouselContent, CarouselNext, CarouselPrevious} from "@/components/ui/carousel.jsx";
+import {NavLink} from "react-router";
 
 const Card = React.forwardRef(({ className, ...props }, ref) => (
   <div
@@ -23,10 +25,25 @@ const CardImage = React.forwardRef(({ alt, className, src, ...props }, ref) => (
         alt={alt}
         src={src}
         ref={ref}
-        className={cn("w-full", className)}
+        className={cn("", className)}
         {...props} />
 ))
 CardImage.displayName = "CardImage"
+
+const CardImageCarousel = React.forwardRef(({ alt, className, images, url, ...props }, ref) => (
+    <Carousel alt={alt} ref={ref} className={cn("", className)} {...props}>
+        <NavLink to={url}>
+            <CarouselContent>
+                {images.map((image, index) => (
+                    <CardImage key={index} alt={image ? image.altText : "Placeholder"} src={image ? image.url : "/images/home/placeholder.svg"} />
+                ))}
+            </CarouselContent>
+        </NavLink>
+        <CarouselPrevious className="left-3 z-10" />
+        <CarouselNext className="right-3 z-10"/>
+    </Carousel>
+))
+CardImageCarousel.displayName = "CardImageCarousel"
 
 const CardTitle = React.forwardRef(({ className, ...props }, ref) => (
   <div
@@ -57,4 +74,4 @@ const CardFooter = React.forwardRef(({ className, ...props }, ref) => (
 ))
 CardFooter.displayName = "CardFooter"
 
-export { Card, CardImage, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }
+export { Card, CardImage, CardImageCarousel, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }

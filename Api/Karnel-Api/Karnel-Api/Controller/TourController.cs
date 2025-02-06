@@ -1,4 +1,3 @@
-using System.Collections;
 using Karnel_Api.Data;
 using Karnel_Api.DTO.User;
 using Microsoft.AspNetCore.Mvc;
@@ -11,94 +10,154 @@ namespace Karnel_Api.Controller
     public class TourController(DatabaseContext context) : ControllerBase
     {
         private readonly int _pageSize = 10;
+
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<TourOverviewDto>>> GetTours(int? page, string? search, string? hotel)
+        public async Task<ActionResult> GetTours(int? page, string? q, string? city, int? minRating, int? minPrice, int? maxPrice, int? minDuration, int? maxDuration, string? sort)
         {
             var query = context.Tours.AsQueryable();
-            if (!string.IsNullOrEmpty(search))
+            if (!string.IsNullOrEmpty(q))
             {
-                query = query.Where(t => t.TourName.ToLower().Contains(search.ToLower()) || t.City.CityName.ToLower().Contains(search.ToLower()) || t.Description.ToLower().Contains(search.ToLower()) );
+                query = query.Where(t =>
+                    (t.TourName.ToLower().Contains(q.ToLower()) ||
+                     t.City.CityName.ToLower().Contains(q.ToLower()) ||
+                     t.Description.ToLower().Contains(q.ToLower())));
+            }
+            else if (!string.IsNullOrEmpty(city))
+            {
+                query = query.Where(t => t.City.CityName.ToLower().Contains(city.ToLower()));
             }
 
-            if (!string.IsNullOrEmpty(hotel))
+            if (minPrice.HasValue && maxPrice.HasValue)
             {
-                query = query.Where(t => t.Hotel.HotelName.ToLower().Contains(hotel.ToLower()));
+                query = query.Where(t => t.Price >= minPrice.Value && t.Price <= maxPrice.Value);
             }
-            if (page.HasValue)
+
+            if (minDuration.HasValue && maxDuration.HasValue)
             {
-                return await query.Select(t => new TourOverviewDto
+                query = query.Where(t => (t.EndDate.Day - t.StartDate.Day) >= minDuration.Value && (t.EndDate.Day - t.StartDate.Day) <= maxDuration.Value);
+            }
+
+            if (minRating.HasValue)
+            {
+                query = query.Where(t => Math.Round(context.Reviews.Where(r => r.TourID == t.TourID).Average(r => (double)r.Rating), 1) >= minRating.Value);
+            }
+
+            if (!string.IsNullOrEmpty(sort))
+            {
+                query = sort.ToLower() switch
+                {
+                    "rating-high-to-low" => query.OrderByDescending(t => Math.Round(context.Reviews.Where(r => r.TourID == t.TourID).Average(r => (double)r.Rating), 1)),
+                    "rating-low-to-high" => query.OrderBy(t => Math.Round(context.Reviews.Where(r => r.TourID == t.TourID).Average(r => (double)r.Rating), 1)),
+                    "price-high-to-low" => query.OrderByDescending(t => (double)t.Price),
+                    "price-low-to-high" => query.OrderBy(t => (double)t.Price),
+                    "duration-high-to-low" => query.OrderByDescending(t => t.EndDate.Day - t.StartDate.Day),
+                    "duration-low-to-high" => query.OrderBy(t => t.EndDate.Day - t.StartDate.Day),
+                    _ => query
+                };
+            }
+            
+            var pageNumber = page ?? 1;
+            return Ok(new
+            {
+                Total = await query.CountAsync(),
+                Tours = await query.Select(t => new TourOverviewDto
                 {
                     TourId = t.TourID,
                     Name = t.TourName,
                     Description = t.Description,
                     Price = t.Price,
                     AvailableSlots = t.AvailableSlots,
-                    StartDate = t.StartDate,
-                    EndDate = t.EndDate,
+                    Duration = (t.EndDate - t.StartDate).Days,
                     CityName = t.City.CityName,
-                }).Skip(_pageSize * (page.Value - 1)).Take(_pageSize).ToListAsync();
-            }
+                    Images = context.Images.Where(img =>
+                        img.EntityType == "Tour" && img.EntityID == t.TourID && img.ImageUrl.Contains("main")).Select(
+                        img =>
+                            new ImageDto
+                            {
+                                Id = img.ImageID,
+                                Url = img.ImageUrl,
+                                AltText = img.AltText
+                            }).ToList(),
+                    Reviews = context.Reviews.Any(r => r.TourID == t.TourID)
+                        ? new ReviewOverviewDto
+                        {
+                            AverageRating =
+                                Math.Round(
+                                    context.Reviews.Where(r => r.TourID == t.TourID).Average(r => (double)r.Rating), 1),
+                            TotalReviews = context.Reviews.Count(r => r.TourID == t.TourID),
+                        }
+                        : null,
+                    Total = query.Count(),
+                }).Skip(_pageSize * (pageNumber - 1)).Take(_pageSize).ToListAsync(),
+            });
+        }
 
-            return await query.Select(t => new TourOverviewDto
+        [HttpGet("{id:int}")]
+        public async Task<IActionResult> GetTour(int id)
+        {
+            var tour = await context.Tours.Where(t => t.TourID == id).Select(t => new TourDetailDto
             {
                 TourId = t.TourID,
                 Name = t.TourName,
                 Description = t.Description,
+                Detail = t.Detail,
                 Price = t.Price,
                 AvailableSlots = t.AvailableSlots,
                 StartDate = t.StartDate,
                 EndDate = t.EndDate,
+                Duration = (t.EndDate - t.StartDate).Days,
                 CityName = t.City.CityName,
-            }).Take(_pageSize).ToListAsync();
-        }
-
-        [HttpGet("{id:int}")]
-        public async Task<ActionResult<TourDetailDto>> GetTour(int id)
-        {
-            var tour = context.Tours.Include(t => t.City).Include(t => t.Hotel).Include(t => t.TourAttractions)
-                .ThenInclude(tourAttraction => tourAttraction.Attraction).Include(t => t.TourRestaurants)
-                .ThenInclude(tourRestaurant => tourRestaurant.Restaurant).Include(tour => tour.Reviews).ThenInclude(r => r.User).FirstOrDefault(t => t.TourID == id);
-            if (tour == null) return NotFound();
-            var tourImage = await context.Images.Where(i => i.EntityType == "Tour" && i.EntityID == tour.TourID).FirstOrDefaultAsync();
-            var hotelImage = await context.Images.Where(i => i.EntityType == "Hotel" && i.EntityID == tour.HotelID).FirstOrDefaultAsync();
-            return new TourDetailDto
-            {
-                TourId = tour.TourID,
-                Name = tour.TourName,
-                Description = tour.Description,
-                Detail = tour.Detail,
-                Price = tour.Price,
-                AvailableSlots = tour.AvailableSlots,
-                StartDate = tour.StartDate,
-                EndDate = tour.EndDate,
-                ImageUrl = tourImage?.ImageUrl,
-                AltText = tourImage?.AltText,
-                CityName = tour.City.CityName,
-                Hotel = new HotelOverviewDto {
-                    HotelId = tour.Hotel.HotelID,
-                    Name = tour.Hotel.HotelName,
-                    ImageUrl = hotelImage?.ImageUrl,
-                    AltText = hotelImage?.AltText
+                Images = context.Images.Where(img => img.EntityType == "Tour" && img.EntityID == t.TourID && img.ImageUrl.Contains("main")).Select(img =>
+                    new ImageDto
+                    {
+                        Id = img.ImageID,
+                        Url = img.ImageUrl,
+                        AltText = img.AltText
+                    }).ToList(),
+                Hotel = new HotelOverviewDto
+                {
+                    HotelId = t.Hotel.HotelID,
+                    Name = t.Hotel.HotelName,
+                    Image = context.Images.Where(img => img.EntityType == "Hotel" && img.EntityID == t.Hotel.HotelID && img.ImageUrl.Contains("main")).Select(img => new ImageDto
+                    {
+                        Id = img.ImageID,
+                        Url = img.ImageUrl,
+                        AltText = img.AltText
+                    }).FirstOrDefault(),
                 },
-                Attractions = tour.TourAttractions.Select(a => new AttractionOverviewDto
+                Attractions = t.TourAttractions.Select(ta => new AttractionOverviewDto
                 {
-                    AttractionId = a.AttractionID,
-                    Name = a.Attraction.AttractionName,
+                    AttractionId = ta.Attraction.AttractionID,
+                    Name = ta.Attraction.AttractionName,
+                    Image = context.Images.Where(img => img.EntityType == "Attraction" && img.EntityID == ta.Attraction.AttractionID && img.ImageUrl.Contains("main")).Select(img => new ImageDto
+                    {
+                        Id = img.ImageID,
+                        Url = img.ImageUrl,
+                        AltText = img.AltText
+                    }).FirstOrDefault(),
                 }).ToList(),
-                Restaurants = tour.TourRestaurants.Select(r => new RestaurantOverviewDto
+                Restaurants = t.TourRestaurants.Select(tr => new RestaurantOverviewDto
                 {
-                    RestaurantId = r.RestaurantID,
-                    Name = r.Restaurant.RestaurantName,
+                    RestaurantId = tr.Restaurant.RestaurantID,
+                    Name = tr.Restaurant.RestaurantName,
+                    Image = context.Images.Where(img => img.EntityType == "Restaurant" && img.EntityID == tr.Restaurant.RestaurantID && img.ImageUrl.Contains("main")).Select(img => new ImageDto
+                    {
+                        Id = img.ImageID,
+                        Url = img.ImageUrl,
+                        AltText = img.AltText
+                    }).FirstOrDefault(),
                 }).ToList(),
-                Reviews = tour.Reviews.Select(r => new ReviewDto
-                {
-                    ReviewId = r.ReviewID,
-                    Feedback = r.Feedback,
-                    Rating = r.Rating,
-                    ReviewDate = r.ReviewDate,
-                    UserName = r.User.Name
-                }).ToList()
-            };
+                Reviews = context.Reviews.Any(r => r.TourID == t.TourID)
+                    ? new ReviewOverviewDto
+                    {
+                        AverageRating =
+                            Math.Round(
+                                context.Reviews.Where(r => r.TourID == t.TourID).Average(r => (double)r.Rating), 1),
+                        TotalReviews = context.Reviews.Count(r => r.TourID == t.TourID),
+                    }
+                    : null,
+            }).FirstOrDefaultAsync();
+            return tour == null ? NotFound() : Ok(tour);
         }
 
         [HttpGet("count")]
@@ -118,8 +177,7 @@ namespace Karnel_Api.Controller
                 Description = t.Description,
                 Price = t.Price,
                 AvailableSlots = t.AvailableSlots,
-                StartDate = t.StartDate,
-                EndDate = t.EndDate,
+                Duration = (t.EndDate - t.StartDate).Days,
                 CityName = t.City.CityName,
             }).Take(topNumber).ToListAsync();
         }

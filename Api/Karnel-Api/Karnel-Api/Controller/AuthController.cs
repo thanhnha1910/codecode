@@ -13,7 +13,10 @@ namespace Karnel_Api.Controller
     {
         private readonly AuthService _authService;
 
-        public AuthController(AuthService authService) => _authService = authService;
+        public AuthController(AuthService authService)
+        {
+            _authService = authService;
+        }
 
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterDTO registerDto)
@@ -36,11 +39,19 @@ namespace Karnel_Api.Controller
             try
             {
                 var user = await _authService.Login(loginDto);
+                var baseUrl = "http://localhost:5128";  
+                var avatarUrl = !string.IsNullOrEmpty(user.Avatar) 
+                    ? $"{baseUrl}{user.Avatar}" 
+                    : "/img/User_icon_2.svg.png";
                 return Ok(new
                 {
-                    id = user.Id,
-                    email = user.Email,
-                    name = user.Name
+                  
+                  id=user.Id,
+                  email=user.Email,
+                    name = user.Name,
+                    avatar=avatarUrl,
+                    role=user.Role,
+                    token = user.Token
                 });
             }
             catch (Exception e)
@@ -52,16 +63,11 @@ namespace Karnel_Api.Controller
         [HttpGet("verify-email")]
         public async Task<IActionResult> VerifyEmail([FromQuery] string token)
         {
-            try
-            {
-                await _authService.VerifyEmail(token);
-                return Ok(new { message = "Email verified successfully" });
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(new { message = ex.Message });
-            }
+            var response = await _authService.VerifyEmail(token);
+            Console.WriteLine($"Verification Response: Success={response.Success}, Message={response.Message}");
+            return Ok(response);
         }
+       
 
         [HttpPost("request-reset-password")]
         public async Task<IActionResult> RequestResetPassword([FromBody] ResetPasswordRequestDTO request)
@@ -97,7 +103,6 @@ namespace Karnel_Api.Controller
             var user = await _authService.GetAll();
             return Ok(user);
         }
-
         [HttpPost("verify-reset-token")]
         public async Task<IActionResult> VerifyResetToken([FromBody] string token)
         {
@@ -111,5 +116,19 @@ namespace Karnel_Api.Controller
                 return BadRequest(new { message = ex.Message });
             }
         }
+        [HttpPut("change-password/{id}")]
+        public async Task<IActionResult> ChangePassword(int id, [FromBody] ChangePassWord changePassword)
+        {
+            try
+            {
+                await _authService.ChangePassword(id, changePassword);
+                return Ok(new { message = "Password changed successfully" });
+            }
+            catch (Exception e)
+            {
+                return BadRequest(new { error = e.Message });
+            }
+        }
     }
+    
 }

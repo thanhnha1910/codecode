@@ -13,6 +13,8 @@ public class UserDTO
     public string Email { get; set; }
     public string? Avatar { get; set; }
     public bool Gender { get; set; }
+    [Required]
+    [DataType(DataType.Date)]
     public DateTime DateOfBirth { get; set; }
    
 }

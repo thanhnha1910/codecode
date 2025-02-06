@@ -37,6 +37,11 @@ public class DatabaseContext:DbContext
             .WithMany(c => c.Hotels)
             .HasForeignKey(h => h.CityID)
             .OnDelete(DeleteBehavior.Restrict);
+        modelBuilder.Entity<Tour>()
+            .HasOne(t => t.Transportation)
+            .WithMany()
+            .HasForeignKey(t => t.TransportID)
+            .OnDelete(DeleteBehavior.Restrict);
 
         // Restaurant - City relationship
         modelBuilder.Entity<Restaurant>()

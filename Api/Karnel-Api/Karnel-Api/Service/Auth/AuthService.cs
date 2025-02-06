@@ -29,6 +29,32 @@ namespace Karnel_Api.Service.Auth;
                 return Convert.ToBase64String(hashedBytes);
             }
         }
+        public async Task<bool> ChangePassword(int userId, ChangePassWord changePassword)
+        {
+            var user = await _context.Users.FirstOrDefaultAsync(x => x.Id == userId);
+            if (user == null)
+            {
+                throw new Exception("User not found");
+            }
+
+            
+            if (!VerifyPassword(changePassword.CurrentPassWord, user.Password))
+            {
+                throw new Exception("Current password is incorrect");
+            }
+
+          
+            if (changePassword.NewPassWord != changePassword.ConfirmPassWord)
+            {
+                throw new Exception("New passwords do not match");
+            }
+
+            // Update password
+            user.Password = HashPassword(changePassword.NewPassWord);
+            await _context.SaveChangesAsync();
+    
+            return true;
+        }
 
         public async Task<bool> RegisterUserAsync(RegisterDTO registerDto)
         {
@@ -115,31 +141,47 @@ namespace Karnel_Api.Service.Auth;
                 Name = user.Name,
                 Id = user.Id,
                 Email = user.Email,
-                Avatar = user.Avatar,
-                Role = user.Role
+                Avatar = !string.IsNullOrEmpty(user.Avatar) 
+                    ? $"/api/uploads{user.Avatar}"  
+                    : "/img/User_icon_2.svg.png",
+                Role = user.Role,
+                Token = token
             };
         }
-        
-        public async Task<bool> VerifyEmail(string token)
+        public async Task<VerificationResponse> VerifyEmail(string token)
         {
-            var user = await _context.Users.FirstOrDefaultAsync(u =>
-                u.EmailVerificationToken == token &&
-                u.EmailVerificationTokenExpires > DateTime.UtcNow);
+            Console.WriteLine($"Verifying email with token: {token}");
+
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.EmailVerificationToken == token);
 
             if (user == null)
             {
-                throw new Exception("Invalid or expired verification token");
+                Console.WriteLine("User not found for the given token.");
+                return new VerificationResponse { Success = false, Message = "INVALID_TOKEN" };
             }
 
+            Console.WriteLine($"User found: {user.Email}, IsEmailConfirmed: {user.IsEmailConfirmed}, Token Expires: {user.EmailVerificationTokenExpires}");
+
+            if (user.IsEmailConfirmed)
+            {
+                Console.WriteLine("Email is already verified.");
+                return new VerificationResponse { Success = false, Message = "ALREADY_VERIFIED" };
+            }
+
+            if (user.EmailVerificationTokenExpires < DateTime.UtcNow)
+            {
+                Console.WriteLine("Token has expired.");
+                return new VerificationResponse { Success = false, Message = "TOKEN_EXPIRED" };
+            }
+
+            Console.WriteLine("Email verified successfully.");
             user.IsEmailConfirmed = true;
             user.EmailVerificationToken = null;
             user.EmailVerificationTokenExpires = null;
 
             await _context.SaveChangesAsync();
-            return true;
+            return new VerificationResponse { Success = true, Message = "Email verified successfully." };
         }
-
-
         public async Task SendEmailAsync(string email, string subject, string body)
         {
             var smtpHost = _configuration["SmtpSettings:Host"];
@@ -231,6 +273,7 @@ namespace Karnel_Api.Service.Auth;
             user.ResetPasswordTokenExpires = null;
 
             await _context.SaveChangesAsync();
+          
         }
         public async Task<IEnumerable<User>> GetAll()
         {

@@ -14,4 +14,6 @@ public class City
     public ICollection<Hotel> Hotels { get; set; }
     public ICollection<Restaurant> Restaurants { get; set; }
     public ICollection<Attraction> Attractions { get; set; }
+    public ICollection<Transportation> Transportations { get; set; }
+
 }

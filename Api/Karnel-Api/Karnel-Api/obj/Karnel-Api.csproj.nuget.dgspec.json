@@ -1,26 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "/home/fredmt1n/Projects/Project3-KarnelTravel/Api/Karnel-Api/Karnel-Api/Karnel-Api.csproj": {}
+    "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/Karnel-Api.csproj": {}
   },
   "projects": {
-    "/home/fredmt1n/Projects/Project3-KarnelTravel/Api/Karnel-Api/Karnel-Api/Karnel-Api.csproj": {
+    "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/Karnel-Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/fredmt1n/Projects/Project3-KarnelTravel/Api/Karnel-Api/Karnel-Api/Karnel-Api.csproj",
+        "projectUniqueName": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/Karnel-Api.csproj",
         "projectName": "Karnel-Api",
-        "projectPath": "/home/fredmt1n/Projects/Project3-KarnelTravel/Api/Karnel-Api/Karnel-Api/Karnel-Api.csproj",
-        "packagesPath": "/home/fredmt1n/.nuget/packages/",
-        "outputPath": "/home/fredmt1n/Projects/Project3-KarnelTravel/Api/Karnel-Api/Karnel-Api/obj/",
+        "projectPath": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/Karnel-Api.csproj",
+        "packagesPath": "/Users/nha/.nuget/packages/",
+        "outputPath": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/fredmt1n/.nuget/NuGet/NuGet.Config"
+          "/Users/nha/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "/usr/lib64/dotnet/library-packs": {},
+          "/usr/local/share/dotnet/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -38,13 +38,16 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "9.0.100"
+        }
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "BCrypt.Net-Next": {
+              "target": "Package",
+              "version": "[4.0.3, )"
+            },
             "MailKit": {
               "target": "Package",
               "version": "[4.9.0, )"
@@ -65,10 +68,6 @@
               "target": "Package",
               "version": "[8.0.8, )"
             },
-            "Microsoft.EntityFrameworkCore.Sqlite": {
-              "target": "Package",
-              "version": "[8.0.8, )"
-            },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
@@ -78,6 +77,10 @@
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[8.0.7, )"
+            },
+            "PayPalCheckoutSdk": {
+              "target": "Package",
+              "version": "[1.0.4, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -95,12 +98,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.NETCore.App.Host.linux-x64",
-              "version": "[8.0.11, 8.0.11]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -109,7 +106,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/lib64/dotnet/sdk/9.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.204/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

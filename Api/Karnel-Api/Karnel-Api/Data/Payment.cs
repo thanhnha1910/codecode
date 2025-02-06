@@ -26,6 +26,7 @@ public class Payment
     public string PaymentMethod { get; set; }
 
     public bool PaymentStatus { get; set; } = false;  // Default to false
+    public string PayPalOrderID { get; set; }
 
     [Required]
     public int UserId { get; set; }

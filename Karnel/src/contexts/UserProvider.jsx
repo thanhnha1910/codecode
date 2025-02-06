@@ -7,16 +7,26 @@ export const useUser = () => {
 };
 
 export const UserProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(() => {
+    const savedUser = localStorage.getItem("user");
+    if (savedUser) {
+      const parsedUser = JSON.parse(savedUser);
+     
+      return {
+        ...parsedUser,
+        avatar: parsedUser.avatar && !parsedUser.avatar.startsWith('http') 
+          ? `http://localhost:5128${parsedUser.avatar}`
+          : parsedUser.avatar || "/img/User_icon_2.svg.png"
+      };
+    }
+    return null;
+  });
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    const user = JSON.parse(localStorage.getItem("user"));
-
-    if (token && user) {
-      setUser(user);
+    if (user) {
+      localStorage.setItem("user", JSON.stringify(user));
     }
-  }, []);
+  }, [user]);
 
   return (
     <UserContext.Provider value={{ user, setUser }}>

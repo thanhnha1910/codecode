@@ -14,7 +14,7 @@ public class User
     public bool Gender { get; set; }
     public bool IsEmailConfirmed { get; set; }
     public DateTime CreatedAt { get; set; }
-    public bool Status { get; set; }
+    public bool Status { get; set; }    
     public string? Avatar { get; set; }
     public string? EmailVerificationToken { get; set; }
     public DateTime? EmailVerificationTokenExpires { get; set; }

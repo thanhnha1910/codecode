@@ -61,7 +61,7 @@ return (
   <div className="min-h-screen bg-gradient-to-br from-blue-100 to-white flex items-center justify-center p-4">
       <div className="bg-white w-full max-w-lg rounded-2xl shadow-xl p-8">
           <div className="text-center mb-8">
-              <h2 className="text-4xl font-bold text-gray-800 mb-2">Create Account</h2>
+              <h2 className="text-4xl font-bold text-gray-800 mb-2">Register Account</h2>
               <p className="text-gray-600">Join our community today</p>
           </div>
             
@@ -122,21 +122,8 @@ return (
                   </div>
               </div>
 
-              <div className="flex items-center">
-                  <input
-                      type="checkbox"
-                      name="agreeToTerms"
-                      className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
-                      checked={formData.agreeToTerms}
-                      onChange={handleChange}
-                      required
-                  />
-                  <label className="ml-2 block text-sm text-gray-700">
-                      I agree to the <a href="/terms" className="text-blue-600 hover:text-blue-800">Terms of Service</a> and <a href="/privacy" className="text-blue-600 hover:text-blue-800">Privacy Policy</a>
-                  </label>
-              </div>
+           
 
-              {error && <p className="text-red-500 text-xs italic">{error}</p>}
 
               <button
                   type="submit"

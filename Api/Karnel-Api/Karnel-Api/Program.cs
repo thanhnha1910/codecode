@@ -1,7 +1,9 @@
 using System.Text;
 using Karnel_Api.Data;
+using Karnel_Api.DTO.Payment;
 using Karnel_Api.Service;
 using Karnel_Api.Service.Auth;
+using Karnel_Api.Service.PayPal;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -33,9 +35,12 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<DatabaseContext>(options =>
 {
-    options.UseSqlite(builder.Configuration.GetConnectionString("SQLite"));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("ConnectDB"));
 });
 builder.Services.AddDistributedMemoryCache(); // Add this line first
+builder.Services.Configure<PayPalConfig>(builder.Configuration.GetSection("PayPalConfig"));
+builder.Services.AddScoped<PayPalService>();
+
 
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<JwtService>();

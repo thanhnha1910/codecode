@@ -35,6 +35,7 @@ const profileApi = {
     const response = await axios.get(`${API_URL}/${userId}`, config);
     return response.data;
   },
+  
 };
 
 export default profileApi;

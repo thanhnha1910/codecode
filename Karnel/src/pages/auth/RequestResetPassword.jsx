@@ -32,10 +32,10 @@ function RequestResetPassword() {
                    errorMessage : 
                    "Email not found or not verified");
         
-        // Set error state with string only
-        setError(typeof errorMessage === 'string' ? 
-                errorMessage : 
-                "Email not found or not verified");
+        // // Set error state with string only
+        // setError(typeof errorMessage === 'string' ? 
+        //         errorMessage : 
+        //         "Email not found or not verified");
                 
         // Don't proceed to next step
         setStep(1);

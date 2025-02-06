@@ -13,6 +13,24 @@ public class Booking
     [Column(TypeName = "decimal(18, 4)")]
     public decimal TotalAmount { get; set; } // Total amount for the booking
     public string PaymentStatus { get; set; } // Status of the payment (e.g., "Paid", "Pending")
+    public string? PayPalOrderID { get; set; }
+    public int AdultQuantity { get; set; }
+    public int ChildQuantity { get; set; }
+    public int InfantQuantity { get; set; }
+    public int TotalQuantity { get; set; }
+    public string? FullName { get; set; }
+    public string? Email { get; set; }
+    public string? Phone{ get; set; }
+    public string? SpecialRequirements{ get; set; }
+
+    [Column(TypeName = ("decimal(18, 4)"))]
+    public decimal AdultUnitPrice { get; set; }
+    [Column(TypeName = ("decimal(18, 4)"))]
+
+    public decimal ChildUnitPrice { get; set; }
+    [Column(TypeName = ("decimal(18, 4)"))]
+
+    public decimal InfantUnitPrice { get; set; }
 
     // Booking Details (Embedded in the Booking Table)
     public int TourID { get; set; } // Tour being booked

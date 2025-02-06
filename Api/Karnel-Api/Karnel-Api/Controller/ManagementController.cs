@@ -1,15 +1,10 @@
-﻿// using Karnel_Api.Data;
-// using Karnel_Api.DTO;
-// using Karnel-Api.DTO.Karnel-Api.DTO;
-// using Microsoft.AspNetCore.Http;
-// using Microsoft.AspNetCore.Mvc;
-// using Microsoft.EntityFrameworkCore;
-using Karnel_Api.Data;
+﻿using Karnel_Api.Data;
 using Karnel_Api.DTO;
 using Karnel_Api.DTO.Karnel_Api.DTO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Cryptography.Xml;
 
 namespace Karnel_Api.Controller
 {
@@ -265,20 +260,92 @@ namespace Karnel_Api.Controller
             return NoContent();
         }
 
-        // City Management
         [HttpGet("cities")]
-        public async Task<ActionResult<IEnumerable<City>>> GetCities()
+        public async Task<ActionResult<IEnumerable<object>>> GetCities()
         {
             var cities = await _context.Cities
+               .Include(c => c.Tours)
+                    .ThenInclude(t => t.Hotel)
                 .Include(c => c.Tours)
+                    .ThenInclude(t => t.Transportation)
                 .Include(c => c.Hotels)
                 .Include(c => c.Restaurants)
                 .Include(c => c.Attractions)
+                .Include(c => c.Transportations)
                 .ToListAsync();
 
-            return Ok(cities);
-        }
+            var result = cities.Select(city => new
+            {
+                cityID = city.CityID,
+                cityName = city.CityName,
+                description = city.Description,
+                tours = city.Tours.Select(tour => new
+                {
+                    tourID = tour.TourID,
+                    tourName = tour.TourName,
+                    description = tour.Description,
+                    detail = tour.Detail,
+                    price = tour.Price,
+                    availableSlots = tour.AvailableSlots,
+                    startDate = tour.StartDate,
+                    endDate = tour.EndDate,
+                    hotel = tour.Hotel == null ? null : new
+                    {
+                        hotelID = tour.Hotel.HotelID,
+                        hotelName = tour.Hotel.HotelName,
+                        address = tour.Hotel.Address,
+                        description = tour.Hotel.Description
+                    },
+                    transportation = tour.Transportation == null ? null : new
+                    {
+                        transportID = tour.Transportation.TransportID,
+                        transportType = tour.Transportation.TransportType,
+                        price = tour.Transportation.Price
+                    }
+                }),
+                hotels = city.Hotels
+                    .Union(city.Tours
+                        .Where(t => t.Hotel != null)
+                        .Select(t => t.Hotel))
+                    .Distinct()
+                    .Select(hotel => new
+                    {
+                        hotelID = hotel.HotelID,
+                        hotelName = hotel.HotelName,
+                        address = hotel.Address,
+                        description = hotel.Description
+                    }).ToList(),
+                transportations = city.Transportations
+                    .Union(city.Tours
+                        .Where(t => t.Transportation != null)
+                        .Select(t => t.Transportation))
+                    .Distinct()
+                    .Select(transport => new
+                    {
+                        transportID = transport.TransportID,
+                        transportType = transport.TransportType,
+                        price = transport.Price
+                    }).ToList(),
+                restaurants = city.Restaurants                  
+                    .Select(restaurant => new
+                    {
+                        restaurantID = restaurant.RestaurantID,
+                        restaurantName = restaurant.RestaurantName,
+                        cuisine = restaurant.Cuisine,
+                        description = restaurant.Description,
+                    }).ToList(),
 
+                attractions = city.Attractions
+                    .Select(attraction => new
+                    {
+                        attractionID = attraction.AttractionID,
+                        attractionName = attraction.AttractionName,
+                        description = attraction.Description                    
+                    })
+                    .ToList()
+            });
+            return Ok(result);
+        }
 
         [HttpPost("cities")]
         public async Task<ActionResult<CityDto>> CreateCity(CityDto cityDto)
@@ -356,7 +423,8 @@ namespace Karnel_Api.Controller
                     StartDate = t.StartDate,
                     EndDate = t.EndDate,
                     CityID = t.CityID,
-                    HotelID = t.HotelID
+                    HotelID = t.HotelID,
+                    TransportID = t.TransportID
                 })
                 .ToListAsync();
 
@@ -377,7 +445,8 @@ namespace Karnel_Api.Controller
                 StartDate = tourDto.StartDate,
                 EndDate = tourDto.EndDate,
                 CityID = tourDto.CityID,
-                HotelID = tourDto.HotelID
+                HotelID = tourDto.HotelID,
+                TransportID = tourDto.TransportID
             };
 
             _context.Tours.Add(tour);
@@ -393,7 +462,8 @@ namespace Karnel_Api.Controller
                 StartDate = tour.StartDate,
                 EndDate = tour.EndDate,
                 CityID = tour.CityID,
-                HotelID = tour.HotelID
+                HotelID = tour.HotelID,
+                TransportID = tour.TransportID
             };
 
             return CreatedAtAction(nameof(GetTours), new { id = tour.TourID }, result);

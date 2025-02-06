@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Karnel_Api.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20250107135443_InitialUpdatefix2")]
-    partial class InitialUpdatefix2
+    [Migration("20250206063714_2")]
+    partial class _2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -59,18 +59,59 @@ namespace Karnel_Api.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BookingID"));
 
+                    b.Property<int>("AdultQuantity")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("AdultUnitPrice")
+                        .HasColumnType("decimal(18, 4)");
+
                     b.Property<DateTime>("BookingDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("ChildQuantity")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("ChildUnitPrice")
+                        .HasColumnType("decimal(18, 4)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("InfantQuantity")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("InfantUnitPrice")
+                        .HasColumnType("decimal(18, 4)");
+
+                    b.Property<string>("PayPalOrderID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("PaymentStatus")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
+                    b.Property<string>("SpecialRequirements")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<decimal>("TotalAmount")
                         .HasColumnType("decimal(18, 4)");
+
+                    b.Property<int>("TotalQuantity")
+                        .HasColumnType("int");
 
                     b.Property<int>("TourID")
                         .HasColumnType("int");
@@ -217,6 +258,10 @@ namespace Karnel_Api.Migrations
                     b.Property<int>("BookingID")
                         .HasColumnType("int");
 
+                    b.Property<string>("PayPalOrderID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("PaymentDate")
                         .HasColumnType("datetime2");
 
@@ -341,11 +386,16 @@ namespace Karnel_Api.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("TransportID")
+                        .HasColumnType("int");
+
                     b.HasKey("TourID");
 
                     b.HasIndex("CityID");
 
                     b.HasIndex("HotelID");
+
+                    b.HasIndex("TransportID");
 
                     b.ToTable("Tours");
                 });
@@ -590,9 +640,16 @@ namespace Karnel_Api.Migrations
                         .WithMany()
                         .HasForeignKey("HotelID");
 
+                    b.HasOne("Karnel_Api.Data.Transportation", "Transportation")
+                        .WithMany()
+                        .HasForeignKey("TransportID")
+                        .OnDelete(DeleteBehavior.Restrict);
+
                     b.Navigation("City");
 
                     b.Navigation("Hotel");
+
+                    b.Navigation("Transportation");
                 });
 
             modelBuilder.Entity("Karnel_Api.Data.TourAttraction", b =>
@@ -636,7 +693,7 @@ namespace Karnel_Api.Migrations
             modelBuilder.Entity("Karnel_Api.Data.Transportation", b =>
                 {
                     b.HasOne("Karnel_Api.Data.City", "City")
-                        .WithMany()
+                        .WithMany("Transportations")
                         .HasForeignKey("CityID");
 
                     b.Navigation("City");
@@ -661,6 +718,8 @@ namespace Karnel_Api.Migrations
                     b.Navigation("Restaurants");
 
                     b.Navigation("Tours");
+
+                    b.Navigation("Transportations");
                 });
 
             modelBuilder.Entity("Karnel_Api.Data.Restaurant", b =>

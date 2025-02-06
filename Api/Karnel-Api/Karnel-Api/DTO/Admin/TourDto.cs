@@ -21,6 +21,7 @@
             public int? CityID { get; set; }
 
             public int? HotelID { get; set; }
+            public int? TransportID { get; set; }
         }
     }
 

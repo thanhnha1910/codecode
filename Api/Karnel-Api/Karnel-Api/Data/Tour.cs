@@ -21,6 +21,8 @@ public class Tour
     public City City { get; set; }
     public int? HotelID { get; set; }
     public Hotel Hotel { get; set; }
+    public int? TransportID { get; set; }
+    public Transportation Transportation{ get; set; }
 
     // Navigation properties
     public ICollection<TourAttraction> TourAttractions { get; set; }

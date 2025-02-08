@@ -1,6 +1,10 @@
 {
   "Files": [
     {
+      "Id": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/1e2f9be2-f3db-4331-a0b3-0beb4efdbc36.png",
+      "PackagePath": "staticwebassets/uploads/avatars/1e2f9be2-f3db-4331-a0b3-0beb4efdbc36.png"
+    },
+    {
       "Id": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/27f8d8ed-e096-4377-bd48-b570d4661b2c.jpg",
       "PackagePath": "staticwebassets/uploads/avatars/27f8d8ed-e096-4377-bd48-b570d4661b2c.jpg"
     },
@@ -17,16 +21,16 @@
       "PackagePath": "staticwebassets/uploads/avatars/857c60e6-3739-44bf-97fd-c0d39df89516.jpeg"
     },
     {
-      "Id": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/884ba611-b6cc-4f71-90ce-9397e32cc639.jpg",
-      "PackagePath": "staticwebassets/uploads/avatars/884ba611-b6cc-4f71-90ce-9397e32cc639.jpg"
-    },
-    {
       "Id": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/bc649c69-73fd-4b7e-a557-8217da81a38c.jpg",
       "PackagePath": "staticwebassets/uploads/avatars/bc649c69-73fd-4b7e-a557-8217da81a38c.jpg"
     },
     {
       "Id": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/d360134d-dd92-4d4c-9402-da921ae819ae.jpg",
       "PackagePath": "staticwebassets/uploads/avatars/d360134d-dd92-4d4c-9402-da921ae819ae.jpg"
+    },
+    {
+      "Id": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/e0186bcb-5a4a-46d1-909d-b60fb1c1e5fc.png",
+      "PackagePath": "staticwebassets/uploads/avatars/e0186bcb-5a4a-46d1-909d-b60fb1c1e5fc.png"
     },
     {
       "Id": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/f01d953f-1d98-4ac9-b090-b7cad5dd43ec.png",

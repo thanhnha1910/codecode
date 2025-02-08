@@ -5,8 +5,18 @@ import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'; // Import CSS
 import profileApi from "../../services/ProfileService";
 import Password from './Password';
+import BookingList from './BookingList';
+
 import './Profile.css';
 import moment from 'moment';
+import FavoritesList from './FavoritesList';
+
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/components/ui/tabs";
 
 import { 
   FaUser, 
@@ -205,139 +215,164 @@ export default function Profile() {
   };
 
   return (
-    <div className="profile-container">
-      <ToastContainer /> {/* Thêm ToastContainer vào đây */}
-      <div className="profile-header">
-        <h1>Profile Settings</h1>
-        <p>Manage your personal information and account security</p>
-      </div>
-
-      <div className="profile-content">
-        <div className="profile-sidebar">
-          <div className="profile-card">
-            <div className="avatar-container">
-              <img
-                src={previewImage}
-                alt="Profile"
-                className="profile-avatar"
-                key={previewImage}
-              />
-              <label className="avatar-upload-button" title="Change profile picture">
-                <FaCamera />
-                <input
-                  type="file"
-                  hidden
-                  onChange={handleInputChange}
-                  name="avatar"
-                  accept="image/*"
-                  disabled={isSubmitting}
-                />
-              </label>
-            </div>
-            <h2 className="profile-name">{formData.name}</h2>
-            <p className="profile-email">{formData.email}</p>
-            <button 
-              className="change-password-btn"
-              onClick={() => setShowPasswordModal(true)}
-            >
-              <FaKey /> Change Password
-            </button>
-            <Password 
-              showPasswordModal={showPasswordModal}
-              setShowPasswordModal={setShowPasswordModal}
-              passwordData={passwordData}
-              setPasswordData={setPasswordData}
-              userId={user?.id}
-            />
-          </div>
+    <div className="min-h-screen bg-gray-50 py-8">
+      <ToastContainer />
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold text-gray-900">Profile Settings</h1>
+          <p className="mt-2 text-gray-600">Manage your account settings and preferences.</p>
         </div>
 
-        <div className="profile-main">
-          <div className="profile-edit-card">
-            <h3>Personal Information</h3>
-            <form onSubmit={handleSubmit} className="profile-form">
-              <div className="form-group">
-                <label>
-                  <FaUser /> Full Name
-                </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  required
-                  placeholder="Enter your full name"
-                  disabled={isSubmitting}
-                />
-              </div>
-
-              <div className="form-group">
-                <label>
-                  <FaEnvelope /> Email Address
-                </label>
-                <input
-                  type="email"
-                  className="form-control"
-                  value={formData.email}
-                  disabled
-                  placeholder="Your email address"
-                />
-              </div>
-
-              <div className="form-row">
-                <div className="form-group">
-                  <label>
-                    <FaVenusMars /> Gender
-                  </label>
-                  <select
-                    className="form-control"
-                    name="gender"
-                    value={formData.gender.toString()}
-                    onChange={handleInputChange}
-                    disabled={isSubmitting}
-                  >
-                    <option value="false">Female</option>
-                    <option value="true">Male</option>
-                  </select>
-                </div>
-
-                <div className="form-group">
-                  <label>
-                    <FaCalendar /> Date of Birth
-                  </label>
-                  <input
-                    type="date"
-                    className={`form-control ${dateError ? 'is-invalid' : ''}`}
-                    name="dateOfBirth"
-                    value={formData.dateOfBirth}
-                    onChange={handleInputChange}
-                    disabled={isSubmitting}
+        <div className="grid grid-cols-12 gap-6">
+          {/* Sidebar */}
+          <div className="col-span-12 lg:col-span-4">
+            <div className="bg-white rounded-lg shadow p-6">
+              <div className="text-center">
+                <div className="relative inline-block">
+                  <img
+                    src={previewImage}
+                    alt="Profile"
+                    className="w-32 h-32 rounded-full border-4 border-white shadow-lg mx-auto"
                   />
+                  <label className="absolute bottom-0 right-0 bg-blue-500 p-2 rounded-full text-white cursor-pointer hover:bg-blue-600 transition">
+                    <FaCamera size={16} />
+                    <input
+                      type="file"
+                      hidden
+                      onChange={handleInputChange}
+                      name="avatar"
+                      accept="image/*"
+                    />
+                  </label>
                 </div>
-              </div>
+                
+                <h2 className="mt-4 text-xl font-semibold">{formData.name}</h2>
+                <p className="text-gray-500">{formData.email}</p>
 
-              <div className="form-actions">
-                <button
-                  type="submit"
-                  className="btn-save"
-                  disabled={isSubmitting}
+                <button 
+                  onClick={() => setShowPasswordModal(true)}
+                  className="mt-6 w-full flex items-center justify-center gap-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition"
                 >
-                  <FaSave /> {isSubmitting ? "Saving..." : "Save Changes"}
-                </button>
-                <button
-                  type="button"
-                  className="btn-cancel"
-                  onClick={handleCancel}
-                  disabled={isSubmitting}
-                >
-                  <FaTimes /> Cancel
+                  <FaKey /> Change Password
                 </button>
               </div>
-            </form>
+            </div>
+          </div>
+
+          {/* Main Content */}
+          <div className="col-span-12 lg:col-span-8">
+            <Tabs defaultValue="profile" className="w-full">
+              <TabsList className="grid w-full grid-cols-3">
+                <TabsTrigger value="profile">Profile</TabsTrigger>
+                <TabsTrigger value="bookings">My Bookings</TabsTrigger>
+                <TabsTrigger value="favorites">Favorites</TabsTrigger>
+              </TabsList>
+
+              <TabsContent value="profile">
+                <div className="bg-white rounded-lg shadow">
+                  <form onSubmit={handleSubmit} className="p-6 space-y-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div>
+                        <label className="flex items-center gap-2 text-sm font-medium text-gray-700">
+                          <FaUser /> Full Name
+                        </label>
+                        <input
+                          type="text"
+                          name="name"
+                          value={formData.name}
+                          onChange={handleInputChange}
+                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="flex items-center gap-2 text-sm font-medium text-gray-700">
+                          <FaEnvelope /> Email
+                        </label>
+                        <input
+                          type="email"
+                          value={formData.email}
+                          disabled
+                          className="mt-1 block w-full rounded-md border-gray-300 bg-gray-50"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="flex items-center gap-2 text-sm font-medium text-gray-700">
+                          <FaVenusMars /> Gender
+                        </label>
+                        <select
+                          name="gender"
+                          value={formData.gender.toString()}
+                          onChange={handleInputChange}
+                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                        >
+                          <option value="false">Female</option>
+                          <option value="true">Male</option>
+                        </select>
+                      </div>
+
+                      <div>
+                        <label className="flex items-center gap-2 text-sm font-medium text-gray-700">
+                          <FaCalendar /> Date of Birth
+                        </label>
+                        <input
+                          type="date"
+                          name="dateOfBirth"
+                          value={formData.dateOfBirth}
+                          onChange={handleInputChange}
+                          className={`mt-1 block w-full rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 
+                            ${dateError ? 'border-red-500' : 'border-gray-300'}`}
+                        />
+                        {dateError && (
+                          <p className="mt-1 text-sm text-red-500">{dateError}</p>
+                        )}
+                      </div>
+                    </div>
+
+                    <div className="flex justify-end gap-4">
+                      <button
+                        type="button"
+                        onClick={handleCancel}
+                        className="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50"
+                      >
+                        Cancel
+                      </button>
+                      <button
+                        type="submit"
+                        disabled={isSubmitting}
+                        className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 disabled:opacity-50"
+                      >
+                        {isSubmitting ? "Saving..." : "Save Changes"}
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </TabsContent>
+
+              <TabsContent value="favorites">
+                <div className="bg-white rounded-lg shadow p-6">
+                  <FavoritesList userId={user?.id} />
+                </div>
+              </TabsContent>
+              <TabsContent value="bookings">
+  <div className="bg-white rounded-lg shadow p-6">
+    <BookingList userId={user?.id} />
+  </div>
+</TabsContent>
+            </Tabs>
           </div>
         </div>
       </div>
+
+      <Password 
+        showPasswordModal={showPasswordModal}
+        setShowPasswordModal={setShowPasswordModal}
+        passwordData={passwordData}
+        setPasswordData={setPasswordData}
+        userId={user?.id}
+      />
     </div>
   );
 }

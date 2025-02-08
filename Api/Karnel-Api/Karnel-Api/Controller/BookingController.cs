@@ -4,6 +4,7 @@ using Karnel_Api.Service.PayPal;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 namespace Karnel_Api.Controller
 {
@@ -103,8 +104,14 @@ public async Task<ActionResult<BookingResponse>> BookTour(BookingDTO booking)
 {
     try
     {
-        // Log incoming data
+        // 1. Log và validate input
 
+        if (booking == null)
+        {
+            return BadRequest("Booking data is required");
+        }
+
+        // 2. Validate và lấy thông tin tour
         var tour = await _context.Tours
             .Include(t => t.City)
             .Include(t => t.Hotel)
@@ -114,83 +121,119 @@ public async Task<ActionResult<BookingResponse>> BookTour(BookingDTO booking)
         {
             return NotFound($"Tour with ID {booking.TourID} not found");
         }
+
+        // 3. Tính toán số lượng và kiểm tra slots
         int totalQuantity = booking.AdultQuantity + booking.ChildQunatity + booking.InfantQunatity;
-        if (tour.AvailableSlots < totalQuantity)
+        
+        if (totalQuantity <= 0)
         {
-            return BadRequest($"Not enough slots. Available: {tour.AvailableSlots}, Requested: {totalQuantity}");
+            return BadRequest("Total quantity must be greater than 0");
         }
 
+        if (tour.AvailableSlots < totalQuantity)
+        {
+            return BadRequest($"Not enough slots available. Available: {tour.AvailableSlots}, Requested: {totalQuantity}");
+        }
+
+        // 4. Validate user
         var user = await _context.Users.FindAsync(booking.UserID);
         if (user == null)
         {
             return NotFound($"User with ID {booking.UserID} not found");
         }
-        decimal adultPrice = tour.Price; 
-        decimal childPrice = tour.Price * 0.75m; 
-        decimal infantPrice = tour.Price * 0.1m; 
-        decimal totalAmount = (booking.AdultQuantity * adultPrice) +
-                              (booking.ChildQunatity * childPrice) +
-                              (booking.InfantQunatity * infantPrice);
 
+      
+        decimal adultPrice = tour.Price;
+        decimal childPrice = tour.Price * 0.75m;
+        decimal infantPrice = tour.Price * 0.1m;
 
+        decimal adultTotal = booking.AdultQuantity * adultPrice;
+        decimal childTotal = booking.ChildQunatity * childPrice;
+        decimal infantTotal = booking.InfantQunatity * infantPrice;
+        decimal totalAmount = adultTotal + childTotal + infantTotal;
+
+     
         var newBooking = new Booking
         {
+            // Thông tin cơ bản
             UserID = booking.UserID,
             TourID = booking.TourID,
+            BookingDate = DateTime.Now,
+            PaymentStatus = "Pending",
+            PayPalOrderID = "PENDING",
+
+            // Số lượng và giá
             AdultQuantity = booking.AdultQuantity,
             ChildQuantity = booking.ChildQunatity,
             InfantQuantity = booking.InfantQunatity,
-            AdultUnitPrice = booking.AdultUnitPrice,
-            ChildUnitPrice = booking.ChildUnitPrice,
-            InfantUnitPrice = booking.InfantUnitPrice,
-            TotalAmount = totalAmount,
-            BookingDate = DateTime.Now,
-            PaymentStatus = "Pending",
             TotalQuantity = totalQuantity,
-            PayPalOrderID = "PENDING",
-          
+
+            // Đơn giá
+            AdultUnitPrice = adultPrice,
+            ChildUnitPrice = childPrice,
+            InfantUnitPrice = infantPrice,
+            TotalAmount = totalAmount,
+
+            // Thông tin cá nhân
+            FullName = booking.FullName,
+            Email = booking.Email,
+            Phone = booking.Phone,
+            CardIdentification = booking.CardIdentification,
+            SpecialRequirements = booking.SpecialRequirements
         };
 
         try
         {
+            // 7. Lưu booking và cập nhật số lượng slots
             _context.Bookings.Add(newBooking);
             tour.AvailableSlots -= totalQuantity;
             
-            Console.WriteLine("Attempting to save changes to database...");
+            Console.WriteLine("Saving changes to database...");
             await _context.SaveChangesAsync();
-            Console.WriteLine("Changes saved successfully");
+            Console.WriteLine($"Booking created successfully with ID: {newBooking.BookingID}");
         }
         catch (DbUpdateException dbEx)
         {
             Console.WriteLine($"Database Error: {dbEx.Message}");
             Console.WriteLine($"Inner Exception: {dbEx.InnerException?.Message}");
-            return BadRequest($"Database Error: {dbEx.InnerException?.Message}");
+            return StatusCode(500, new { message = "Database error occurred", error = dbEx.Message });
         }
 
+        // 8. Tạo response
         var response = new BookingResponse
         {
+            // Booking info
             BookingID = newBooking.BookingID,
             UserID = newBooking.UserID,
             TourID = newBooking.TourID,
+            BookingDate = newBooking.BookingDate,
+            PaymentStatus = newBooking.PaymentStatus,
+
+            // Quantities
             AdultQuantity = newBooking.AdultQuantity,
             ChildQuantity = newBooking.ChildQuantity,
             InfantQuantity = newBooking.InfantQuantity,
+            TotalQuantity = newBooking.TotalQuantity,
+
+            // Prices
             AdultUnitPrice = newBooking.AdultUnitPrice,
             ChildUnitPrice = newBooking.ChildUnitPrice,
             InfantUnitPrice = newBooking.InfantUnitPrice,
             TotalAmount = newBooking.TotalAmount,
-            BookingDate = newBooking.BookingDate,
-            PaymentStatus = newBooking.PaymentStatus,
+
+            // Tour details
             TourName = tour.TourName,
             TourPrice = tour.Price,
             StartDate = tour.StartDate,
             EndDate = tour.EndDate,
             AvailableSlots = tour.AvailableSlots,
+
+            // Personal info
             FullName = newBooking.FullName,
             Email = newBooking.Email,
             Phone = newBooking.Phone,
             SpecialRequirements = newBooking.SpecialRequirements,
-            TotalQuantity = totalQuantity,
+
         };
 
         return Ok(response);
@@ -199,7 +242,7 @@ public async Task<ActionResult<BookingResponse>> BookTour(BookingDTO booking)
     {
         Console.WriteLine($"General Error: {e.Message}");
         Console.WriteLine($"Stack Trace: {e.StackTrace}");
-        return BadRequest($"Error creatinking: {e.Message}");
+        return StatusCode(500, new { message = "An unexpected error occurred", error = e.Message });
     }
 }
 
@@ -240,33 +283,7 @@ public async Task<ActionResult<BookingResponse>> BookTour(BookingDTO booking)
             return booking;
         }
 
-        [HttpPost("Initial-Payment/{bookingId}")]
-        public async Task<ActionResult<BookingResponse>> InitialPayment(int bookingId)
-        {
-            var booking = await _context.Bookings.FindAsync(bookingId);
-            if (booking == null)
-            {
-                return NotFound();
-            }
-            decimal totalAmount = booking.TotalAmount;
-            try
-            {
-                //create the payment using Paypal service
-                var order=await _service.CreatePayment(totalAmount);
-                //save the paypal order id to the booking for later reference
-                booking.PayPalOrderID=order.Id;
-                await _context.SaveChangesAsync();
-                // Redirect the user to the approval URL
-                var approvalUrl = order.Links.FirstOrDefault(l => l.Rel == "approve")?.Href;
-                return Ok(approvalUrl);
-
-            }
-            catch (Exception e)
-            {
-                return BadRequest($"Error initializing payment: {e.Message}");
-            }   
-        }
-
+       
         [HttpPut("update-info/{bookingId}")]
         public async Task<ActionResult> UpdateBookingInfo(int bookingId, [FromBody] BookingNameDTO updateInfo)
         {

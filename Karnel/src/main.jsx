@@ -14,7 +14,6 @@ import Contact from "./pages/home/contact.jsx";
 import "react-toastify/dist/ReactToastify.css";
 import {UserProvider} from "@/contexts/UserProvider.jsx";
 import Login from "./pages/auth/Login.jsx";
-import ResetPassWord from "./pages/auth/ResetPassWord.jsx";
 import Profile from "./pages/personal/profile.jsx";
 import ProtectedRoute from "@/contexts/ProtectedRoute.jsx";
 import InfoLayout from "./layouts/info-layout.jsx";
@@ -25,10 +24,20 @@ import TourLayout from "@/layouts/tour-layout.jsx";
 import ScrollToTop from "@/components/ui/scroll-to-top.jsx";
 import AdminLayout from "@/admin/AdminLayout.jsx";
 import TourCard from "@/components/info/tour-card.jsx";
+import Payment from "./pages/BookPay/Payment";
+import SuccessPage from "./pages/BookPay/SuccessPage";
+import FailurePage from "./pages/BookPay/FailurePage";
+import PaymentConfirmation from "./pages/BookPay/PaymentConfirmation";
+import ResetPass from "./pages/auth/ResetPass";
+import Book from "./pages/BookPay/Book";
+import { FavoritesProvider } from "./contexts/FavoritesProvider";
+import PassengerForms from "./pages/BookPay/PassengerForms";
+import BookingList from "./pages/personal/BookingList";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
     <React.StrictMode>
         <UserProvider>
+          <FavoritesProvider>
             <BrowserRouter>
                 <ToastContainer/>
                 <ScrollToTop />
@@ -60,7 +69,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
                         }
                     />
                     <Route path="verify-email" element={<VerifyEmail/>}/>
-                    <Route path="reset-password" element={<ResetPassWord/>}/>
+                    <Route path="reset-password" element={<ResetPass/>}/>
                     <Route
                         path="request-reset-password"
                         element={<RequestResetPassword/>}
@@ -68,8 +77,20 @@ ReactDOM.createRoot(document.getElementById("root")).render(
                     <Route path="admin" element={<AdminLayout />}>
                         <Route path="stats" element={<StatisticsPage/>}/>
                     </Route>
+                    <Route path="/book" element={<Book />} />
+                    <Route path="/payment" element={<Payment />} />
+  <Route path="/success" element={<SuccessPage />} />
+  <Route path="/failure" element={<FailurePage />} />
+  <Route path="/payment-confirmation" element={<PaymentConfirmation />} />
+  <Route path="/passenger-info" element={<PassengerForms />} />
+  <Route path="/Booklist" element={<BookingList />} />
+
+
+
+
                 </Routes>
             </BrowserRouter>
+            </FavoritesProvider>
         </UserProvider>
     </React.StrictMode>
 );

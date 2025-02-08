@@ -25,7 +25,7 @@ export default function PaymentConfirmation() {
           </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
             <button
-              onClick={() => window.location.href = '/bookings'}
+              onClick={() => window.location.href = '/profile'}
               className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition duration-300"
             >
               View My Bookings

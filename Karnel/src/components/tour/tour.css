@@ -1,0 +1,95 @@
+.favorites-list {
+    padding: 1rem;
+}
+
+.heart-animation {
+    animation: heartBeat 1.5s ease-in-out;
+}
+
+@keyframes heartBeat {
+    0% {
+        transform: scale(1);
+    }
+    14% {
+        transform: scale(1.3);
+    }
+    28% {
+        transform: scale(1);
+    }
+    42% {
+        transform: scale(1.3);
+    }
+    70% {
+        transform: scale(1);
+    }
+}
+
+.card-hover-effect {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.card-hover-effect:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+.heart-button {
+    position: relative;
+    overflow: hidden;
+}
+
+.heart-animation {
+    animation: heartPop 0.4s ease-out;
+}
+    
+@keyframes heartPop {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Thêm hiệu ứng ripple khi hover */
+.heart-button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 0, 0, 0.1);
+    border-radius: 50%;
+    transform: scale(0);
+    transition: transform 0.3s ease;
+}
+
+.heart-button:hover::after {
+    transform: scale(1);
+}
+
+/* Animation khi thêm vào favorites */
+@keyframes heartBeat {
+    0% {
+        transform: scale(1);
+    }
+    14% {
+        transform: scale(1.3);
+    }
+    28% {
+        transform: scale(1);
+    }
+    42% {
+        transform: scale(1.3);
+    }
+    70% {
+        transform: scale(1);
+    }
+}
+
+.heart-button.heart-animation .heart-icon {
+    animation: heartBeat 1s ease-in-out;
+}

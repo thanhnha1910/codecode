@@ -16,7 +16,15 @@ public class BookingDTO
     public decimal AdultUnitPrice { get; set; }
     public decimal ChildUnitPrice { get; set; }
     public decimal InfantUnitPrice { get; set; }
- 
+    [Required]
+    public string FullName { get; set; }
+    [Required]
+    [EmailAddress]
+    public string Email { get; set; }
+    [Required]
+    public string Phone { get; set; }
+    public string CardIdentification { get; set; }
+    public string SpecialRequirements { get; set; }
 
    
 }

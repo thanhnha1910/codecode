@@ -1,23 +1,28 @@
 import axios from 'axios';
+
 const API_URL = "http://localhost:5128/api/Favorite";
 const FavoriteService = {
-    checkFavorite: (userId, tourId) => {
-        const response= axios.get(`${API_URL}/check/${userId}/${tourId}`);
-        return response.data
+    getFavorites: async (userId) => {
+        const response = await axios.get(`${API_URL}/user/${userId}`);
+        return response;
+    },
 
+    addFavorite: async (userId, tourId) => {
+        const response = await axios.post(`${API_URL}/add`, {
+            UserID: userId,
+            TourID: tourId
+        });
+        return response;
     },
-    
-    addFavorite: (data) => {
-        return axios.post(`${API_URL}/add`, data);
+
+    removeFavorite: async (userId, tourId) => {
+        const response = await axios.delete(`${API_URL}/${userId}/${tourId}`);
+        return response;
     },
-    
-    deleteFavorite: (userId, tourId) => {
-        return axios.post(`${API_URL}/delete/${userId}/${tourId}`);
-    },
-    
-    getFavorites: (userId) => {
-        return axios.get(`${API_URL}/user/${userId}`);
+
+    checkFavorite: async (userId, tourId) => {
+        const response = await axios.get(`${API_URL}/check/${userId}/${tourId}`);
+        return response;
     }
 };
-
 export default FavoriteService;

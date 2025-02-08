@@ -14,4 +14,5 @@ public class BookingNameDTO
     public string Phone {get;set;}
     [Required]
     public string SpecialRequirements { get; set; }
+    public int CardIdentification {get;set;}
 }

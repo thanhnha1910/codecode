@@ -29,4 +29,6 @@ public class BookingResponse
     public string Phone { get; set; }
     public string SpecialRequirements { get; set; }
     public int TotalQuantity { get; set; }
+    public int CardIdentification {get;set;}
+
 }

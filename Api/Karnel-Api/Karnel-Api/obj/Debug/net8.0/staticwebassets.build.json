@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "qzoSrWyEdxXm6HVEoxFxlppbTRIEeKSPUOBFvUkXFsE=",
+  "Hash": "ftBqgRXt8sq2E/Xj4RDAfjA6w47eWc03Jba1CwrxUpQ=",
   "Source": "Karnel-Api",
   "BasePath": "_content/Karnel-Api",
   "Mode": "Default",
@@ -16,6 +16,25 @@
     }
   ],
   "Assets": [
+    {
+      "Identity": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/1e2f9be2-f3db-4331-a0b3-0beb4efdbc36.png",
+      "SourceId": "Karnel-Api",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/",
+      "BasePath": "_content/Karnel-Api",
+      "RelativePath": "uploads/avatars/1e2f9be2-f3db-4331-a0b3-0beb4efdbc36.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/uploads/avatars/1e2f9be2-f3db-4331-a0b3-0beb4efdbc36.png"
+    },
     {
       "Identity": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/27f8d8ed-e096-4377-bd48-b570d4661b2c.jpg",
       "SourceId": "Karnel-Api",
@@ -93,25 +112,6 @@
       "OriginalItemSpec": "wwwroot/uploads/avatars/857c60e6-3739-44bf-97fd-c0d39df89516.jpeg"
     },
     {
-      "Identity": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/884ba611-b6cc-4f71-90ce-9397e32cc639.jpg",
-      "SourceId": "Karnel-Api",
-      "SourceType": "Discovered",
-      "ContentRoot": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/",
-      "BasePath": "_content/Karnel-Api",
-      "RelativePath": "uploads/avatars/884ba611-b6cc-4f71-90ce-9397e32cc639.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/uploads/avatars/884ba611-b6cc-4f71-90ce-9397e32cc639.jpg"
-    },
-    {
       "Identity": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/bc649c69-73fd-4b7e-a557-8217da81a38c.jpg",
       "SourceId": "Karnel-Api",
       "SourceType": "Discovered",
@@ -148,6 +148,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/uploads/avatars/d360134d-dd92-4d4c-9402-da921ae819ae.jpg"
+    },
+    {
+      "Identity": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/e0186bcb-5a4a-46d1-909d-b60fb1c1e5fc.png",
+      "SourceId": "Karnel-Api",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/",
+      "BasePath": "_content/Karnel-Api",
+      "RelativePath": "uploads/avatars/e0186bcb-5a4a-46d1-909d-b60fb1c1e5fc.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/uploads/avatars/e0186bcb-5a4a-46d1-909d-b60fb1c1e5fc.png"
     },
     {
       "Identity": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/f01d953f-1d98-4ac9-b090-b7cad5dd43ec.png",

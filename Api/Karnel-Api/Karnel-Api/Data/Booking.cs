@@ -22,6 +22,7 @@ public class Booking
     public string? Email { get; set; }
     public string? Phone{ get; set; }
     public string? SpecialRequirements{ get; set; }
+    public string? CardIdentification { get; set; }
 
     [Column(TypeName = ("decimal(18, 4)"))]
     public decimal AdultUnitPrice { get; set; }

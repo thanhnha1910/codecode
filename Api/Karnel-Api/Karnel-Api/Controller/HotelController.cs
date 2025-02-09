@@ -1,7 +1,8 @@
+using System.Collections;
 using Karnel_Api.Data;
-using Karnel_Api.DTO.User;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json.Linq;
+using SerpApi;
 
 namespace Karnel_Api.Controller
 {
@@ -10,62 +11,64 @@ namespace Karnel_Api.Controller
     public class HotelController : ControllerBase
     {
         private readonly DatabaseContext _context;
+        private string _apiKey = "277ae32107e1d7909222930488af1f370773ed917111d673c5b5b82cfdf5436a";
         public HotelController(DatabaseContext context) => _context = context;
-        
+
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<HotelDetailDto>>> GetHotels([FromQuery] string? city, [FromQuery] string? sort, [FromQuery] decimal? from, [FromQuery] decimal? to)
+        public string? GetHotels(string cityName, string checkIn, string checkOut, int? page)
         {
-            var query = _context.Hotels.AsQueryable();
-            if (!string.IsNullOrEmpty(city))
+            int pageSize = 20;
+            var searchQuery = new Hashtable
             {
-                query = query.Where(h => h.City.CityName.ToLower() == city.ToLower());
+                { "engine", "google_hotels" },
+                { "q", $"{cityName} Hotels" },
+                { "check_in_date", checkIn },
+                { "check_out_date", checkOut }
+            };
+            if (page.HasValue)
+            {
+                searchQuery.Add("start", ((page.Value - 1) * pageSize).ToString());
+                searchQuery.Add("num", pageSize.ToString());
+            }
+            try
+            {
+                GoogleSearch search = new GoogleSearch(searchQuery, _apiKey);
+                JObject data = search.GetJson();
+                JArray results = (JArray)data["properties"]!;
+                return results.ToString();
+            }
+            catch (SerpApiSearchException ex)
+            {
+                Console.WriteLine("Exception:");
+                Console.WriteLine(ex.ToString());
             }
 
-            if (from.HasValue)
-            {
-                query = query.Where(h => h.Rating >= from.Value);
-            }
-            
-            if (to.HasValue)
-            {
-                query = query.Where(h => h.Rating <= to.Value);
-            }
-
-            if (!string.IsNullOrEmpty(sort))
-            {
-                query = sort.ToLower() switch
-                {
-                    "rating-high-to-low" => query.OrderByDescending(h => (double)h.Rating),
-                    "rating-low-to-high" => query.OrderBy(h => (double)h.Rating),
-                    _ => query
-                };
-            }
-            
-            return await query.Select(h => new HotelDetailDto
-            {
-                Id = h.HotelID,
-                Name = h.HotelName,
-                Address = h.Address,
-                Description = h.Description,
-                Rating = h.Rating,
-                CityName = h.City.CityName
-            }).ToListAsync();
+            return null;
         }
         
-        [HttpGet("{id:int}")]
-        public async Task<ActionResult<HotelDetailDto>> GetHotel(int id)
+        [HttpGet("detail/{hotelName}")]
+        public string? GetHotelDetail(string hotelName, string checkIn, string checkOut)
         {
-            var hotel = await _context.Hotels.Include(h => h.City).FirstOrDefaultAsync(h => h.HotelID == id);
-            if (hotel == null) return NotFound();
-            return new HotelDetailDto
+            var searchQuery = new Hashtable
             {
-                Id = hotel.HotelID,
-                Name = hotel.HotelName,
-                Address = hotel.Address,
-                Description = hotel.Description,
-                Rating = hotel.Rating,
-                CityName = hotel.City.CityName
+                {"engine", "google_hotels"},
+                {"q", hotelName},
+                {"check_in_date", checkIn},
+                {"check_out_date", checkOut}
             };
+            try
+            {
+                GoogleSearch search = new GoogleSearch(searchQuery, _apiKey);
+                JObject data = search.GetJson();
+                JArray? results = (JArray?)data["properties"];
+                return results != null ? null : data.ToString();
+            }
+            catch (SerpApiSearchException ex)
+            {
+                Console.WriteLine("Exception:");
+                Console.WriteLine(ex.ToString());
+            }
+            return null;
         }
     }
 }

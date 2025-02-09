@@ -30,24 +30,24 @@ const pageList = [
         title: "Information",
         items: [
             {
-                title: "Tourist Spots",
-                href: "info/attractions",
+                title: "Attractions",
+                href: "/info/attractions",
+                description: "Explore tourist attractions and landmarks"
             },
             {
                 title: "Hotels",
-                href: "info/hotels",
+                href: "/info/hotels",
+                description: "Find comfortable places to stay"
             },
             {
                 title: "Resorts",
-                href: "info/resorts",
+                href: "/info/resorts",
+                description: "Discover luxury resorts and accommodations"
             },
             {
                 title: "Restaurants",
-                href: "info/restaurants",
-            },
-            {
-                title: "Transportations",
-                href: "info/transportations",
+                href: "/info/restaurants",
+                description: "Experience local and international cuisine"
             }
         ]
     },

@@ -17,7 +17,6 @@ import Login from "./pages/auth/Login.jsx";
 import Profile from "./pages/personal/profile.jsx";
 import ProtectedRoute from "@/contexts/ProtectedRoute.jsx";
 import InfoLayout from "./layouts/info-layout.jsx";
-import Hotel from "./pages/info/hotel.jsx";
 import TourDetail from "@/pages/tour/tour-detail.jsx";
 import TourLayout from "@/layouts/tour-layout.jsx";
 import ScrollToTop from "@/components/ui/scroll-to-top.jsx";
@@ -32,6 +31,15 @@ import { FavoritesProvider } from "./contexts/FavoritesProvider";
 import PassengerForms from "./pages/BookPay/PassengerForms";
 import BookingList from "./pages/personal/BookingList";
 import AdminLayout from "@/admin/AdminLayout";
+import Destination from "./pages/info/destination";
+import AttractionListing from "./pages/info/attraction-listing";
+import AttractionDetails from "./pages/info/attraction-details";
+import HotelListing from "./pages/info/hotel-listing";
+import HotelDetails from "./pages/info/hotel-details";
+import ResortListing from "./pages/info/resort-listing";
+import ResortDetails from "./pages/info/resort-details";
+import RestaurantListing from "./pages/info/restaurant-listing";
+import RestaurantDetails from "./pages/info/restaurant-details";
 
 import Cities from "@/admin/Cities";
 import Hotels from "@/admin/Hotels";
@@ -63,10 +71,26 @@ ReactDOM.createRoot(document.getElementById("root")).render(
                         <Route path="about" element={<About/>}/>
                         <Route path="contact" element={<Contact/>}/>
                         <Route path="/info">
-                            <Route element={<InfoLayout/>}>
-                                <Route path="hotels" element={<Hotel/>}/>
-                            </Route>
-                        </Route>
+    <Route element={<InfoLayout/>}>
+        {/* City/Destination routes */}
+        <Route path="attractions" element={<Destination />} />
+        <Route path="hotels" element={<Destination />} />
+        <Route path="resorts" element={<Destination />} />
+        <Route path="restaurants" element={<Destination />} />
+
+        {/* Listing routes */}
+        <Route path="attractions/:cityName" element={<AttractionListing />} />
+        <Route path="hotels/:cityName" element={<HotelListing />} />
+        <Route path="resorts/:cityName" element={<ResortListing />} />
+        <Route path="restaurants/:cityName" element={<RestaurantListing />} />
+
+        {/* Detail routes */}
+        <Route path="attractions/:cityName/:attractionName" element={<AttractionDetails />} />
+        <Route path="hotels/:hotelName" element={<HotelDetails />} />
+        <Route path="resorts/:resortName" element={<ResortDetails />} />
+        <Route path="restaurants/:cityName/:restaurantName" element={<RestaurantDetails />} />
+    </Route>
+</Route>
                     </Route>
                     <Route path="tours" element={<TourLayout />}>
                         <Route path=":tourId" element={<TourDetail />}/>

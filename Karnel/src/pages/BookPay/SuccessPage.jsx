@@ -16,14 +16,24 @@ export default function SuccessPage() {
         navigate('/failure');
         return;
       }
-
+  
       try {
         console.log("Capturing payment with token:", token);
         const response = await PaymentService.capturePayment(token);
         console.log("Capture response:", response);
         
         if (response && response.bookingId) {
+          // Hiển thị thông báo thành công và email
           toast.success("Payment completed successfully!");
+          toast.info("A confirmation email has been sent to your email address!", {
+            autoClose: 5000, // Hiển thị lâu hơn một chút
+            position: "top-right",
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+          });
+  
           navigate('/payment-confirmation', {
             state: {
               bookingId: response.bookingId,
@@ -42,9 +52,9 @@ export default function SuccessPage() {
         setLoading(false);
       }
     };
-
+  
     capturePayment();
-}, [searchParams, navigate]);
+  }, [searchParams, navigate]);
   if (loading) {
     return (
       <div className="max-w-lg mx-auto mt-10 p-6 bg-white rounded-lg shadow-md">

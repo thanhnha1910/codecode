@@ -22,6 +22,14 @@ export default function PaymentConfirmation() {
             <p className="text-gray-600">Booking ID: <span className="font-semibold">{paymentData.bookingId}</span></p>
             <p className="text-gray-600">Status: <span className="font-semibold text-green-500">{paymentData.paymentStatus}</span></p>
             <p className="text-gray-600">{paymentData.message}</p>
+            
+            {/* Thêm thông tin về email */}
+            <div className="mt-4 p-4 bg-blue-50 rounded-lg">
+              <p className="text-blue-600">
+                <i className="fas fa-envelope mr-2"></i>
+                A confirmation email has been sent to your registered email address. Please check your inbox for detailed booking information.
+              </p>
+            </div>
           </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
             <button

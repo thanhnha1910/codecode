@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Attractions = () => {
+  const navigate = useNavigate();
   const [attractions, setAttractions] = useState([]);
+  const [cities, setCities] = useState([]);
   const [formState, setFormState] = useState({
-    attractionsName: "",
+    attractionName: "",
     cityID: 0,
+    cuisine: "",
     description: "",
   });
   const [editMode, setEditMode] = useState(false);
@@ -13,24 +17,46 @@ const Attractions = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
-  const [showForm, setShowForm] = useState(false); // Control form visibility
+  const [showForm, setShowForm] = useState(false);
 
   const apiUrl = "http://localhost:5128/api/Management/attractions";
+  const citiesApiUrl = "http://localhost:5128/api/Management/cities";
+
+  const fetchCities = async () => {
+    try {
+      const response = await axios.get(citiesApiUrl);
+      if (Array.isArray(response.data)) {
+        setCities(response.data);
+      } else {
+        setError("Cities data is not in the expected format.");
+        console.error("Fetched city data is not in the expected format:", response.data);
+      }
+    } catch (err) {
+      setError("Failed to fetch cities.");
+      console.error(err);
+    }
+  };
 
   const fetchAttractions = async () => {
     try {
       setLoading(true);
       const response = await axios.get(apiUrl);
-
-      // Check if the response contains a valid array
       if (Array.isArray(response.data)) {
-        setAttractions(response.data); // Use response.data directly
+        // Map attractions to include cityName instead of cityID
+        const attractionsWithCityName = response.data.map((attraction) => {
+          const city = cities.find((c) => c.cityID === attraction.cityID);
+          return {
+            ...attraction,
+            cityName: city ? city.cityName : "Unknown City",
+          };
+        });
+        setAttractions(attractionsWithCityName);
       } else {
-        setError("Data fetched is not in the expected format.");
-        console.error("Fetched data is not in the expected format:", response.data);
+        setError("Attractions data is not in the expected format.");
+        console.error("Fetched attractions data is not in the expected format:", response.data);
       }
     } catch (err) {
-      setError("Failed to fetch restaurants.");
+      setError("Failed to fetch attractions.");
       console.error(err);
     } finally {
       setLoading(false);
@@ -38,8 +64,14 @@ const Attractions = () => {
   };
 
   useEffect(() => {
-    fetchAttractions();
+    fetchCities();
   }, []);
+
+  useEffect(() => {
+    if (cities.length > 0) {
+      fetchAttractions();
+    }
+  }, [cities]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -48,12 +80,24 @@ const Attractions = () => {
 
   const resetForm = () => {
     setFormState({
-        attractionName: "",
-        cityID: 0,
-        description: "",
+      attractionName: "",
+      cityID: 0,
+      cuisine: "",
+      description: "",
     });
     setEditMode(false);
     setEditId(null);
+  };
+
+  const handleEdit = (attraction) => {
+    setFormState({
+      attractionName: attraction.attractionName,
+      cityID: attraction.cityID,
+      description: attraction.description,
+    });
+    setEditMode(true);
+    setEditId(attraction.attractionID);
+    setShowForm(true);
   };
 
   const handleSubmit = async (e) => {
@@ -65,14 +109,14 @@ const Attractions = () => {
     try {
       if (editMode) {
         await axios.put(`${apiUrl}/${editId}`, formState);
-        setSuccessMessage("attraction updated successfully!");
+        setSuccessMessage("Attraction updated successfully!");
       } else {
         await axios.post(apiUrl, formState);
-        setSuccessMessage("attraction added successfully!");
+        setSuccessMessage("Attraction added successfully!");
       }
       await fetchAttractions();
       resetForm();
-      setShowForm(false); // Hide the form after submission
+      setShowForm(false);
     } catch (err) {
       setError("Failed to save the attraction.");
       console.error(err);
@@ -83,16 +127,15 @@ const Attractions = () => {
 
   const handleDelete = async (id) => {
     const confirmed = window.confirm("Are you sure you want to delete this attraction?");
-    if (!confirmed) {
-      return; // Exit the function if the user cancels
-    }
+    if (!confirmed) return;
+
     setLoading(true);
     setError("");
     setSuccessMessage("");
 
     try {
       await axios.delete(`${apiUrl}/${id}`);
-      setSuccessMessage("Attractions deleted successfully!");
+      setSuccessMessage("Attraction deleted successfully!");
       setAttractions(attractions.filter((attraction) => attraction.attractionID !== id));
     } catch (err) {
       setError("Failed to delete attraction.");
@@ -102,11 +145,8 @@ const Attractions = () => {
     }
   };
 
-  const handleEdit = (attraction) => {
-    setFormState({ ...attraction });
-    setEditMode(true);
-    setEditId(attraction.id);
-    setShowForm(true); // Show the form when editing
+  const handleImageGallery = (attractionId) => {
+    navigate(`/admin/attraction-images/${attractionId}`);
   };
 
   return (
@@ -117,7 +157,7 @@ const Attractions = () => {
           className="bg-blue-500 text-white py-2 px-4 rounded"
           onClick={() => {
             resetForm();
-            setShowForm(true); // Show the form when "Add attraction" is clicked
+            setShowForm(true);
           }}
         >
           Add attraction
@@ -127,56 +167,66 @@ const Attractions = () => {
       {error && <p className="text-red-500">{error}</p>}
       {successMessage && <p className="text-green-500">{successMessage}</p>}
 
-      {/* Show form if showForm is true */}
       {showForm && (
         <form onSubmit={handleSubmit} className="mb-4 space-y-2 border p-4 rounded">
-          {Object.keys(formState).map((key) => (
-            <div key={key}>
-              <label>{key.replace(/([A-Z])/g, " $1")}:</label>
-              <input
-                type={
-                  key.includes("Date")
-                    ? "date"
-                    : key === "price" || key.includes("ID") || key === "rating"
-                    ? "number"
-                    : "text"
-                }
-                name={key}
-                value={formState[key]}
-                onChange={handleChange}
-                className="border rounded p-2 w-full"
-                required
-              />
-            </div>
-          ))}
-          <div className="flex justify-center">
-            <button
-              type="button"
-              className="bg-gray-300 text-black py-2 px-4 rounded mr-2"
-              onClick={() => setShowForm(false)} // Hide the form
+          <div>
+            <label>City:</label>
+            <select
+              name="cityID"
+              value={formState.cityID}
+              onChange={handleChange}
+              className="border rounded p-2 w-full"
+              required
             >
+              <option value={0}>Select City</option>
+              {cities.map((city) => (
+                <option key={city.cityID} value={city.cityID}>
+                  {city.cityName}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <label>Attraction Name:</label>
+            <input
+              type="text"
+              name="attractionName"
+              value={formState.attractionName}
+              onChange={handleChange}
+              className="border rounded p-2 w-full"
+              required
+            />
+          </div>
+          <div>
+            <label>Description:</label>
+            <input
+              type="text"
+              name="description"
+              value={formState.description}
+              onChange={handleChange}
+              className="border rounded p-2 w-full"
+              required
+            />
+          </div>
+          <div className="flex justify-center">
+            <button type="button" className="bg-gray-300 text-black py-2 px-4 rounded mr-2" onClick={() => setShowForm(false)}>
               Cancel
             </button>
-            <button
-              type="submit"
-              className="bg-green-500 text-white py-2 px-4 rounded"
-              disabled={loading}
-            >
+            <button type="submit" className="bg-green-500 text-white py-2 px-4 rounded" disabled={loading}>
               {loading ? "Processing..." : editMode ? "Update attraction" : "Add attraction"}
             </button>
           </div>
         </form>
       )}
 
-      {/* Render table */}
       {attractions.length === 0 ? (
         <p>No attraction available</p>
       ) : (
         <table className="table-auto w-full border-collapse border border-gray-300">
           <thead>
-            <tr>
-              <th className="border border-gray-300 px-4 py-2">Attractions Name</th>
-              <th className="border border-gray-300 px-4 py-2">CityID</th>          
+            <tr className="bg-gray-100">
+              <th className="border border-gray-300 px-4 py-2">Attraction Name</th>
+              <th className="border border-gray-300 px-4 py-2">City Name</th>
               <th className="border border-gray-300 px-4 py-2">Description</th>
               <th className="border border-gray-300 px-4 py-2">Actions</th>
             </tr>
@@ -185,21 +235,17 @@ const Attractions = () => {
             {attractions.map((attraction) => (
               <tr key={attraction.attractionID}>
                 <td className="border border-gray-300 px-4 py-2">{attraction.attractionName}</td>
-                <td className="border border-gray-300 px-4 py-2">{attraction.cityID}</td>
+                <td className="border border-gray-300 px-4 py-2">{attraction.cityName}</td>
                 <td className="border border-gray-300 px-4 py-2">{attraction.description}</td>
                 <td className="border border-gray-300 px-4 py-2">
-                  <button
-                    onClick={() => handleEdit(attraction)}
-                    className="bg-yellow-500 text-white py-1 px-2 rounded mr-2"
-                  >
+                  <button onClick={() => handleEdit(attraction)} className="bg-yellow-500 text-white py-1 px-2 rounded mr-2">
                     Edit
                   </button>
-                  <button
-                    onClick={() => handleDelete(attraction.attractionID)}
-                    className="bg-red-500 text-white py-1 px-2 rounded"
-                    disabled={loading}
-                  >
+                  <button onClick={() => handleDelete(attraction.attractionID)} className="bg-red-500 text-white py-1 px-2 rounded mr-2">
                     Delete
+                  </button>
+                  <button onClick={() => handleImageGallery(attraction.attractionID)} className="bg-blue-500 text-white py-1 px-2 rounded">
+                    Image Gallery
                   </button>
                 </td>
               </tr>

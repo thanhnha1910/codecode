@@ -18,11 +18,9 @@ import Profile from "./pages/personal/profile.jsx";
 import ProtectedRoute from "@/contexts/ProtectedRoute.jsx";
 import InfoLayout from "./layouts/info-layout.jsx";
 import Hotel from "./pages/info/hotel.jsx";
-import StatisticsPage from "@/admin/StatisticsPage.jsx";
 import TourDetail from "@/pages/tour/tour-detail.jsx";
 import TourLayout from "@/layouts/tour-layout.jsx";
 import ScrollToTop from "@/components/ui/scroll-to-top.jsx";
-import AdminLayout from "@/admin/AdminLayout.jsx";
 import TourCard from "@/components/info/tour-card.jsx";
 import Payment from "./pages/BookPay/Payment";
 import SuccessPage from "./pages/BookPay/SuccessPage";
@@ -33,6 +31,23 @@ import Book from "./pages/BookPay/Book";
 import { FavoritesProvider } from "./contexts/FavoritesProvider";
 import PassengerForms from "./pages/BookPay/PassengerForms";
 import BookingList from "./pages/personal/BookingList";
+import AdminLayout from "@/admin/AdminLayout";
+
+import Cities from "@/admin/Cities";
+import Hotels from "@/admin/Hotels";
+import Restaurants from "@/admin/Restaurants"; 
+import Attractions from "@/admin/Attractions";
+import Transportations from "@/admin/Transportations";
+import Tours from "@/admin/Tours";
+import TourAttraction from "@/admin/TourAttractions";
+import TourRestaurant from "@/admin/TourRestaurants";
+import HotelImages from "@/admin/HotelImages";
+import RestaurantImages from "@/admin/RestaurantImages"; 
+import AttractionImages from "@/admin/AttractionImages";
+import TransportationImages from "@/admin/TransportationImages";
+import AdminProtectedRoute from "@/contexts/AdminProtectedRoute";
+import RevenueDashBoard from "./admin/RevenueDashboard";
+
 
 ReactDOM.createRoot(document.getElementById("root")).render(
     <React.StrictMode>
@@ -74,9 +89,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
                         path="request-reset-password"
                         element={<RequestResetPassword/>}
                     />
-                    <Route path="admin" element={<AdminLayout />}>
-                        <Route path="stats" element={<StatisticsPage/>}/>
-                    </Route>
+                    {/* <Route path="admin" element={<AdminLayout />}>
+                        <Route path="stats" element={<Staticpa/>}/>
+                    </Route> */}
                     <Route path="/book" element={<Book />} />
                     <Route path="/payment" element={<Payment />} />
   <Route path="/success" element={<SuccessPage />} />
@@ -86,7 +101,32 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <Route path="/Booklist" element={<BookingList />} />
 
 
+  <Route
+                      path="/admin"
+                      element={
+                        <AdminProtectedRoute>
+                          <AdminLayout />
+                        </AdminProtectedRoute>
+                      }
+                    >
 
+  <Route path="cities" element={<Cities />} />
+  <Route path="hotels" element={<Hotels />} />
+  <Route path="restaurants" element={<Restaurants />} />
+  <Route path="attractions" element={<Attractions />} />
+  <Route path="transportations" element={<Transportations />} />
+  <Route path="tours" element={<Tours />} />
+  <Route path="tourattraction" element={<TourAttraction />} />
+  <Route path="tourrestaurant" element={<TourRestaurant />} />
+  <Route path="revenue" element={<RevenueDashBoard />} />
+
+  
+  {/* Routes for image management */}
+  <Route path="hotel-images/:id" element={<HotelImages />} />
+  <Route path="restaurant-images/:id" element={<RestaurantImages />} />
+  <Route path="attraction-images/:id" element={<AttractionImages />} />
+  <Route path="transportation-images/:id" element={<TransportationImages />} />
+</Route>
 
                 </Routes>
             </BrowserRouter>

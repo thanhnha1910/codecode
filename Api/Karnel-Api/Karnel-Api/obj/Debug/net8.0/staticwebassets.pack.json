@@ -1,6 +1,22 @@
 {
   "Files": [
     {
+      "Id": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/images/attraction/attractionID1/926ae0c2-7475-4d5e-a469-5192b9c9a50b.jpg",
+      "PackagePath": "staticwebassets/images/attraction/attractionID1/926ae0c2-7475-4d5e-a469-5192b9c9a50b.jpg"
+    },
+    {
+      "Id": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/images/attraction/attractionID2/ec580971-76fb-4cc6-8849-145a80967c70.png",
+      "PackagePath": "staticwebassets/images/attraction/attractionID2/ec580971-76fb-4cc6-8849-145a80967c70.png"
+    },
+    {
+      "Id": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/images/hotel/hotelID1/45dd85ba-1ef5-4f27-93ed-a32bb5cbff61.jpg",
+      "PackagePath": "staticwebassets/images/hotel/hotelID1/45dd85ba-1ef5-4f27-93ed-a32bb5cbff61.jpg"
+    },
+    {
+      "Id": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/images/transportation/transportationID1/487b2ece-446f-414e-aee9-e069e95e6804.jpg",
+      "PackagePath": "staticwebassets/images/transportation/transportationID1/487b2ece-446f-414e-aee9-e069e95e6804.jpg"
+    },
+    {
       "Id": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/1e2f9be2-f3db-4331-a0b3-0beb4efdbc36.png",
       "PackagePath": "staticwebassets/uploads/avatars/1e2f9be2-f3db-4331-a0b3-0beb4efdbc36.png"
     },

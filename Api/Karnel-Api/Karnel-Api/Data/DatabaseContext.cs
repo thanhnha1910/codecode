@@ -21,6 +21,8 @@ public class DatabaseContext:DbContext
     public DbSet<Payment> Payments { get; set; }
     public DbSet<Image> Images { get; set; }
     public DbSet<Favorite> Favorites { get; set; }
+    public DbSet<TourAttraction> TourAttractions { get; set; }
+    public DbSet<TourRestaurants> TourRestaurants { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -64,26 +66,33 @@ public class DatabaseContext:DbContext
         modelBuilder.Entity<TourAttraction>()
             .HasOne(ta => ta.Tour)
             .WithMany(t => t.TourAttractions)
-            .HasForeignKey(ta => ta.TourID);
+            .HasForeignKey(ta => ta.TourID)
+            .OnDelete(DeleteBehavior.Cascade);
+            
+    
 
         modelBuilder.Entity<TourAttraction>()
             .HasOne(ta => ta.Attraction)
             .WithMany(a => a.TourAttractions)
-            .HasForeignKey(ta => ta.AttractionID);
+            .HasForeignKey(ta => ta.AttractionID)
+            .OnDelete(DeleteBehavior.Cascade);
+
 
         // TourRestaurant (Many-to-Many relationship)
-        modelBuilder.Entity<TourRestaurant>()
+        modelBuilder.Entity<TourRestaurants>()
             .HasKey(tr => new { tr.TourID, tr.RestaurantID });
 
-        modelBuilder.Entity<TourRestaurant>()
+        modelBuilder.Entity<TourRestaurants>()
             .HasOne(tr => tr.Tour)
             .WithMany(t => t.TourRestaurants)
-            .HasForeignKey(tr => tr.TourID);
+            .HasForeignKey(tr => tr.TourID)
+            .OnDelete(DeleteBehavior.Cascade);
 
-        modelBuilder.Entity<TourRestaurant>()
+        modelBuilder.Entity<TourRestaurants>()
             .HasOne(tr => tr.Restaurant)
             .WithMany(r => r.TourRestaurants)
-            .HasForeignKey(tr => tr.RestaurantID);
+            .HasForeignKey(tr => tr.RestaurantID)
+            .OnDelete(DeleteBehavior.Cascade);
 
         // User - Booking relationship
         modelBuilder.Entity<Booking>()

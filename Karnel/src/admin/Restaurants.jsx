@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Restaurants = () => {
+  const navigate = useNavigate();
   const [restaurants, setRestaurants] = useState([]);
+  const [cities, setCities] = useState([]); // Store city data
   const [formState, setFormState] = useState({
     restaurantName: "",
     cityID: 0,
@@ -17,13 +20,12 @@ const Restaurants = () => {
   const [showForm, setShowForm] = useState(false); // Control form visibility
 
   const apiUrl = "http://localhost:5128/api/Management/restaurants";
+  const citiesApiUrl = "http://localhost:5128/api/Management/cities"; // Assuming you have an API for cities
 
   const fetchRestaurants = async () => {
     try {
       setLoading(true);
       const response = await axios.get(apiUrl);
-
-      // Check if the response contains a valid array
       if (Array.isArray(response.data)) {
         setRestaurants(response.data); // Use response.data directly
       } else {
@@ -38,8 +40,24 @@ const Restaurants = () => {
     }
   };
 
+  const fetchCities = async () => {
+    try {
+      const response = await axios.get(citiesApiUrl);
+      if (Array.isArray(response.data)) {
+        setCities(response.data); // Set the cities data
+      } else {
+        setError("Data fetched is not in the expected format.");
+        console.error("Fetched city data is not in the expected format:", response.data);
+      }
+    } catch (err) {
+      setError("Failed to fetch cities.");
+      console.error(err);
+    }
+  };
+
   useEffect(() => {
     fetchRestaurants();
+    fetchCities(); // Fetch cities data on component mount
   }, []);
 
   const handleChange = (e) => {
@@ -58,6 +76,18 @@ const Restaurants = () => {
     setEditId(null);
   };
 
+  const handleEdit = (restaurant) => {
+    setFormState({
+      restaurantName: restaurant.restaurantName,
+      cuisine: restaurant.cuisine,
+      cityID: restaurant.cityID,
+      description: restaurant.description,
+    });
+    setEditMode(true);
+    setEditId(restaurant.restaurantID);
+    setShowForm(true); // Show the form when editing
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -67,10 +97,10 @@ const Restaurants = () => {
     try {
       if (editMode) {
         await axios.put(`${apiUrl}/${editId}`, formState);
-        setSuccessMessage("restaurant updated successfully!");
+        setSuccessMessage("Restaurant updated successfully!");
       } else {
         await axios.post(apiUrl, formState);
-        setSuccessMessage("restaurant added successfully!");
+        setSuccessMessage("Restaurant added successfully!");
       }
       await fetchRestaurants();
       resetForm();
@@ -104,11 +134,8 @@ const Restaurants = () => {
     }
   };
 
-  const handleEdit = (restaurant) => {
-    setFormState({ ...restaurant });
-    setEditMode(true);
-    setEditId(restaurant.id);
-    setShowForm(true); // Show the form when editing
+  const handleImageGallery = (restaurantId) => {
+    navigate(`/admin/restaurant-images/${restaurantId}`); // Navigate to the hotel images page
   };
 
   return (
@@ -135,20 +162,37 @@ const Restaurants = () => {
           {Object.keys(formState).map((key) => (
             <div key={key}>
               <label>{key.replace(/([A-Z])/g, " $1")}:</label>
-              <input
-                type={
-                  key.includes("Date")
-                    ? "date"
-                    : key === "price" || key.includes("ID") || key === "rating"
-                      ? "number"
-                      : "text"
-                }
-                name={key}
-                value={formState[key]}
-                onChange={handleChange}
-                className="border rounded p-2 w-full"
-                required
-              />
+              {key === "cityID" ? (
+                <select
+                  name={key}
+                  value={formState[key]}
+                  onChange={handleChange}
+                  className="border rounded p-2 w-full"
+                  required
+                >
+                  <option value={0}>Select City</option>
+                  {cities.map((city) => (
+                    <option key={city.cityID} value={city.cityID}>
+                      {city.cityName}
+                    </option>
+                  ))}
+                </select>
+              ) : (
+                <input
+                  type={
+                    key.includes("Date")
+                      ? "date"
+                      : key === "price" || key.includes("ID") || key === "rating"
+                        ? "number"
+                        : "text"
+                  }
+                  name={key}
+                  value={formState[key]}
+                  onChange={handleChange}
+                  className="border rounded p-2 w-full"
+                  required
+                />
+              )}
             </div>
           ))}
           <div className="flex justify-center">
@@ -176,9 +220,9 @@ const Restaurants = () => {
       ) : (
         <table className="table-auto w-full border-collapse border border-gray-300">
           <thead>
-            <tr>
+            <tr className="bg-gray-100">
               <th className="border border-gray-300 px-4 py-2">Restaurant Name</th>
-              <th className="border border-gray-300 px-4 py-2">CityID</th>
+              <th className="border border-gray-300 px-4 py-2">CityName</th>
               <th className="border border-gray-300 px-4 py-2">Cuisine</th>
               <th className="border border-gray-300 px-4 py-2">Description</th>
               <th className="border border-gray-300 px-4 py-2">Actions</th>
@@ -188,7 +232,9 @@ const Restaurants = () => {
             {restaurants.map((restaurant) => (
               <tr key={restaurant.restaurantID}>
                 <td className="border border-gray-300 px-4 py-2">{restaurant.restaurantName}</td>
-                <td className="border border-gray-300 px-4 py-2">{restaurant.cityID}</td>
+                <td className="border border-gray-300 px-4 py-2">
+                  {cities.find((city) => city.cityID === restaurant.cityID)?.cityName || "Unknown"}
+                </td>
                 <td className="border border-gray-300 px-4 py-2">{restaurant.cuisine}</td>
                 <td className="border border-gray-300 px-4 py-2">{restaurant.description}</td>
                 <td className="border border-gray-300 px-4 py-2">
@@ -200,10 +246,16 @@ const Restaurants = () => {
                   </button>
                   <button
                     onClick={() => handleDelete(restaurant.restaurantID)}
-                    className="bg-red-500 text-white py-1 px-2 rounded"
+                    className="bg-red-500 text-white py-1 px-2 rounded mr-2"
                     disabled={loading}
                   >
                     Delete
+                  </button>
+                  <button
+                    onClick={() => handleImageGallery(restaurant.restaurantID)} // Pass the attraction ID
+                    className="bg-blue-500 text-white py-1 px-2 rounded"
+                  >
+                    Image Gallery
                   </button>
                 </td>
               </tr>

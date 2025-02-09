@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Hotels = () => {
+  const navigate = useNavigate();
   const [hotels, setHotels] = useState([]);
+  const [cities, setCities] = useState([]); // State for cities
   const [formState, setFormState] = useState({
     hotelName: "",
     address: "",
     cityID: 0,
-    rating: 0,
     description: "",
   });
   const [editMode, setEditMode] = useState(false);
@@ -18,29 +20,46 @@ const Hotels = () => {
   const [showForm, setShowForm] = useState(false); // Control form visibility
 
   const apiUrl = "http://localhost:5128/api/Management/hotels";
+  const citiesApiUrl = "http://localhost:5128/api/Management/cities"; // API URL for cities
 
+  // Fetch hotels data
   const fetchHotels = async () => {
     try {
       setLoading(true);
       const response = await axios.get(apiUrl);
-
-      // Check if the response contains a valid array
       if (Array.isArray(response.data)) {
-        setHotels(response.data); // Use response.data directly
+        setHotels(response.data);
       } else {
         setError("Data fetched is not in the expected format.");
         console.error("Fetched data is not in the expected format:", response.data);
       }
     } catch (err) {
-      setError("Failed to fetch restaurants.");
+      setError("Failed to fetch hotels.");
       console.error(err);
     } finally {
       setLoading(false);
     }
   };
 
+  // Fetch cities data
+  const fetchCities = async () => {
+    try {
+      const response = await axios.get(citiesApiUrl);
+      if (Array.isArray(response.data)) {
+        setCities(response.data); // Assuming response.data contains a list of cities
+      } else {
+        setError("Data fetched is not in the expected format.");
+        console.error("Fetched data is not in the expected format:", response.data);
+      }
+    } catch (err) {
+      setError("Failed to fetch cities.");
+      console.error(err);
+    }
+  };
+
   useEffect(() => {
     fetchHotels();
+    fetchCities(); // Fetch cities when component mounts
   }, []);
 
   const handleChange = (e) => {
@@ -53,11 +72,22 @@ const Hotels = () => {
       hotelName: "",
       address: "",
       cityID: 0,
-      rating: 0,
       description: "",
     });
     setEditMode(false);
     setEditId(null);
+  };
+
+  const handleEdit = (hotel) => {
+    setFormState({
+      hotelName: hotel.hotelName,
+      address: hotel.address,
+      cityID: hotel.cityID,
+      description: hotel.description,
+    });
+    setEditMode(true);
+    setEditId(hotel.hotelID); // Use hotelID for PUT requests
+    setShowForm(true); // Show the form when editing
   };
 
   const handleSubmit = async (e) => {
@@ -68,13 +98,19 @@ const Hotels = () => {
 
     try {
       if (editMode) {
-        await axios.put(`${apiUrl}/${editId}`, formState);
+        // Use editId (hotelID) for the PUT request
+        await axios.put(`${apiUrl}/${editId}`, {
+          hotelName: formState.hotelName,
+          address: formState.address,
+          cityID: formState.cityID,
+          description: formState.description,
+        });
         setSuccessMessage("Hotel updated successfully!");
       } else {
         await axios.post(apiUrl, formState);
         setSuccessMessage("Hotel added successfully!");
       }
-      await fetchHotels();
+      await fetchHotels(); // Refresh the hotels list
       resetForm();
       setShowForm(false); // Hide the form after submission
     } catch (err) {
@@ -86,7 +122,7 @@ const Hotels = () => {
   };
 
   const handleDelete = async (id) => {
-    const confirmed = window.confirm("Are you sure you want to delete this hotel");
+    const confirmed = window.confirm("Are you sure you want to delete this hotel?");
     if (!confirmed) {
       return; // Exit the function if the user cancels
     }
@@ -106,11 +142,8 @@ const Hotels = () => {
     }
   };
 
-  const handleEdit = (hotel) => {
-    setFormState({ ...hotel });
-    setEditMode(true);
-    setEditId(hotel.id);
-    setShowForm(true); // Show the form when editing
+  const handleImageGallery = (hotelId) => {
+    navigate(`/admin/hotel-images/${hotelId}`); // Navigate to the hotel images page
   };
 
   return (
@@ -137,20 +170,37 @@ const Hotels = () => {
           {Object.keys(formState).map((key) => (
             <div key={key}>
               <label>{key.replace(/([A-Z])/g, " $1")}:</label>
-              <input
-                type={
-                  key.includes("Date")
-                    ? "date"
-                    : key === "price" || key.includes("ID") || key === "rating"
-                    ? "number"
-                    : "text"
-                }
-                name={key}
-                value={formState[key]}
-                onChange={handleChange}
-                className="border rounded p-2 w-full"
-                required
-              />
+              {key === "cityID" ? (
+                <select
+                  name={key}
+                  value={formState[key]}
+                  onChange={handleChange}
+                  className="border rounded p-2 w-full"
+                  required
+                >
+                  <option value={0}>Select a city</option>
+                  {cities.map((city) => (
+                    <option key={city.cityID} value={city.cityID}>
+                      {city.cityName}
+                    </option>
+                  ))}
+                </select>
+              ) : (
+                <input
+                  type={
+                    key.includes("Date")
+                      ? "date"
+                      : key === "price" || key.includes("ID") || key === "rating"
+                        ? "number"
+                        : "text"
+                  }
+                  name={key}
+                  value={formState[key]}
+                  onChange={handleChange}
+                  className="border rounded p-2 w-full"
+                  required
+                />
+              )}
             </div>
           ))}
           <div className="flex justify-center">
@@ -178,11 +228,10 @@ const Hotels = () => {
       ) : (
         <table className="table-auto w-full border-collapse border border-gray-300">
           <thead>
-            <tr>
+            <tr className="bg-gray-100">
               <th className="border border-gray-300 px-4 py-2">Hotel Name</th>
               <th className="border border-gray-300 px-4 py-2">Address</th>
-              <th className="border border-gray-300 px-4 py-2">CityID</th>
-              <th className="border border-gray-300 px-4 py-2">Rating</th>
+              <th className="border border-gray-300 px-4 py-2">City</th>
               <th className="border border-gray-300 px-4 py-2">Description</th>
               <th className="border border-gray-300 px-4 py-2">Actions</th>
             </tr>
@@ -192,8 +241,9 @@ const Hotels = () => {
               <tr key={hotel.hotelID}>
                 <td className="border border-gray-300 px-4 py-2">{hotel.hotelName}</td>
                 <td className="border border-gray-300 px-4 py-2">{hotel.address}</td>
-                <td className="border border-gray-300 px-4 py-2">{hotel.cityID}</td>
-                <td className="border border-gray-300 px-4 py-2">{hotel.rating}</td>
+                <td className="border border-gray-300 px-4 py-2">
+                  {cities.find((city) => city.cityID === hotel.cityID)?.cityName}
+                </td>
                 <td className="border border-gray-300 px-4 py-2">{hotel.description}</td>
                 <td className="border border-gray-300 px-4 py-2">
                   <button
@@ -204,12 +254,20 @@ const Hotels = () => {
                   </button>
                   <button
                     onClick={() => handleDelete(hotel.hotelID)}
-                    className="bg-red-500 text-white py-1 px-2 rounded"
+                    className="bg-red-500 text-white py-1 px-2 rounded mr-2"
                     disabled={loading}
                   >
                     Delete
                   </button>
+                  <button
+                    onClick={() => handleImageGallery(hotel.hotelID)} // Pass the hotel ID
+                    className="bg-blue-500 text-white py-1 px-2 rounded"
+                  >
+                    Image Gallery
+                  </button>
+
                 </td>
+
               </tr>
             ))}
           </tbody>

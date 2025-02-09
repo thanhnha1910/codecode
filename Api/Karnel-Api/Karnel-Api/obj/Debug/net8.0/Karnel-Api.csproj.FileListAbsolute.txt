@@ -265,3 +265,4 @@
 /Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/bin/Debug/net8.0/BCrypt.Net-Next.dll
 /Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/bin/Debug/net8.0/PayPalCheckoutSdk.dll
 /Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/bin/Debug/net8.0/PayPalHttp-Dotnet.dll
+/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/bin/Debug/net8.0/serpapi.dll

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "csDF92uSjVk=",
+  "dgSpecHash": "dtWlasCXHy8=",
   "success": true,
   "projectFilePath": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/Karnel-Api.csproj",
   "expectedPackageFiles": [
@@ -8,6 +8,7 @@
     "/Users/nha/.nuget/packages/azure.identity/1.10.3/azure.identity.1.10.3.nupkg.sha512",
     "/Users/nha/.nuget/packages/bcrypt.net-next/4.0.3/bcrypt.net-next.4.0.3.nupkg.sha512",
     "/Users/nha/.nuget/packages/bouncycastle.cryptography/2.5.0/bouncycastle.cryptography.2.5.0.nupkg.sha512",
+    "/Users/nha/.nuget/packages/google-search-results-dotnet/2.0.1/google-search-results-dotnet.2.0.1.nupkg.sha512",
     "/Users/nha/.nuget/packages/humanizer/2.14.1/humanizer.2.14.1.nupkg.sha512",
     "/Users/nha/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
     "/Users/nha/.nuget/packages/humanizer.core.af/2.14.1/humanizer.core.af.2.14.1.nupkg.sha512",

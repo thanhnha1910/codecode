@@ -47,7 +47,15 @@ const Cities = () => {
     setEditMode(false);
     setEditId(null);
   };
-
+  const handleEdit = (city) => {
+    setFormState({
+      cityName: city.cityName,  
+      description: city.description,
+    });
+    setEditMode(true);
+    setEditId(city.cityID);
+    setShowForm(true); // Show the form when editing
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -89,13 +97,6 @@ const Cities = () => {
     } finally {
       setLoading(false);
     }
-  };
-
-  const handleEdit = (city) => {
-    setFormState({ ...city });
-    setEditMode(true);
-    setEditId(city.cityID);
-    setShowForm(true);
   };
 
   const toggleDetails = (cityID) => {

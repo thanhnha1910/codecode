@@ -1,298 +1,238 @@
 import { useState, useEffect } from "react";
 import { Bar, Pie } from "react-chartjs-2";
-import {
-    Chart as ChartJS,
+import { Chart as ChartJS, ArcElement, Tooltip, Legend, CategoryScale, LinearScale, BarElement, LineElement, PointElement } from "chart.js";
+
+ChartJS.register(
     ArcElement,
+    BarElement,
     Tooltip,
     Legend,
     CategoryScale,
     LinearScale,
-    BarElement,
-    PointElement,
-    LineElement
-} from "chart.js";
-ChartJS.register(ArcElement, BarElement, Tooltip, Legend, CategoryScale, LinearScale, PointElement, LineElement);
+    LineElement,
+    PointElement
+);
 
-const RevenueDashboard = ({ year }) => {
+const RevenueDashBoard = ({ year }) => {
     const [chartData, setChartData] = useState({});
     const [pieChartData, setPieChartData] = useState({});
     const [combinedChartData, setCombinedChartData] = useState({});
     const [loading, setLoading] = useState(true);
-    const [filterType, setFilterType] = useState("month"); // month, quarter, year
+    const [filterType, setFilterType] = useState("month");
     const [selectedYear, setSelectedYear] = useState(2023);
-    const [isTopRevenue, setIsTopRevenue] = useState(true);
-    const [tableData, setTableData] = useState([]);
-    const [comparisonData, setComparisonData] = useState([]);
-
-    // Function to fetch real data from API
+    const [topTours, setTopTours] = useState([]);
     const fetchData = async () => {
         setLoading(true);
-
         try {
-            const response = await fetch("http://localhost:5128/api/PaymentStatistics/GetAllPayments/");
-            const data = await response.json();
-
-            // Example of expected structure of response data
-            const mockData = data;
-
-            const timeLabels =
-                filterType === "month"
-                    ? [
-                        "January",
-                        "February",
-                        "March",
-                        "April",
-                        "May",
-                        "June",
-                        "July",
-                        "August",
-                        "September",
-                        "October",
-                        "November",
-                        "December"
-                    ]
-                    : filterType === "year"
-                        ? ["2022", "2023", "2024"]
-                        : ["Q1", "Q2", "Q3", "Q4"];
-
-            const revenuesByMonth = mockData.map(() => Math.floor(Math.random() * 2000) + 500);
-
+            let url;
+            
+            // Chọn API endpoint dựa trên filterType
+            if (filterType === "month") {
+                // Lấy dữ liệu theo tháng
+                const currentMonth = new Date().getMonth() + 1;
+                url = `http://localhost:5128/api/PaymentStatistics/RevenueByTourMonthly?year=${selectedYear}&month=${currentMonth}`;
+            } else if (filterType === "quarter") {
+                // Lấy dữ liệu theo quý
+                const currentQuarter = Math.floor((new Date().getMonth() + 3) / 3);
+                url = `http://localhost:5128/api/PaymentStatistics/RevenueByTourQuarterly?year=${selectedYear}&quarter=${currentQuarter}`;
+            } else {
+                // Lấy dữ liệu theo năm
+                url = `http://localhost:5128/api/PaymentStatistics/RevenueByTourYearly?year=${selectedYear}`;
+            }
+    
+            // Lấy top 5 tour phổ biến
+            const top5Response = await fetch(`http://localhost:5128/api/PaymentStatistics/Top5PopularTours?year=${selectedYear}`);
+            const top5Data = await top5Response.json();
+    
+            const response = await fetch(url);
+            const jsonData = await response.json();
+    
+            if (!response.ok || !top5Response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+    
+            // Xử lý dữ liệu cho biểu đồ
+            const revenueData = jsonData.map(item => ({
+                tourId: item.tourID,
+                revenue: item.totalRevenue,
+                bookings: item.totalPayments
+            }));
+    
+            // Cập nhật chart data
             setChartData({
-                labels: timeLabels,
-                datasets: [
-                    {
-                        label: "Revenue (in USD)",
-                        data: revenuesByMonth,
-                        backgroundColor: "rgba(75, 192, 192, 0.6)",
-                        borderColor: "rgba(75, 192, 192, 1)",
-                        borderWidth: 1
-                    }
-                ]
+                labels: revenueData.map(item => `Tour ${item.tourId}`),
+                datasets: [{
+                    label: 'Revenue',
+                    data: revenueData.map(item => item.revenue),
+                    backgroundColor: 'rgba(75, 192, 192, 0.6)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
             });
-
-            const previousRevenues = revenuesByMonth.map((rev, index) =>
-                index > 0 ? revenuesByMonth[index - 1] : revenuesByMonth[index]
-            );
-
-            const comparison = revenuesByMonth.map((rev, index) => {
-                const prev = previousRevenues[index];
-                const change = ((rev - prev) / prev) * 100;
-                return index > 0 ? change.toFixed(2) : "N/A";
-            });
-
-            setComparisonData(
-                comparison.slice(1).map((change, index) => ({
-                    value: change,
-                    isPositive: change >= 0,
-                    label: timeLabels[index + 1]
-                }))
-            );
-
-            const tourLabels = mockData.map((item) => `Tour ${item.tourID}`);
-            const bookings = mockData.map((item) => item.TotalBookings);
-
+    
+            // Cập nhật pie chart data
+            const totalBookings = top5Data.reduce((sum, item) => sum + item.totalBookings, 0);
             setPieChartData({
-                labels: tourLabels,
-                datasets: [
-                    {
-                        data: bookings,
-                        backgroundColor: [
-                            "#FFB6C1",
-                            "#FFDAB9",
-                            "#FFFACD",
-                            "#D3FFCE",
-                            "#ADD8E6"
-                        ],
-                        hoverBackgroundColor: [
-                            "#FFB6C1",
-                            "#FFDAB9",
-                            "#FFFACD",
-                            "#D3FFCE",
-                            "#ADD8E6"
-                        ],
-                        label: "% of Bookings",
-                        hoverOffset: 4
-                    }
-                ]
+                labels: top5Data.map(item => `Tour ${item.tourID}`),
+                datasets: [{
+                    data: top5Data.map(item => ((item.totalBookings / totalBookings) * 100).toFixed(2)),
+                    backgroundColor: [
+                        '#FFB6C1', '#FFDAB9', '#FFFACD', '#D3FFCE', '#ADD8E6'
+                    ]
+                }]
             });
-
+    
+            // Cập nhật combined chart data
             setCombinedChartData({
-                labels: tourLabels,
+                labels: revenueData.map(item => `Tour ${item.tourId}`),
                 datasets: [
                     {
-                        label: "Total Bookings",
-                        data: bookings,
-                        type: "bar",
-                        backgroundColor: "rgba(255, 159, 64, 0.6)",
-                        borderColor: "rgba(255, 159, 64, 1)",
+                        label: 'Bookings',
+                        data: revenueData.map(item => item.bookings),
+                        type: 'bar',
+                        backgroundColor: 'rgba(255, 159, 64, 0.6)',
+                        borderColor: 'rgba(255, 159, 64, 1)',
                         borderWidth: 1
                     },
                     {
-                        label: "Revenue (in USD)",
-                        data: mockData.map((item) => item.TotalRevenue),
-                        type: "line",
-                        borderColor: "#4BC0C0",
+                        label: 'Revenue',
+                        data: revenueData.map(item => item.revenue),
+                        type: 'line',
+                        borderColor: '#4BC0C0',
                         borderWidth: 2,
                         fill: false
                     }
                 ]
             });
-
-            const sortedByRevenue = [...mockData].sort((a, b) => b.TotalRevenue - a.TotalRevenue);
-            const sortedByLowRevenue = [...mockData].sort((a, b) => a.TotalRevenue - b.TotalRevenue);
-            setTableData(isTopRevenue ? sortedByRevenue.slice(0, 3) : sortedByLowRevenue.slice(0, 3));
-
+    
+            setTopTours(top5Data);
             setLoading(false);
+    
         } catch (error) {
-            console.error("Error fetching data:", error);
+            console.error("Error fetching data:", error.message);
             setLoading(false);
         }
     };
+    
+    
 
     useEffect(() => {
         fetchData();
-    }, [filterType, selectedYear, isTopRevenue]);
-
-    const handleFilterChange = (e) => {
-        setFilterType(e.target.value);
-    };
-
-    const handleYearChange = (e) => {
-        setSelectedYear(Number(e.target.value));
-    };
-
-    const toggleRevenueView = () => {
-        setIsTopRevenue((prev) => !prev);
-    };
-
+    }, [filterType, selectedYear]);
     if (loading) {
-        return <p>Loading...</p>;
-    } else {
         return (
-            <div style={{ fontFamily: "Arial, sans-serif", padding: "20px", maxWidth: "1000px", margin: "auto" }}>
-                <h1
-                    style={{
-                        textAlign: "center",
-                        fontSize: "2.5rem",
-                        fontWeight: "bold",
-                        color: "#333",
-                        marginBottom: "20px",
-                        textShadow: "2px 2px 4px rgba(255, 182, 193, 0.8)"
-                    }}
-                >
-                    Revenue Report
-                </h1>
-
-                <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "20px" }}>
-                    <div>
-                        <label style={{ fontWeight: "bold", marginRight: "10px" }}>Year:</label>
-                        <select
-                            value={selectedYear}
-                            onChange={handleYearChange}
-                            style={{ padding: "5px", borderRadius: "5px" }}
-                        >
-                            <option value="2022">2022</option>
-                            <option value="2023">2023</option>
-                            <option value="2024">2024</option>
-                        </select>
-                    </div>
-
-                    <div>
-                        <label style={{ fontWeight: "bold", marginRight: "10px" }}>Filter by:</label>
-                        <select
-                            value={filterType}
-                            onChange={handleFilterChange}
-                            style={{ padding: "5px", borderRadius: "5px" }}
-                        >
-                            <option value="month">Month</option>
-                            <option value="quarter">Quarter</option>
-                            <option value="year">Year</option>
-                        </select>
-                    </div>
-                </div>
-
-                {/* Section 1: Bar chart with revenue comparison */}
-                <div style={{ marginBottom: "30px" }}>
-                    <h2 style={{ textAlign: "center", fontSize: "1.5rem", color: "#444" }}>Revenue Over Time ({filterType})</h2>
-                    <Bar data={chartData} />
-                    <div style={{ display: "flex", justifyContent: "space-between", marginTop: "20px" }}>
-                        {comparisonData.map((item, index) => (
-                            <div
-                                key={index}
-                                style={{
-                                    width: "30%",
-                                    textAlign: "center",
-                                    padding: "10px",
-                                    backgroundColor: item.isPositive ? "#d4f8db" : "#f8d4d4",
-                                    borderRadius: "5px",
-                                    boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)"
-                                }}
-                            >
-                                <h3 style={{ fontSize: "1rem", color: item.isPositive ? "#28a745" : "#dc3545" }}>
-                                    {item.isPositive ? "Increase" : "Decrease"}
-                                </h3>
-                                <p style={{ fontSize: "1.2rem", fontWeight: "bold" }}>
-                                    {item.value}%<br />
-                                    <span style={{ color: "#666" }}>({item.label})</span>
-                                </p>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-
-                {/* Section 2: Pie chart */}
-                <div style={{ marginBottom: "30px" }}>
-                    <h2 style={{ textAlign: "center", fontSize: "1.5rem", color: "#444" }}>Tour Bookings Distribution</h2>
-                    <Pie data={pieChartData} />
-                </div>
-
-                {/* Section 3: Combined bar and line chart */}
-                <div style={{ marginBottom: "30px" }}>
-                    <h2 style={{ textAlign: "center", fontSize: "1.5rem", color: "#444" }}>Bookings and Revenue Per Tour</h2>
-                    <Bar data={combinedChartData} />
-                </div>
-
-                {/* Section 4: Top 3 revenue tours */}
-                <div style={{ marginBottom: "30px" }}>
-                    <h2 style={{ textAlign: "center", fontSize: "1.5rem", color: "#444" }}>
-                        Top 3 {isTopRevenue ? "Highest Revenue" : "Lowest Revenue"} Tours
-                    </h2>
-                    <button
-                        style={{
-                            padding: "10px 20px",
-                            backgroundColor: "#007BFF",
-                            color: "white",
-                            border: "none",
-                            borderRadius: "5px",
-                            cursor: "pointer",
-                            margin: "10px 0"
-                        }}
-                        onClick={toggleRevenueView}
-                    >
-                        {isTopRevenue ? "View Lowest Revenue" : "View Highest Revenue"}
-                    </button>
-                    <table style={{ width: "100%", borderCollapse: "collapse" }}>
-                        <thead>
-                        <tr style={{ backgroundColor: "#f9f9f9" }}>
-                            <th style={{ padding: "10px", border: "1px solid #ddd" }}>Tour ID</th>
-                            <th style={{ padding: "10px", border: "1px solid #ddd" }}>Total Revenue (USD)</th>
-                            <th style={{ padding: "10px", border: "1px solid #ddd" }}>Total Bookings</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {tableData.map((tour) => (
-                            <tr key={tour.TourID}>
-                                <td style={{ padding: "10px", border: "1px solid #ddd" }}>{tour.TourID}</td>
-                                <td style={{ padding: "10px", border: "1px solid #ddd" }}>${tour.TotalRevenue}</td>
-                                <td style={{ padding: "10px", border: "1px solid #ddd" }}>{tour.TotalBookings}</td>
-                            </tr>
-                        ))}
-                        </tbody>
-                    </table>
-                </div>
+            <div className="flex items-center justify-center min-h-screen">
+                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
             </div>
         );
     }
-};
 
-export default RevenueDashboard;
+    return (
+        <div className="min-h-screen bg-gray-50 p-8">
+            <div className="max-w-7xl mx-auto space-y-8">
+                <div className="bg-white rounded-lg shadow-lg p-6">
+                    <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center">
+                        Revenue Dashboard
+                    </h1>
+                    
+                    <div className="flex flex-wrap justify-center gap-6 mb-4">
+                        <div className="flex items-center space-x-2">
+                            <label className="text-gray-700 font-medium">Filter Type:</label>
+                            <select 
+                                value={filterType} 
+                                onChange={(e) => setFilterType(e.target.value)}
+                                className="form-select rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200"
+                            >
+                                <option value="month">Month</option>
+                                <option value="quarter">Quarter</option>
+                                <option value="year">Year</option>
+                            </select>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                            <label className="text-gray-700 font-medium">Year:</label>
+                            <select 
+                                value={selectedYear} 
+                                onChange={(e) => setSelectedYear(Number(e.target.value))}
+                                disabled={filterType === "year"}
+                                className="form-select rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200"
+                            >
+                                <option value={2023}>2023</option>
+                                <option value={2024}>2024</option>
+                                <option value={2025}>2025</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div className="bg-white rounded-lg shadow-lg p-6">
+                        <h2 className="text-xl font-semibold text-gray-800 mb-4">Revenue Over Time</h2>
+                        <div className="h-[400px]">
+                            <Bar data={chartData} options={{ maintainAspectRatio: false }} />
+                        </div>
+                    </div>
+
+                    <div className="bg-white rounded-lg shadow-lg p-6">
+                        <h2 className="text-xl font-semibold text-gray-800 mb-4">Percentage of Bookings</h2>
+                        <div className="h-[400px]">
+                            <Pie 
+                                data={pieChartData} 
+                                options={{
+                                    maintainAspectRatio: false,
+                                    plugins: {
+                                        tooltip: {
+                                            callbacks: {
+                                                label: function(tooltipItem) {
+                                                    return `${tooltipItem.raw}%`;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }} 
+                            />
+                        </div>
+                    </div>
+
+                    <div className="bg-white rounded-lg shadow-lg p-6 lg:col-span-2">
+                        <h2 className="text-xl font-semibold text-gray-800 mb-4">Bookings and Revenue by Tour</h2>
+                        <div className="h-[400px]">
+                            <Bar data={combinedChartData} options={{ maintainAspectRatio: false }} />
+                        </div>
+                    </div>
+
+                    <div className="bg-white rounded-lg shadow-lg p-6 lg:col-span-2">
+                        <h2 className="text-xl font-semibold text-gray-800 mb-4">Top 3 Most Popular Tours</h2>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            {topTours.slice(0, 3).map((tour, index) => (
+                                <div 
+                                    key={tour.tourID}
+                                    className="bg-gray-50 rounded-lg p-4 border border-gray-200"
+                                >
+                                    <div className="flex items-center space-x-2 mb-2">
+                                        <span className={`text-lg font-bold ${
+                                            index === 0 ? 'text-yellow-500' : 
+                                            index === 1 ? 'text-gray-500' : 
+                                            'text-bronze-500'
+                                        }`}>
+                                            #{index + 1}
+                                        </span>
+                                        <h3 className="font-semibold">Tour {tour.tourID}</h3>
+                                    </div>
+                                    <p className="text-gray-600">
+                                        <span className="font-medium">{tour.totalBookings}</span> bookings
+                                    </p>
+                                    <p className="text-green-600 font-medium">
+                                        ${tour.totalRevenue} revenue
+                                    </p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+
+export default RevenueDashBoard;

@@ -72,6 +72,18 @@
           }
         }
       },
+      "google-search-results-dotnet/2.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "12.0.2"
+        },
+        "compile": {
+          "lib/netcoreapp3.1/serpapi.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/serpapi.dll": {}
+        }
+      },
       "Humanizer/2.14.1": {
         "type": "package",
         "dependencies": {
@@ -2992,6 +3004,19 @@
         "lib/netstandard2.0/BouncyCastle.Cryptography.dll",
         "lib/netstandard2.0/BouncyCastle.Cryptography.xml",
         "packageIcon.png"
+      ]
+    },
+    "google-search-results-dotnet/2.0.1": {
+      "sha512": "0zn2eLhmyCWlo2eHb/U6txtVzNmfMBXe3LLh9SGNXGkiE55FF7mD12VypqYwvayGH9yF+EgPA6zoa2RgfchPog==",
+      "type": "package",
+      "path": "google-search-results-dotnet/2.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "MIT-LICENSE.txt",
+        "google-search-results-dotnet.2.0.1.nupkg.sha512",
+        "google-search-results-dotnet.nuspec",
+        "lib/netcoreapp3.1/serpapi.dll"
       ]
     },
     "Humanizer/2.14.1": {
@@ -8136,7 +8161,8 @@
       "Microsoft.EntityFrameworkCore.Tools >= 8.0.8",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 8.0.7",
       "PayPalCheckoutSdk >= 1.0.4",
-      "Swashbuckle.AspNetCore >= 6.4.0"
+      "Swashbuckle.AspNetCore >= 6.4.0",
+      "google-search-results-dotnet >= 2.0.1"
     ]
   },
   "packageFolders": {
@@ -8223,6 +8249,10 @@
           "Swashbuckle.AspNetCore": {
             "target": "Package",
             "version": "[6.4.0, )"
+          },
+          "google-search-results-dotnet": {
+            "target": "Package",
+            "version": "[2.0.1, )"
           }
         },
         "imports": [

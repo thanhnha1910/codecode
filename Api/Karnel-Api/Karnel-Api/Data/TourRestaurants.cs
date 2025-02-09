@@ -1,6 +1,6 @@
 namespace Karnel_Api.Data;
 
-public class TourRestaurant
+public class TourRestaurants
 {
     public int TourID { get; set; }
     public Tour Tour { get; set; }

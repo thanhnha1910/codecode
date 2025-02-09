@@ -23,30 +23,18 @@ export default function PaymentConfirmation() {
             <p className="text-gray-600">Status: <span className="font-semibold text-green-500">{paymentData.paymentStatus}</span></p>
             <p className="text-gray-600">{paymentData.message}</p>
             
-            {/* Thêm thông tin về email */}
             <div className="mt-4 p-4 bg-blue-50 rounded-lg">
-              <p className="text-blue-600">
-                <i className="fas fa-envelope mr-2"></i>
+              <p className="text-blue-600 flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
                 A confirmation email has been sent to your registered email address. Please check your inbox for detailed booking information.
               </p>
             </div>
           </div>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-            <button
-              onClick={() => window.location.href = '/profile'}
-              className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition duration-300"
-            >
-              View My Bookings
-            </button>
-            <button
-              onClick={() => window.location.href = '/tours'}
-              className="bg-gray-600 text-white px-6 py-2 rounded-md hover:bg-gray-700 transition duration-300"
-            >
-              Browse More Tours
-            </button>
-          </div>
+          {/* Rest of the component remains the same */}
         </div>
       </div>
     </div>
-  );
+);
 }

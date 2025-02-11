@@ -33,11 +33,37 @@ namespace Karnel_Api.Controller
     {
         try
         {
-            var booking = await _context.Bookings.FindAsync(bookingId);
+            var booking = await _context.Bookings
+                .Include(b => b.Tour)
+                .FirstOrDefaultAsync(b => b.BookingID == bookingId);
+
             if (booking == null)
                 return NotFound("Booking not found");
 
-            var order = await _paypalService.CreatePayment(booking.TotalAmount);
+            // Tính lại tổng tiền chính xác
+            decimal totalAmount = 
+                (booking.AdultQuantity * booking.AdultUnitPrice) +
+                (booking.ChildQuantity * booking.ChildUnitPrice) +
+                (booking.InfantQuantity * booking.InfantUnitPrice);
+
+            // Log để debug
+            _logger.LogInformation($"""
+                                        Calculating payment amount:
+                                        Adults: {booking.AdultQuantity} x ${booking.AdultUnitPrice} = ${booking.AdultQuantity * booking.AdultUnitPrice}
+                                        Children: {booking.ChildQuantity} x ${booking.ChildUnitPrice} = ${booking.ChildQuantity * booking.ChildUnitPrice}
+                                        Infants: {booking.InfantQuantity} x ${booking.InfantUnitPrice} = ${booking.InfantQuantity * booking.InfantUnitPrice}
+                                        Total Amount: ${totalAmount}
+                                    """);
+
+            // Cập nhật TotalAmount trong booking nếu cần
+            if (booking.TotalAmount != totalAmount)
+            {
+                booking.TotalAmount = totalAmount;
+                await _context.SaveChangesAsync();
+            }
+
+            var order = await _paypalService.CreatePayment(totalAmount);
+        
             booking.PayPalOrderID = order.Id;
             await _context.SaveChangesAsync();
 
@@ -50,7 +76,6 @@ namespace Karnel_Api.Controller
             return BadRequest(new { message = "Failed to initiate payment", error = ex.Message });
         }
     }
-
     [HttpPost("capture")]
     public async Task<ActionResult> CapturePayment([FromBody] PaymentCaptureRequest request)
     {

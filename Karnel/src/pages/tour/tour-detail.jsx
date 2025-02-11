@@ -121,9 +121,11 @@ export default function TourDetail() {
 
                             <Tabs defaultValue="attraction">
                                 <TabsList>
-                                    <TabsTrigger value="attraction">Places</TabsTrigger>
+                                    <TabsTrigger value="attraction">Attraction</TabsTrigger>
                                     <TabsTrigger value="restaurant">Restaurants</TabsTrigger>
                                     <TabsTrigger value="hotel">Hotels</TabsTrigger>
+                                    <TabsTrigger value="hotel">Resort</TabsTrigger>
+
                                 </TabsList>
                                 <TabsContent value="attraction" className="pt-6">
                                     <Carousel opts={{ align: "start" }}>

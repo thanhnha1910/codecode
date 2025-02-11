@@ -7,8 +7,14 @@ export default function RestaurantCard({restaurant}) {
     const cityName = useParams().cityName;
     return (
         <Card className="p-1">
-            <CardImage className="w-full object-cover rounded-lg" src={restaurant.thumbnail} alt={`Image of ${restaurant.title}`} />
-            <CardHeader className="px-2 pb-2 grid grid-rows-3">
+<CardImage 
+  className="w-full object-cover rounded-lg" 
+  src={restaurant.thumbnail ? 
+    `http://localhost:5128${restaurant.thumbnail}` : 
+    "/images/home/placeholder.svg"
+  }
+  alt={`Image of ${restaurant.title}`} 
+/>            <CardHeader className="px-2 pb-2 grid grid-rows-3">
                 <CardTitle className="text-xl">{restaurant.title}</CardTitle>
                 <CardDescription className="flex flex-col gap-2">
                     <div className="flex gap-2 items-center">

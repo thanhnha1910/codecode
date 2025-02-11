@@ -22,7 +22,7 @@ public class DatabaseContext:DbContext
     public DbSet<Image> Images { get; set; }
     public DbSet<Favorite> Favorites { get; set; }
     public DbSet<TourAttraction> TourAttractions { get; set; }
-    public DbSet<TourRestaurants> TourRestaurants { get; set; }
+    public DbSet<TourRestaurant> TourRestaurants { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -79,16 +79,16 @@ public class DatabaseContext:DbContext
 
 
         // TourRestaurant (Many-to-Many relationship)
-        modelBuilder.Entity<TourRestaurants>()
+        modelBuilder.Entity<TourRestaurant>()
             .HasKey(tr => new { tr.TourID, tr.RestaurantID });
 
-        modelBuilder.Entity<TourRestaurants>()
+        modelBuilder.Entity<TourRestaurant>()
             .HasOne(tr => tr.Tour)
             .WithMany(t => t.TourRestaurants)
             .HasForeignKey(tr => tr.TourID)
             .OnDelete(DeleteBehavior.Cascade);
 
-        modelBuilder.Entity<TourRestaurants>()
+        modelBuilder.Entity<TourRestaurant>()
             .HasOne(tr => tr.Restaurant)
             .WithMany(r => r.TourRestaurants)
             .HasForeignKey(tr => tr.RestaurantID)
@@ -99,7 +99,7 @@ public class DatabaseContext:DbContext
             .HasOne(b => b.User)
             .WithMany(u => u.Bookings)
             .HasForeignKey(b => b.UserID)
-            .OnDelete(DeleteBehavior.Restrict);
+            .OnDelete(DeleteBehavior.Cascade);
 
         // Tour - Booking relationship
         modelBuilder.Entity<Booking>()

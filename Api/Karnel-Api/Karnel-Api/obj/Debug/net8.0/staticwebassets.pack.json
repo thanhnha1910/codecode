@@ -69,6 +69,10 @@
       "PackagePath": "staticwebassets/uploads/avatars/f01d953f-1d98-4ac9-b090-b7cad5dd43ec.png"
     },
     {
+      "Id": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/f43cdddd-011f-4fd2-8abc-3ee6e9582747.png",
+      "PackagePath": "staticwebassets/uploads/avatars/f43cdddd-011f-4fd2-8abc-3ee6e9582747.png"
+    },
+    {
       "Id": "obj/Debug/net8.0/staticwebassets/msbuild.Karnel-Api.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

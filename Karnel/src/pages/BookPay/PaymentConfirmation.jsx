@@ -1,3 +1,4 @@
+
 import React from "react";
 import { useLocation, Navigate } from "react-router-dom";
 import { FaCheckCircle } from "react-icons/fa";
@@ -32,7 +33,15 @@ export default function PaymentConfirmation() {
               </p>
             </div>
           </div>
-          {/* Rest of the component remains the same */}
+         <div className="c">
+         <button
+              onClick={() => window.location.href = '/'}
+              className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition duration-300"
+            >
+              View Home
+            </button>
+         </div>
+          
         </div>
       </div>
     </div>

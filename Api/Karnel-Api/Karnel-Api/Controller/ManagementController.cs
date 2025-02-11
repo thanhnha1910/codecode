@@ -415,6 +415,7 @@ namespace Karnel_Api.Controller
             var tours = await _context.Tours
                 .Select(t => new TourDto
                 {
+                    TourID = t.TourID,
                     TourName = t.TourName,
                     Description = t.Description,
                     Detail = t.Detail,
@@ -454,6 +455,7 @@ namespace Karnel_Api.Controller
 
             var result = new TourDto
             {
+                TourID = tour.TourID,
                 TourName = tour.TourName,
                 Description = tour.Description,
                 Detail = tour.Detail,
@@ -516,5 +518,99 @@ namespace Karnel_Api.Controller
 
             return NoContent();
         }
+        [HttpGet("cities/{cityID}")]
+public async Task<ActionResult<object>> GetCity(int cityID)
+{
+    // Retrieve the city with the specified ID including all related data.
+    var city = await _context.Cities
+        .Include(c => c.Tours)
+            .ThenInclude(t => t.Hotel)
+        .Include(c => c.Tours)
+            .ThenInclude(t => t.Transportation)
+        .Include(c => c.Hotels)
+        .Include(c => c.Restaurants)
+        .Include(c => c.Attractions)
+        .Include(c => c.Transportations)
+        .FirstOrDefaultAsync(c => c.CityID == cityID);
+
+    // If no matching city is found, return a 404 Not Found.
+    if (city == null)
+    {
+        return NotFound();
     }
+
+    // Construct the result in the same structure as your GetCities endpoint.
+    var result = new
+    {
+        cityID = city.CityID,
+        cityName = city.CityName,
+        description = city.Description,
+        tours = city.Tours.Select(tour => new
+        {
+            tourID = tour.TourID,
+            tourName = tour.TourName,
+            description = tour.Description,
+            detail = tour.Detail,
+            price = tour.Price,
+            availableSlots = tour.AvailableSlots,
+            startDate = tour.StartDate,
+            endDate = tour.EndDate,
+            hotel = tour.Hotel == null ? null : new
+            {
+                hotelID = tour.Hotel.HotelID,
+                hotelName = tour.Hotel.HotelName,
+                address = tour.Hotel.Address,
+                description = tour.Hotel.Description
+            },
+            transportation = tour.Transportation == null ? null : new
+            {
+                transportID = tour.Transportation.TransportID,
+                transportType = tour.Transportation.TransportType,
+                price = tour.Transportation.Price
+            }
+        }),
+        hotels = city.Hotels
+            .Union(city.Tours
+                .Where(t => t.Hotel != null)
+                .Select(t => t.Hotel))
+            .Distinct()
+            .Select(hotel => new
+            {
+                hotelID = hotel.HotelID,
+                hotelName = hotel.HotelName,
+                address = hotel.Address,
+                description = hotel.Description
+            }).ToList(),
+        transportations = city.Transportations
+            .Union(city.Tours
+                .Where(t => t.Transportation != null)
+                .Select(t => t.Transportation))
+            .Distinct()
+            .Select(transport => new
+            {
+                transportID = transport.TransportID,
+                transportType = transport.TransportType,
+                price = transport.Price
+            }).ToList(),
+        restaurants = city.Restaurants
+            .Select(restaurant => new
+            {
+                restaurantID = restaurant.RestaurantID,
+                restaurantName = restaurant.RestaurantName,
+                cuisine = restaurant.Cuisine,
+                description = restaurant.Description,
+            }).ToList(),
+attractions = city.Attractions
+            .Select(attraction => new
+            {
+                attractionID = attraction.AttractionID,
+                attractionName = attraction.AttractionName,
+                description = attraction.Description
+            }).ToList()
+    };
+
+    return Ok(result);
+}
+    }
+    
 }

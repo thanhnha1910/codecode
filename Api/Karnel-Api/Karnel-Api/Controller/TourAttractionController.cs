@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Karnel_Api.Data;
 using Karnel_Api.DTO;
 
-namespace Karnel_Api.Controllers
+namespace Karnel_Api.Controller
 {
     [Route("api/[controller]")]
     [ApiController]

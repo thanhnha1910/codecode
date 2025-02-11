@@ -13,18 +13,12 @@ const footerLinks = [
         title: "Contact Us",
         href: "/contact",
     },
-    {
-        title: "Privacy Policy",
-        href: "/privacy",
-    },
+    
     {
         title: "Terms & Condition",
-        href: "/terms",
+        href: "/info/term",
     },
-    {
-        title: "FAQs & Help",
-        href: "/faq",
-    },
+    
 ]
 export default function Footer() {
     return (

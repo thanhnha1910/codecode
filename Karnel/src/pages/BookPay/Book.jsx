@@ -46,7 +46,10 @@ export default function Book({ tour }) {
       navigate("/login");
       return;
     }
-  
+    if (bookingData.AdultQuantity <= 0) {
+      toast.error("At least one adult is required for booking");
+      return;
+    }
     const totalPassengers =
       bookingData.AdultQuantity +
       bookingData.ChildQuantity +

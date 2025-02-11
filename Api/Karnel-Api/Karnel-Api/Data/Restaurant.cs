@@ -8,5 +8,5 @@ public class Restaurant
     public City City { get; set; }
     public string Cuisine { get; set; }
     public string Description { get; set; }
-    public ICollection<TourRestaurants> TourRestaurants { get; set; } = new List<TourRestaurants>();
+    public ICollection<TourRestaurant> TourRestaurants { get; set; } = new List<TourRestaurant>();
 }

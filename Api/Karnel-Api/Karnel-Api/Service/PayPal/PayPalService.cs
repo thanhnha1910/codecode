@@ -34,10 +34,11 @@ public class PayPalService
         _payPalHttpClient = new PayPalHttpClient(environment);
     }
 
-   public async Task<Order> CreatePayment(decimal totalAmount)
+    public async Task<Order> CreatePayment(decimal totalAmount)
     {
         try 
         {
+        
             var request = new OrdersCreateRequest();
             request.Prefer("return=representation");
             request.RequestBody(new OrderRequest
@@ -67,10 +68,10 @@ public class PayPalService
         }
         catch (Exception ex)
         {
-            throw new Exception($"Failed to create PayPal payment: {ex.Message}");
+            throw new Exception($"Failed to capture PayPal payment: {ex.Message}");
+
         }
     }
-
     public async Task<Order> CapturePayment(string orderId)
     {
         try

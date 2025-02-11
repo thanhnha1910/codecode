@@ -26,7 +26,7 @@ public class Tour
 
     // Navigation properties
     public ICollection<TourAttraction> TourAttractions { get; set; }
-    public ICollection<TourRestaurants> TourRestaurants { get; set; }
+    public ICollection<TourRestaurant> TourRestaurants { get; set; }
     public ICollection<Booking> Bookings { get; set; }
     public ICollection<Review> Reviews { get; set; }
 }

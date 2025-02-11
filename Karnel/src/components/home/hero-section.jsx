@@ -16,6 +16,7 @@ export default function HeroSection() {
         event.preventDefault();
         searchParams.set("q", query)
         navigate({
+            pathname: "search",
             search: searchParams.toString(),
         });
     };

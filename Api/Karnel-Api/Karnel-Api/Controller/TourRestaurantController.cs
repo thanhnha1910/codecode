@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Karnel_Api.Data;
 using Karnel_Api.DTO;
 
-namespace Karnel_Api.Controllers
+namespace Karnel_Api.Controller
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -59,7 +59,7 @@ namespace Karnel_Api.Controllers
                 return Conflict("This Tour and Restaurant are already linked.");
             }
 
-            var newRelation = new TourRestaurants
+            var newRelation = new TourRestaurant
             {
                 TourID = model.TourID,
                 RestaurantID = model.RestaurantID
@@ -102,7 +102,7 @@ namespace Karnel_Api.Controllers
             await _context.SaveChangesAsync(); // Commit the removal
 
             // Step 3: Add a new TourRestaurant entry with the updated keys
-            var newTourRestaurant = new TourRestaurants
+            var newTourRestaurant = new TourRestaurant
             {
                 TourID = model.TourID,            // New TourID
                 RestaurantID = model.RestaurantID  // New RestaurantID

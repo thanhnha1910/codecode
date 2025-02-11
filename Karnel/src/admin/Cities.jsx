@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Cities = () => {
+  const navigate = useNavigate();
   const [cities, setCities] = useState([]);
   const [formState, setFormState] = useState({
     cityName: "",
@@ -106,7 +108,9 @@ const Cities = () => {
       setDetailsCityId(cityID); // Show details
     }
   };
-
+  const handleImageGallery = (tourId) => {
+    navigate(`/admin/cities-images/${tourId}`);
+  };
   return (
     <div className="p-6">
       <div className="flex justify-between items-center mb-4">
@@ -197,6 +201,9 @@ const Cities = () => {
                     >
                       {detailsCityId === city.cityID ? "Hide Details" : "Show Details"}                     
                     </button>
+                    <button onClick={() => handleImageGallery(city.cityID)} className="bg-blue-500 text-white py-1 px-2 rounded">
+                    Image Gallery
+                  </button>
                   </td>
                 </tr>
                 {detailsCityId === city.cityID && (

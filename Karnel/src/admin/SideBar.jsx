@@ -23,6 +23,11 @@ const Sidebar = ({ isOpen }) => {
       icon: <HiOutlineChartBar className="w-6 h-6" />
     },
     {
+      path: '/admin/user',
+      name: 'User',
+      icon: <HiOutlineGlobe className="w-6 h-6" />
+    },
+    {
       path: '/admin/cities',
       name: 'Cities',
       icon: <HiOutlineLocationMarker className="w-6 h-6" />
@@ -51,17 +56,8 @@ const Sidebar = ({ isOpen }) => {
       path: '/admin/tours',
       name: 'Tours',
       icon: <HiOutlineGlobe className="w-6 h-6" />
-    },
-    {
-      path: '/admin/tourattraction',
-      name: 'Tour Attractions',
-      icon: <HiOutlinePhotograph className="w-6 h-6" />
-    },
-    {
-      path: '/admin/tourrestaurant',
-      name: 'Tour Restaurants',
-      icon: <HiOutlineTicket className="w-6 h-6" />
     }
+  
   ];
 
   // Function to check if a route is active

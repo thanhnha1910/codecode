@@ -55,6 +55,10 @@ import AttractionImages from "@/admin/AttractionImages";
 import TransportationImages from "@/admin/TransportationImages";
 import AdminProtectedRoute from "@/contexts/AdminProtectedRoute";
 import RevenueDashBoard from "./admin/RevenueDashboard";
+import TourImages from "./admin/TourImages";
+import CitiesImages from "./admin/CitiesImages";
+import UserManagement from "./admin/UserManagement";
+import TermsAndConditions from "./pages/tour/TermsAndConditions";
 
 
 ReactDOM.createRoot(document.getElementById("root")).render(
@@ -90,7 +94,10 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Route path="resorts/:resortName" element={<ResortDetails />} />
         <Route path="restaurants/:cityName/:restaurantName" element={<RestaurantDetails />} />
     </Route>
+    <Route path="term" element={<TermsAndConditions />} />
+
 </Route>
+
                     </Route>
                     <Route path="tours" element={<TourLayout />}>
                         <Route path=":tourId" element={<TourDetail />}/>
@@ -143,6 +150,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <Route path="tourattraction" element={<TourAttraction />} />
   <Route path="tourrestaurant" element={<TourRestaurant />} />
   <Route path="revenue" element={<RevenueDashBoard />} />
+  <Route path="user" element={<UserManagement />} />
+
 
   
   {/* Routes for image management */}
@@ -150,6 +159,10 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <Route path="restaurant-images/:id" element={<RestaurantImages />} />
   <Route path="attraction-images/:id" element={<AttractionImages />} />
   <Route path="transportation-images/:id" element={<TransportationImages />} />
+  <Route path="tour-images/:id" element={<TourImages />} />
+  <Route path="cities-images/:id" element={<CitiesImages />} />
+
+
 </Route>
 
                 </Routes>

@@ -23,7 +23,23 @@ export default function TourPackage({tourPackage}) {
     const { isFavorite, addFavorite, removeFavorite, loadFavorites } = useFavorites();
     const [isLoading, setIsLoading] = useState(false);
     const [isFavorited, setIsFavorited] = useState(false);
-
+    const [thumbnailImage, setThumbnailImage] = useState("");
+    useEffect(() => {
+        const fetchThumbnail = async () => {
+          try {
+            const response = await axios.get(
+              `http://localhost:5128/api/attractions/${tourPackage.attractionId}/thumbnail`
+            );
+            setThumbnailImage(response.data.thumbnailUrl);
+          } catch (error) {
+            console.error('Error fetching thumbnail:', error);
+          }
+        };
+      
+        if (tourPackage.attractionId) {
+          fetchThumbnail();
+        }
+      }, [tourPackage.attractionId]);
    
     useEffect(() => {
         if (user?.id) {
@@ -92,8 +108,13 @@ export default function TourPackage({tourPackage}) {
                 />
             </button>
 
-            <CardImage src="../images/home/placeholder.svg" alt="Package Image"/>
-            <div className="flex text-sm border-b-2">
+            <CardImage 
+  className="w-full object-cover rounded-lg" 
+  src={thumbnailImage 
+    ? `http://localhost:5128${thumbnailImage}` 
+    : "/images/home/placeholder.svg"}
+  alt={`Image of ${tourPackage.name}`} 
+/>       <div className="flex text-sm border-b-2">
                 <div className="flex flex-auto justify-center items-center px-2 py-1 gap-1">
                     <MapPin size={14} className="text-accent"/>
                     {tourPackage.cityName}

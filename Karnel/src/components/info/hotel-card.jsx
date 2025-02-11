@@ -8,8 +8,14 @@ export default function HotelCard({hotel}) {
     const [searchParams] = useSearchParams();
     return (
         <Card className="p-1">
-            <CardImage className="w-full object-cover rounded-lg min-h-[200px] max-h-[200px]" src={hotel.images[0].original_image} alt={`Image of ${hotel.name}`} />
-            <CardHeader className="px-2 pb-2 grid grid-rows-6">
+<CardImage 
+  className="w-full object-cover rounded-lg min-h-[200px] max-h-[200px]" 
+  src={hotel.images && hotel.images[0] ? 
+    `http://localhost:5128${hotel.images[0].imageUrl}` : 
+    "/images/home/placeholder.svg"
+  }
+  alt={`Image of ${hotel.name}`} 
+/>            <CardHeader className="px-2 pb-2 grid grid-rows-6">
                 <CardTitle className="text-xl row-span-2">{hotel.name}</CardTitle>
                 <CardDescription className="flex flex-col gap-2 row-span-4">
                     <div className="flex gap-2 items-center">

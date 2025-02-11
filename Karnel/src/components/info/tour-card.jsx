@@ -2,11 +2,25 @@ import {Card, CardContent, CardDescription, CardHeader, CardImageCarousel, CardT
 import {MapPin, Star, User} from "lucide-react"
 import {NavLink} from "react-router";
 import {Button} from "@/components/ui/button.jsx";
-
+const sampleImages = [
+    "/images/home/package-1.jpg",
+    "/images/home/package-2.jpg", 
+    "/images/home/package-3.jpg",
+    "/images/home/package-4.jpg"
+  ];
 export default function TourCard({tour}) {
     return (
         <Card className="flex">
-            <CardImageCarousel images={tour.images} url={`/tours/${tour.tourId}`} className="h-full min-w-[300px]"/>
+            {/* <CardImageCarousel images={tour.images} url={`/tours/${tour.tourId}`} className="h-full min-w-[300px]"/> */}
+            <CardImageCarousel 
+                // Thay vì dùng tour.images, sử dụng mảng ảnh mẫu
+                images={sampleImages.map(img => ({
+                    url: img,
+                    altText: "Tour image"
+                }))} 
+                url={`/tours/${tour.tourId}`} 
+                className="h-full min-w-[300px]"
+            />
             <CardHeader className="gap-4 flex-1">
                 <CardTitle className="flex flex-col gap-2">
                     <NavLink to={`/tours/${tour.tourId}`} className="text-xl hover:underline w-fit h-full">{tour.name}</NavLink>

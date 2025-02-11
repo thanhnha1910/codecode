@@ -13,8 +13,11 @@ export default function AttractionCard({attraction}) {
     const cityName = useParams().cityName;
     return (
         <Card className="p-1">
-            <CardImage className="w-full object-cover rounded-lg" src={attraction.thumbnail} alt={`Image of ${attraction.title}`} />
-            <CardHeader className="px-2 pb-2 grid grid-rows-3">
+<CardImage 
+  className="w-full object-cover rounded-lg" 
+  src={attraction.thumbnail ? `http://localhost:5128${attraction.thumbnail}` : "/images/home/placeholder.svg"}
+  alt={`Image of ${attraction.title}`} 
+/>            <CardHeader className="px-2 pb-2 grid grid-rows-3">
                 <CardTitle className="text-xl">{attraction.title}</CardTitle>
                 <CardDescription className="flex flex-col gap-2">
                     <div className="flex gap-2 items-center">

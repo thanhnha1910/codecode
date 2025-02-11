@@ -265,7 +265,6 @@ export default function Profile() {
             <Tabs defaultValue="profile" className="w-full">
               <TabsList className="grid w-full grid-cols-3">
                 <TabsTrigger value="profile">Profile</TabsTrigger>
-                <TabsTrigger value="bookings">My Bookings</TabsTrigger>
                 <TabsTrigger value="favorites">Favorites</TabsTrigger>
               </TabsList>
 

@@ -22,17 +22,7 @@ export default function SuccessPage() {
         const response = await PaymentService.capturePayment(token);
         console.log("Capture response:", response);
         
-        if (response && response.bookingId) {
-          // Hiển thị thông báo thành công và email
-          toast.success("Payment completed successfully!");
-          toast.info("A confirmation email has been sent to your email address!", {
-            autoClose: 5000, // Hiển thị lâu hơn một chút
-            position: "top-right",
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-          });
+        if (response && response.bookingId && response.paymentStatus) {
   
           navigate('/payment-confirmation', {
             state: {

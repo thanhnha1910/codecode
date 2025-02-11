@@ -33,7 +33,7 @@ export default function AttractionDetails() {
 
     useEffect(() => {
         const fetchAttraction = async () => {
-            const data = await attractionApi.getAttractionByName(attractionName);
+            const data = await attractionApi.getAttractionByName(cityName, attractionName);
             setAttraction(data);
         }
 
@@ -51,6 +51,7 @@ export default function AttractionDetails() {
 
         fetchAttraction();
         setChartDataFill();
+        console.log(attraction)
     }, [attractionName]);
 
     return (
@@ -75,27 +76,31 @@ export default function AttractionDetails() {
                     <h3 className="text-4xl">{attraction.title}</h3>
                     <div className="flex flex-col gap-3 pb-4">
                         <div className="flex gap-1.5">
-                            <Rating classes={{iconFilled: "[&>svg]:fill-primary"}} value={attraction.rating}
-                                    precision={0.5}
-                                    readOnly/>
-                            {attraction.type && attraction.type.map((t, index) => (
+                            {attraction.rating && (
+                                <Rating classes={{iconFilled: "[&>svg]:fill-primary"}} defaultValue={attraction.rating}
+                                        precision={0.5}
+                                        readOnly/>
+                            )}
+                            {attraction.types && attraction.types.map((t, index) => (
                                 <span key={index}>&#183; {t}</span>
                             ))}
                         </div>
                         <span className="font-bold tracking-wider">{attraction.open_state}</span>
                     </div>
-                    <Carousel>
-                        <CarouselContent>
-                            {attraction.images && attraction.images.map((img, index) => (
-                                <CarouselItem key={index}>
-                                    <img src={img.thumbnail} alt={img.title}
-                                         className="w-full object-cover max-h-[700px]"/>
-                                </CarouselItem>
-                            ))}
-                        </CarouselContent>
-                        <CarouselPrevious className="left-3 z-10"/>
-                        <CarouselNext className="right-3 z-10"/>
-                    </Carousel>
+                    {attraction.images && (
+                        <Carousel>
+                            <CarouselContent>
+                                {attraction.images.map((img, index) => (
+                                    <CarouselItem key={index}>
+                                        <img src={img.thumbnail} alt={img.title}
+                                             className="w-full object-cover max-h-[700px]"/>
+                                    </CarouselItem>
+                                ))}
+                            </CarouselContent>
+                            <CarouselPrevious className="left-3 z-10"/>
+                            <CarouselNext className="right-3 z-10"/>
+                        </Carousel>
+                    )}
                     <div className="flex gap-4 pt-4">
                         {/*  Main  */}
                         <div className="w-2/3 flex flex-col gap-4">
@@ -103,34 +108,37 @@ export default function AttractionDetails() {
                                 <p>{attraction.description}</p>
                                 <span><b>Address: </b>{attraction.address}</span>
                                 <span><b>Phone: </b>{attraction.phone}</span>
+                                <span><b>Website: </b><a className="underline" target="_blank" href={attraction.website}>{attraction.website}</a></span>
                             </div>
 
-                            <div className="space-y-3">
-                                <h3>Experiences</h3>
-                                <Carousel>
-                                    <CarouselContent>
-                                        {attraction.experiences && attraction.experiences.map((ex, index) => (
-                                            <CarouselItem key={index} className="basis-1/4">
-                                                <Card>
-                                                    <CardImage src={ex.thumbnail}
-                                                               className="max-h-[150px] object-cover"/>
-                                                    <CardHeader className="p-4 grid grid-rows-4">
-                                                        <CardTitle
-                                                            className="row-span-3 leading-6">{ex.title}</CardTitle>
-                                                        <CardDescription className="row-span-1 flex items-center gap-2">
-                                                            <Rating classes={{iconFilled: "[&>svg]:fill-primary"}}
-                                                                    value={ex.rating} precision={0.5} readOnly/>
-                                                            <span className="mt-[4px]">{ex.rating}</span>
-                                                        </CardDescription>
-                                                    </CardHeader>
-                                                </Card>
-                                            </CarouselItem>
-                                        ))}
-                                    </CarouselContent>
-                                    <CarouselPrevious className="left-3 z-10"/>
-                                    <CarouselNext className="right-3 z-10"/>
-                                </Carousel>
-                            </div>
+                            {attraction.experiences && (
+                                <div className="space-y-3">
+                                    <h3>Experiences</h3>
+                                    <Carousel>
+                                        <CarouselContent>
+                                            {attraction.experiences && attraction.experiences.map((ex, index) => (
+                                                <CarouselItem key={index} className="basis-1/4">
+                                                    <Card>
+                                                        <CardImage src={ex.thumbnail}
+                                                                   className="max-h-[150px] object-cover"/>
+                                                        <CardHeader className="p-4 grid grid-rows-4">
+                                                            <CardTitle
+                                                                className="row-span-3 leading-6">{ex.title}</CardTitle>
+                                                            <CardDescription className="row-span-1 flex items-center gap-2">
+                                                                <Rating classes={{iconFilled: "[&>svg]:fill-primary"}}
+                                                                        value={ex.rating} precision={0.5} readOnly/>
+                                                                <span className="mt-[4px]">{ex.rating}</span>
+                                                            </CardDescription>
+                                                        </CardHeader>
+                                                    </Card>
+                                                </CarouselItem>
+                                            ))}
+                                        </CarouselContent>
+                                        <CarouselPrevious className="left-3 z-10"/>
+                                        <CarouselNext className="right-3 z-10"/>
+                                    </Carousel>
+                                </div>
+                            )}
                         </div>
 
                         {/*  Sticky  */}
@@ -138,7 +146,7 @@ export default function AttractionDetails() {
                             <h3>Popular Times</h3>
                             <div className="flex justify-between">
                                 <Select size="small" variant="standard" value={day} onChange={handleDayChange}>
-                                <MenuItem value="sunday">Sunday</MenuItem>
+                                    <MenuItem value="sunday">Sunday</MenuItem>
                                     <MenuItem value="monday">Monday</MenuItem>
                                     <MenuItem value="tuesday">Tuesday</MenuItem>
                                     <MenuItem value="wednesday">Wednesday</MenuItem>
@@ -146,12 +154,12 @@ export default function AttractionDetails() {
                                     <MenuItem value="friday">Friday</MenuItem>
                                     <MenuItem value="saturday">Saturday</MenuItem>
                                 </Select>
-                                {attraction.hours && (
-                                    <span className="font-semibold">{attraction.hours.find(obj => day in obj)[day]}</span>
+                                {attraction.operating_hours && (
+                                    <span className="font-semibold">{attraction.operating_hours[day]}</span>
                                 )}
                             </div>
 
-                            {attraction.popular_times && (
+                            {attraction.popular_times ? (
                                 <ChartContainer config={chartConfig} className="min-h-[200px] w-full">
                                     <BarChart accessibilityRole="presentation" data={attraction.popular_times.graph_results[day]}>
                                         <CartesianGrid vertical={false} />
@@ -159,7 +167,7 @@ export default function AttractionDetails() {
                                         <Bar dataKey="busyness_score" fill="var(--color-business_score)" />
                                     </BarChart>
                                 </ChartContainer>
-                            )}
+                            ) : (<h4>No data for popular times</h4>)}
                         </div>
                     </div>
                 </section>) : <h3>Loading...</h3>

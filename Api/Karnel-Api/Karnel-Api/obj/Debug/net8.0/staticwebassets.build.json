@@ -1,6 +1,10 @@
 {
   "Version": 1,
+<<<<<<< Updated upstream
   "Hash": "75AdxPyEc5mx8vO+YE9C0PtM6Ryr3KaHzH/bMmjnxPc=",
+=======
+  "Hash": "oYbCr4OjqJY3jO1seXPj12EZBKRonY4rI9KU75KqVfw=",
+>>>>>>> Stashed changes
   "Source": "Karnel-Api",
   "BasePath": "_content/Karnel-Api",
   "Mode": "Default",
@@ -10,331 +14,407 @@
     {
       "Name": "Karnel-Api/wwwroot",
       "Source": "Karnel-Api",
-      "ContentRoot": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/",
+      "ContentRoot": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/",
       "BasePath": "_content/Karnel-Api",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/images/attraction/attractionID1/926ae0c2-7475-4d5e-a469-5192b9c9a50b.jpg",
+      "Identity": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/images/attraction/attractionID1/115087c4-4150-446a-8d50-edec87f6e4d5.jpg",
       "SourceId": "Karnel-Api",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/",
+      "ContentRoot": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/",
       "BasePath": "_content/Karnel-Api",
-      "RelativePath": "images/attraction/attractionID1/926ae0c2-7475-4d5e-a469-5192b9c9a50b.jpg",
+      "RelativePath": "images/attraction/attractionID1/115087c4-4150-446a-8d50-edec87f6e4d5#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "yr8u4f1q8f",
+      "Integrity": "Esg+25wSyvzTqP7nvb5HUS5uXGB5+j7hN6dMeKyH77g=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/images/attraction/attractionID1/926ae0c2-7475-4d5e-a469-5192b9c9a50b.jpg"
+      "OriginalItemSpec": "wwwroot/images/attraction/attractionID1/115087c4-4150-446a-8d50-edec87f6e4d5.jpg"
     },
     {
-      "Identity": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/images/attraction/attractionID2/ec580971-76fb-4cc6-8849-145a80967c70.png",
+      "Identity": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/images/attraction/attractionID1/9bda7453-0466-4609-a98f-e19368ab0b82.jpg",
       "SourceId": "Karnel-Api",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/",
+      "ContentRoot": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/",
       "BasePath": "_content/Karnel-Api",
-      "RelativePath": "images/attraction/attractionID2/ec580971-76fb-4cc6-8849-145a80967c70.png",
+      "RelativePath": "images/attraction/attractionID1/9bda7453-0466-4609-a98f-e19368ab0b82#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "6hjuqov03o",
+      "Integrity": "Gmgle8Sn5o1NCiRy+cZCFY2kigaizREm3JsldSmtoN0=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/images/attraction/attractionID2/ec580971-76fb-4cc6-8849-145a80967c70.png"
+      "OriginalItemSpec": "wwwroot/images/attraction/attractionID1/9bda7453-0466-4609-a98f-e19368ab0b82.jpg"
     },
     {
-      "Identity": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/images/hotel/hotelID1/45dd85ba-1ef5-4f27-93ed-a32bb5cbff61.jpg",
+      "Identity": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/images/attraction/attractionID1/d36a4926-cdb3-4c1a-b022-5bbcc0614fd3.jpg",
       "SourceId": "Karnel-Api",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/",
+      "ContentRoot": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/",
       "BasePath": "_content/Karnel-Api",
-      "RelativePath": "images/hotel/hotelID1/45dd85ba-1ef5-4f27-93ed-a32bb5cbff61.jpg",
+      "RelativePath": "images/attraction/attractionID1/d36a4926-cdb3-4c1a-b022-5bbcc0614fd3#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "puxjw02u0c",
+      "Integrity": "3w3U5Mi4JM6rK+sq+CW/y4SiPDK+O/AhKLh3SE1z7Ps=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/images/hotel/hotelID1/45dd85ba-1ef5-4f27-93ed-a32bb5cbff61.jpg"
+      "OriginalItemSpec": "wwwroot/images/attraction/attractionID1/d36a4926-cdb3-4c1a-b022-5bbcc0614fd3.jpg"
     },
     {
-      "Identity": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/images/hotel/hotelID1/6ad85f1f-b381-4573-a7d3-48c7322219f4.jpg",
+      "Identity": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/images/hotel/hotelID1/1a602aea-3417-4ce6-a3fe-ddc63b917d93.jpg",
       "SourceId": "Karnel-Api",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/",
+      "ContentRoot": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/",
       "BasePath": "_content/Karnel-Api",
-      "RelativePath": "images/hotel/hotelID1/6ad85f1f-b381-4573-a7d3-48c7322219f4.jpg",
+      "RelativePath": "images/hotel/hotelID1/1a602aea-3417-4ce6-a3fe-ddc63b917d93#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "190lrqkoun",
+      "Integrity": "hdf0ycgJwSJ96eRV1OkhwbgbcKy5ouMOlmi2gy+EZhQ=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/images/hotel/hotelID1/6ad85f1f-b381-4573-a7d3-48c7322219f4.jpg"
+      "OriginalItemSpec": "wwwroot/images/hotel/hotelID1/1a602aea-3417-4ce6-a3fe-ddc63b917d93.jpg"
     },
     {
-      "Identity": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/images/hotel/hotelID1/d5ce57d3-1d7c-4907-aa18-7ac741b9e8a9.png",
+      "Identity": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/images/hotel/hotelID1/3e334cde-521c-4626-b9c1-b7cfb3663fd6.jpg",
       "SourceId": "Karnel-Api",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/",
+      "ContentRoot": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/",
       "BasePath": "_content/Karnel-Api",
-      "RelativePath": "images/hotel/hotelID1/d5ce57d3-1d7c-4907-aa18-7ac741b9e8a9.png",
+      "RelativePath": "images/hotel/hotelID1/3e334cde-521c-4626-b9c1-b7cfb3663fd6#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "w8es08yyxj",
+      "Integrity": "IPeaOUsJedcKAc8EyAsMk0FSyALEFWkHoz0r6A944C0=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/images/hotel/hotelID1/d5ce57d3-1d7c-4907-aa18-7ac741b9e8a9.png"
+      "OriginalItemSpec": "wwwroot/images/hotel/hotelID1/3e334cde-521c-4626-b9c1-b7cfb3663fd6.jpg"
     },
     {
-      "Identity": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/images/restaurant/restaurantID1/1354d02f-d658-495a-a7ee-de92232431f2.png",
+      "Identity": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/images/hotel/hotelID1/ea800103-e308-4aa0-a8a5-5d83a65abff0.jpg",
       "SourceId": "Karnel-Api",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/",
+      "ContentRoot": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/",
       "BasePath": "_content/Karnel-Api",
-      "RelativePath": "images/restaurant/restaurantID1/1354d02f-d658-495a-a7ee-de92232431f2.png",
+      "RelativePath": "images/hotel/hotelID1/ea800103-e308-4aa0-a8a5-5d83a65abff0#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "ykawjdls7a",
+      "Integrity": "kpQCabl13RFiQjpUwCKN1RGNSrNR2+wjbA8Exi8CMb0=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/images/restaurant/restaurantID1/1354d02f-d658-495a-a7ee-de92232431f2.png"
+      "OriginalItemSpec": "wwwroot/images/hotel/hotelID1/ea800103-e308-4aa0-a8a5-5d83a65abff0.jpg"
     },
     {
-      "Identity": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/images/transportation/transportationID1/487b2ece-446f-414e-aee9-e069e95e6804.jpg",
+      "Identity": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/images/restaurant/restaurantID1/2e3b18f0-52ee-40f9-8714-648f8f78ca4c.jpg",
       "SourceId": "Karnel-Api",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/",
+      "ContentRoot": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/",
       "BasePath": "_content/Karnel-Api",
-      "RelativePath": "images/transportation/transportationID1/487b2ece-446f-414e-aee9-e069e95e6804.jpg",
+      "RelativePath": "images/restaurant/restaurantID1/2e3b18f0-52ee-40f9-8714-648f8f78ca4c#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "r1ens7ldna",
+      "Integrity": "IbFS3Li04muvZMugkkrRKHqc+GzDB5Pq9PK0iMvwCRs=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/images/transportation/transportationID1/487b2ece-446f-414e-aee9-e069e95e6804.jpg"
+      "OriginalItemSpec": "wwwroot/images/restaurant/restaurantID1/2e3b18f0-52ee-40f9-8714-648f8f78ca4c.jpg"
     },
     {
-      "Identity": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/images/transportation/transportationID1/e5f094f7-d1c0-4b1f-a690-a43b9b1e6e0d.png",
+      "Identity": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/images/restaurant/restaurantID1/887073fc-c09f-458a-bea0-98483931f22b.jpg",
       "SourceId": "Karnel-Api",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/",
+      "ContentRoot": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/",
       "BasePath": "_content/Karnel-Api",
-      "RelativePath": "images/transportation/transportationID1/e5f094f7-d1c0-4b1f-a690-a43b9b1e6e0d.png",
+      "RelativePath": "images/restaurant/restaurantID1/887073fc-c09f-458a-bea0-98483931f22b#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "6ms1pndfhq",
+      "Integrity": "4rPGHfYnWLXDXQcY3t1uTt/1Nlb7M2dxi6zIPjDlHi8=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/images/transportation/transportationID1/e5f094f7-d1c0-4b1f-a690-a43b9b1e6e0d.png"
+      "OriginalItemSpec": "wwwroot/images/restaurant/restaurantID1/887073fc-c09f-458a-bea0-98483931f22b.jpg"
     },
     {
-      "Identity": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/1e2f9be2-f3db-4331-a0b3-0beb4efdbc36.png",
+      "Identity": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/images/restaurant/restaurantID1/a2dfc3cb-3c5e-4a98-8c22-4c4cc75fa60b.jpg",
       "SourceId": "Karnel-Api",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/",
+      "ContentRoot": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/",
       "BasePath": "_content/Karnel-Api",
-      "RelativePath": "uploads/avatars/1e2f9be2-f3db-4331-a0b3-0beb4efdbc36.png",
+      "RelativePath": "images/restaurant/restaurantID1/a2dfc3cb-3c5e-4a98-8c22-4c4cc75fa60b#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "72ywqo1mss",
+      "Integrity": "kUHqyIx6u+3CFY8IIFnmMQEHg3LWV7k89F9mb6/7UJQ=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/restaurant/restaurantID1/a2dfc3cb-3c5e-4a98-8c22-4c4cc75fa60b.jpg"
+    },
+    {
+      "Identity": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/1e2f9be2-f3db-4331-a0b3-0beb4efdbc36.png",
+      "SourceId": "Karnel-Api",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/",
+      "BasePath": "_content/Karnel-Api",
+      "RelativePath": "uploads/avatars/1e2f9be2-f3db-4331-a0b3-0beb4efdbc36#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "4269uijmg5",
+      "Integrity": "7JyC8iRW96NMgIgf+lQiB9qrckEjI+ykmFpv/QFAv4o=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/uploads/avatars/1e2f9be2-f3db-4331-a0b3-0beb4efdbc36.png"
     },
     {
-      "Identity": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/27f8d8ed-e096-4377-bd48-b570d4661b2c.jpg",
+      "Identity": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/27f8d8ed-e096-4377-bd48-b570d4661b2c.jpg",
       "SourceId": "Karnel-Api",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/",
+      "ContentRoot": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/",
       "BasePath": "_content/Karnel-Api",
-      "RelativePath": "uploads/avatars/27f8d8ed-e096-4377-bd48-b570d4661b2c.jpg",
+      "RelativePath": "uploads/avatars/27f8d8ed-e096-4377-bd48-b570d4661b2c#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "qjkvlzz30d",
+      "Integrity": "OvUcSC0WOSf/gxxhmRb6Ra/+PEWzdva14pxQ5FEBxLg=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/uploads/avatars/27f8d8ed-e096-4377-bd48-b570d4661b2c.jpg"
     },
     {
-      "Identity": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/696d0a16-ca88-420b-b03c-cb6032c0426b.png",
+      "Identity": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/696d0a16-ca88-420b-b03c-cb6032c0426b.png",
       "SourceId": "Karnel-Api",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/",
+      "ContentRoot": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/",
       "BasePath": "_content/Karnel-Api",
-      "RelativePath": "uploads/avatars/696d0a16-ca88-420b-b03c-cb6032c0426b.png",
+      "RelativePath": "uploads/avatars/696d0a16-ca88-420b-b03c-cb6032c0426b#[.{fingerprint}]?.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "c43azltnjd",
+      "Integrity": "tMoE6grLtdq21KwqVorGJv8KIg72KzRVmy94wHSXMb8=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/uploads/avatars/696d0a16-ca88-420b-b03c-cb6032c0426b.png"
     },
     {
-      "Identity": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/6f98a843-defb-455d-8e84-ebfeacfac99e.png",
+      "Identity": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/6f98a843-defb-455d-8e84-ebfeacfac99e.png",
       "SourceId": "Karnel-Api",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/",
+      "ContentRoot": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/",
       "BasePath": "_content/Karnel-Api",
-      "RelativePath": "uploads/avatars/6f98a843-defb-455d-8e84-ebfeacfac99e.png",
+      "RelativePath": "uploads/avatars/6f98a843-defb-455d-8e84-ebfeacfac99e#[.{fingerprint}]?.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "ahnfx6gc4k",
+      "Integrity": "nr2I/OvKMzptQK2XjtLqPuXbT1fT44C0c8lszCM9UEk=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/uploads/avatars/6f98a843-defb-455d-8e84-ebfeacfac99e.png"
     },
     {
-      "Identity": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/857c60e6-3739-44bf-97fd-c0d39df89516.jpeg",
+      "Identity": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/857c60e6-3739-44bf-97fd-c0d39df89516.jpeg",
       "SourceId": "Karnel-Api",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/",
+      "ContentRoot": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/",
       "BasePath": "_content/Karnel-Api",
-      "RelativePath": "uploads/avatars/857c60e6-3739-44bf-97fd-c0d39df89516.jpeg",
+      "RelativePath": "uploads/avatars/857c60e6-3739-44bf-97fd-c0d39df89516#[.{fingerprint}]?.jpeg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "9s592nrfzq",
+      "Integrity": "ifOlYqlen4s7ZIL69J5wWfKNDlKcY+X9n38Ob6GWLn8=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/uploads/avatars/857c60e6-3739-44bf-97fd-c0d39df89516.jpeg"
     },
     {
-      "Identity": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/bc649c69-73fd-4b7e-a557-8217da81a38c.jpg",
+      "Identity": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/bc649c69-73fd-4b7e-a557-8217da81a38c.jpg",
       "SourceId": "Karnel-Api",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/",
+      "ContentRoot": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/",
       "BasePath": "_content/Karnel-Api",
-      "RelativePath": "uploads/avatars/bc649c69-73fd-4b7e-a557-8217da81a38c.jpg",
+      "RelativePath": "uploads/avatars/bc649c69-73fd-4b7e-a557-8217da81a38c#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "echhap7nba",
+      "Integrity": "8g/VLqAMupfGokusm3E/jliVf1yzkQ13U1ThHYT7KbE=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/uploads/avatars/bc649c69-73fd-4b7e-a557-8217da81a38c.jpg"
     },
     {
-      "Identity": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/d360134d-dd92-4d4c-9402-da921ae819ae.jpg",
+      "Identity": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/cc0e4b5c-baa4-431f-8b9b-5ee1a6c6e316.jpg",
       "SourceId": "Karnel-Api",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/",
+      "ContentRoot": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/",
       "BasePath": "_content/Karnel-Api",
-      "RelativePath": "uploads/avatars/d360134d-dd92-4d4c-9402-da921ae819ae.jpg",
+      "RelativePath": "uploads/avatars/cc0e4b5c-baa4-431f-8b9b-5ee1a6c6e316#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "lvts8hkpyb",
+      "Integrity": "QfKVeEgOA5NA5zEt9noLThn4GYKNJCId7he9b9yYlGo=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/uploads/avatars/cc0e4b5c-baa4-431f-8b9b-5ee1a6c6e316.jpg"
+    },
+    {
+      "Identity": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/d360134d-dd92-4d4c-9402-da921ae819ae.jpg",
+      "SourceId": "Karnel-Api",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/",
+      "BasePath": "_content/Karnel-Api",
+      "RelativePath": "uploads/avatars/d360134d-dd92-4d4c-9402-da921ae819ae#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "k5xduzsmw8",
+      "Integrity": "6IxRkwccAir9m0M9RspPyTlUVGM+jYYrVBd2OUM4ugE=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/uploads/avatars/d360134d-dd92-4d4c-9402-da921ae819ae.jpg"
     },
     {
-      "Identity": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/e0186bcb-5a4a-46d1-909d-b60fb1c1e5fc.png",
+      "Identity": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/e0186bcb-5a4a-46d1-909d-b60fb1c1e5fc.png",
       "SourceId": "Karnel-Api",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/",
+      "ContentRoot": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/",
       "BasePath": "_content/Karnel-Api",
-      "RelativePath": "uploads/avatars/e0186bcb-5a4a-46d1-909d-b60fb1c1e5fc.png",
+      "RelativePath": "uploads/avatars/e0186bcb-5a4a-46d1-909d-b60fb1c1e5fc#[.{fingerprint}]?.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "4269uijmg5",
+      "Integrity": "7JyC8iRW96NMgIgf+lQiB9qrckEjI+ykmFpv/QFAv4o=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/uploads/avatars/e0186bcb-5a4a-46d1-909d-b60fb1c1e5fc.png"
     },
     {
-      "Identity": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/f01d953f-1d98-4ac9-b090-b7cad5dd43ec.png",
+      "Identity": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/f01d953f-1d98-4ac9-b090-b7cad5dd43ec.png",
       "SourceId": "Karnel-Api",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/",
+      "ContentRoot": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/",
       "BasePath": "_content/Karnel-Api",
-      "RelativePath": "uploads/avatars/f01d953f-1d98-4ac9-b090-b7cad5dd43ec.png",
+      "RelativePath": "uploads/avatars/f01d953f-1d98-4ac9-b090-b7cad5dd43ec#[.{fingerprint}]?.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "c43azltnjd",
+      "Integrity": "tMoE6grLtdq21KwqVorGJv8KIg72KzRVmy94wHSXMb8=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/uploads/avatars/f01d953f-1d98-4ac9-b090-b7cad5dd43ec.png"
@@ -357,6 +437,1566 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/uploads/avatars/f43cdddd-011f-4fd2-8abc-3ee6e9582747.png"
+    }
+  ],
+  "Endpoints": [
+    {
+      "Route": "images/attraction/attractionID1/115087c4-4150-446a-8d50-edec87f6e4d5.jpg",
+      "AssetFile": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/images/attraction/attractionID1/115087c4-4150-446a-8d50-edec87f6e4d5.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "10998"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Esg+25wSyvzTqP7nvb5HUS5uXGB5+j7hN6dMeKyH77g=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 07:52:42 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Esg+25wSyvzTqP7nvb5HUS5uXGB5+j7hN6dMeKyH77g="
+        }
+      ]
+    },
+    {
+      "Route": "images/attraction/attractionID1/115087c4-4150-446a-8d50-edec87f6e4d5.yr8u4f1q8f.jpg",
+      "AssetFile": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/images/attraction/attractionID1/115087c4-4150-446a-8d50-edec87f6e4d5.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "10998"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Esg+25wSyvzTqP7nvb5HUS5uXGB5+j7hN6dMeKyH77g=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 07:52:42 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "yr8u4f1q8f"
+        },
+        {
+          "Name": "label",
+          "Value": "images/attraction/attractionID1/115087c4-4150-446a-8d50-edec87f6e4d5.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Esg+25wSyvzTqP7nvb5HUS5uXGB5+j7hN6dMeKyH77g="
+        }
+      ]
+    },
+    {
+      "Route": "images/attraction/attractionID1/9bda7453-0466-4609-a98f-e19368ab0b82.6hjuqov03o.jpg",
+      "AssetFile": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/images/attraction/attractionID1/9bda7453-0466-4609-a98f-e19368ab0b82.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "10846"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Gmgle8Sn5o1NCiRy+cZCFY2kigaizREm3JsldSmtoN0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 07:52:36 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "6hjuqov03o"
+        },
+        {
+          "Name": "label",
+          "Value": "images/attraction/attractionID1/9bda7453-0466-4609-a98f-e19368ab0b82.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Gmgle8Sn5o1NCiRy+cZCFY2kigaizREm3JsldSmtoN0="
+        }
+      ]
+    },
+    {
+      "Route": "images/attraction/attractionID1/9bda7453-0466-4609-a98f-e19368ab0b82.jpg",
+      "AssetFile": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/images/attraction/attractionID1/9bda7453-0466-4609-a98f-e19368ab0b82.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "10846"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Gmgle8Sn5o1NCiRy+cZCFY2kigaizREm3JsldSmtoN0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 07:52:36 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Gmgle8Sn5o1NCiRy+cZCFY2kigaizREm3JsldSmtoN0="
+        }
+      ]
+    },
+    {
+      "Route": "images/attraction/attractionID1/d36a4926-cdb3-4c1a-b022-5bbcc0614fd3.jpg",
+      "AssetFile": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/images/attraction/attractionID1/d36a4926-cdb3-4c1a-b022-5bbcc0614fd3.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "139942"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"3w3U5Mi4JM6rK+sq+CW/y4SiPDK+O/AhKLh3SE1z7Ps=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 07:53:00 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-3w3U5Mi4JM6rK+sq+CW/y4SiPDK+O/AhKLh3SE1z7Ps="
+        }
+      ]
+    },
+    {
+      "Route": "images/attraction/attractionID1/d36a4926-cdb3-4c1a-b022-5bbcc0614fd3.puxjw02u0c.jpg",
+      "AssetFile": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/images/attraction/attractionID1/d36a4926-cdb3-4c1a-b022-5bbcc0614fd3.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "139942"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"3w3U5Mi4JM6rK+sq+CW/y4SiPDK+O/AhKLh3SE1z7Ps=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 07:53:00 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "puxjw02u0c"
+        },
+        {
+          "Name": "label",
+          "Value": "images/attraction/attractionID1/d36a4926-cdb3-4c1a-b022-5bbcc0614fd3.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-3w3U5Mi4JM6rK+sq+CW/y4SiPDK+O/AhKLh3SE1z7Ps="
+        }
+      ]
+    },
+    {
+      "Route": "images/hotel/hotelID1/1a602aea-3417-4ce6-a3fe-ddc63b917d93.190lrqkoun.jpg",
+      "AssetFile": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/images/hotel/hotelID1/1a602aea-3417-4ce6-a3fe-ddc63b917d93.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "12200"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"hdf0ycgJwSJ96eRV1OkhwbgbcKy5ouMOlmi2gy+EZhQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 08:57:27 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "190lrqkoun"
+        },
+        {
+          "Name": "label",
+          "Value": "images/hotel/hotelID1/1a602aea-3417-4ce6-a3fe-ddc63b917d93.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-hdf0ycgJwSJ96eRV1OkhwbgbcKy5ouMOlmi2gy+EZhQ="
+        }
+      ]
+    },
+    {
+      "Route": "images/hotel/hotelID1/1a602aea-3417-4ce6-a3fe-ddc63b917d93.jpg",
+      "AssetFile": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/images/hotel/hotelID1/1a602aea-3417-4ce6-a3fe-ddc63b917d93.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "12200"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"hdf0ycgJwSJ96eRV1OkhwbgbcKy5ouMOlmi2gy+EZhQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 08:57:27 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-hdf0ycgJwSJ96eRV1OkhwbgbcKy5ouMOlmi2gy+EZhQ="
+        }
+      ]
+    },
+    {
+      "Route": "images/hotel/hotelID1/3e334cde-521c-4626-b9c1-b7cfb3663fd6.jpg",
+      "AssetFile": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/images/hotel/hotelID1/3e334cde-521c-4626-b9c1-b7cfb3663fd6.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "12104"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"IPeaOUsJedcKAc8EyAsMk0FSyALEFWkHoz0r6A944C0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 08:57:27 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-IPeaOUsJedcKAc8EyAsMk0FSyALEFWkHoz0r6A944C0="
+        }
+      ]
+    },
+    {
+      "Route": "images/hotel/hotelID1/3e334cde-521c-4626-b9c1-b7cfb3663fd6.w8es08yyxj.jpg",
+      "AssetFile": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/images/hotel/hotelID1/3e334cde-521c-4626-b9c1-b7cfb3663fd6.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "12104"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"IPeaOUsJedcKAc8EyAsMk0FSyALEFWkHoz0r6A944C0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 08:57:27 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "w8es08yyxj"
+        },
+        {
+          "Name": "label",
+          "Value": "images/hotel/hotelID1/3e334cde-521c-4626-b9c1-b7cfb3663fd6.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-IPeaOUsJedcKAc8EyAsMk0FSyALEFWkHoz0r6A944C0="
+        }
+      ]
+    },
+    {
+      "Route": "images/hotel/hotelID1/ea800103-e308-4aa0-a8a5-5d83a65abff0.jpg",
+      "AssetFile": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/images/hotel/hotelID1/ea800103-e308-4aa0-a8a5-5d83a65abff0.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "7503"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"kpQCabl13RFiQjpUwCKN1RGNSrNR2+wjbA8Exi8CMb0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 08:57:27 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-kpQCabl13RFiQjpUwCKN1RGNSrNR2+wjbA8Exi8CMb0="
+        }
+      ]
+    },
+    {
+      "Route": "images/hotel/hotelID1/ea800103-e308-4aa0-a8a5-5d83a65abff0.ykawjdls7a.jpg",
+      "AssetFile": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/images/hotel/hotelID1/ea800103-e308-4aa0-a8a5-5d83a65abff0.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "7503"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"kpQCabl13RFiQjpUwCKN1RGNSrNR2+wjbA8Exi8CMb0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 08:57:27 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ykawjdls7a"
+        },
+        {
+          "Name": "label",
+          "Value": "images/hotel/hotelID1/ea800103-e308-4aa0-a8a5-5d83a65abff0.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-kpQCabl13RFiQjpUwCKN1RGNSrNR2+wjbA8Exi8CMb0="
+        }
+      ]
+    },
+    {
+      "Route": "images/restaurant/restaurantID1/2e3b18f0-52ee-40f9-8714-648f8f78ca4c.jpg",
+      "AssetFile": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/images/restaurant/restaurantID1/2e3b18f0-52ee-40f9-8714-648f8f78ca4c.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "17422"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"IbFS3Li04muvZMugkkrRKHqc+GzDB5Pq9PK0iMvwCRs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 09:14:41 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-IbFS3Li04muvZMugkkrRKHqc+GzDB5Pq9PK0iMvwCRs="
+        }
+      ]
+    },
+    {
+      "Route": "images/restaurant/restaurantID1/2e3b18f0-52ee-40f9-8714-648f8f78ca4c.r1ens7ldna.jpg",
+      "AssetFile": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/images/restaurant/restaurantID1/2e3b18f0-52ee-40f9-8714-648f8f78ca4c.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "17422"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"IbFS3Li04muvZMugkkrRKHqc+GzDB5Pq9PK0iMvwCRs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 09:14:41 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "r1ens7ldna"
+        },
+        {
+          "Name": "label",
+          "Value": "images/restaurant/restaurantID1/2e3b18f0-52ee-40f9-8714-648f8f78ca4c.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-IbFS3Li04muvZMugkkrRKHqc+GzDB5Pq9PK0iMvwCRs="
+        }
+      ]
+    },
+    {
+      "Route": "images/restaurant/restaurantID1/887073fc-c09f-458a-bea0-98483931f22b.6ms1pndfhq.jpg",
+      "AssetFile": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/images/restaurant/restaurantID1/887073fc-c09f-458a-bea0-98483931f22b.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "11215"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"4rPGHfYnWLXDXQcY3t1uTt/1Nlb7M2dxi6zIPjDlHi8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 09:14:41 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "6ms1pndfhq"
+        },
+        {
+          "Name": "label",
+          "Value": "images/restaurant/restaurantID1/887073fc-c09f-458a-bea0-98483931f22b.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-4rPGHfYnWLXDXQcY3t1uTt/1Nlb7M2dxi6zIPjDlHi8="
+        }
+      ]
+    },
+    {
+      "Route": "images/restaurant/restaurantID1/887073fc-c09f-458a-bea0-98483931f22b.jpg",
+      "AssetFile": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/images/restaurant/restaurantID1/887073fc-c09f-458a-bea0-98483931f22b.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "11215"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"4rPGHfYnWLXDXQcY3t1uTt/1Nlb7M2dxi6zIPjDlHi8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 09:14:41 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-4rPGHfYnWLXDXQcY3t1uTt/1Nlb7M2dxi6zIPjDlHi8="
+        }
+      ]
+    },
+    {
+      "Route": "images/restaurant/restaurantID1/a2dfc3cb-3c5e-4a98-8c22-4c4cc75fa60b.72ywqo1mss.jpg",
+      "AssetFile": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/images/restaurant/restaurantID1/a2dfc3cb-3c5e-4a98-8c22-4c4cc75fa60b.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "17971"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"kUHqyIx6u+3CFY8IIFnmMQEHg3LWV7k89F9mb6/7UJQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 09:14:41 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "72ywqo1mss"
+        },
+        {
+          "Name": "label",
+          "Value": "images/restaurant/restaurantID1/a2dfc3cb-3c5e-4a98-8c22-4c4cc75fa60b.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-kUHqyIx6u+3CFY8IIFnmMQEHg3LWV7k89F9mb6/7UJQ="
+        }
+      ]
+    },
+    {
+      "Route": "images/restaurant/restaurantID1/a2dfc3cb-3c5e-4a98-8c22-4c4cc75fa60b.jpg",
+      "AssetFile": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/images/restaurant/restaurantID1/a2dfc3cb-3c5e-4a98-8c22-4c4cc75fa60b.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "17971"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"kUHqyIx6u+3CFY8IIFnmMQEHg3LWV7k89F9mb6/7UJQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 09:14:41 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-kUHqyIx6u+3CFY8IIFnmMQEHg3LWV7k89F9mb6/7UJQ="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/avatars/1e2f9be2-f3db-4331-a0b3-0beb4efdbc36.4269uijmg5.png",
+      "AssetFile": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/1e2f9be2-f3db-4331-a0b3-0beb4efdbc36.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "5386"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"7JyC8iRW96NMgIgf+lQiB9qrckEjI+ykmFpv/QFAv4o=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 09 Feb 2025 14:58:05 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "4269uijmg5"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/avatars/1e2f9be2-f3db-4331-a0b3-0beb4efdbc36.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-7JyC8iRW96NMgIgf+lQiB9qrckEjI+ykmFpv/QFAv4o="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/avatars/1e2f9be2-f3db-4331-a0b3-0beb4efdbc36.png",
+      "AssetFile": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/1e2f9be2-f3db-4331-a0b3-0beb4efdbc36.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "5386"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"7JyC8iRW96NMgIgf+lQiB9qrckEjI+ykmFpv/QFAv4o=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 09 Feb 2025 14:58:05 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-7JyC8iRW96NMgIgf+lQiB9qrckEjI+ykmFpv/QFAv4o="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/avatars/27f8d8ed-e096-4377-bd48-b570d4661b2c.jpg",
+      "AssetFile": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/27f8d8ed-e096-4377-bd48-b570d4661b2c.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "32612"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"OvUcSC0WOSf/gxxhmRb6Ra/+PEWzdva14pxQ5FEBxLg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 09 Feb 2025 14:58:05 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-OvUcSC0WOSf/gxxhmRb6Ra/+PEWzdva14pxQ5FEBxLg="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/avatars/27f8d8ed-e096-4377-bd48-b570d4661b2c.qjkvlzz30d.jpg",
+      "AssetFile": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/27f8d8ed-e096-4377-bd48-b570d4661b2c.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "32612"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"OvUcSC0WOSf/gxxhmRb6Ra/+PEWzdva14pxQ5FEBxLg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 09 Feb 2025 14:58:05 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "qjkvlzz30d"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/avatars/27f8d8ed-e096-4377-bd48-b570d4661b2c.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-OvUcSC0WOSf/gxxhmRb6Ra/+PEWzdva14pxQ5FEBxLg="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/avatars/696d0a16-ca88-420b-b03c-cb6032c0426b.c43azltnjd.png",
+      "AssetFile": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/696d0a16-ca88-420b-b03c-cb6032c0426b.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "362254"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"tMoE6grLtdq21KwqVorGJv8KIg72KzRVmy94wHSXMb8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 09 Feb 2025 14:58:05 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "c43azltnjd"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/avatars/696d0a16-ca88-420b-b03c-cb6032c0426b.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-tMoE6grLtdq21KwqVorGJv8KIg72KzRVmy94wHSXMb8="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/avatars/696d0a16-ca88-420b-b03c-cb6032c0426b.png",
+      "AssetFile": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/696d0a16-ca88-420b-b03c-cb6032c0426b.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "362254"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"tMoE6grLtdq21KwqVorGJv8KIg72KzRVmy94wHSXMb8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 09 Feb 2025 14:58:05 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-tMoE6grLtdq21KwqVorGJv8KIg72KzRVmy94wHSXMb8="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/avatars/6f98a843-defb-455d-8e84-ebfeacfac99e.ahnfx6gc4k.png",
+      "AssetFile": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/6f98a843-defb-455d-8e84-ebfeacfac99e.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "96531"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"nr2I/OvKMzptQK2XjtLqPuXbT1fT44C0c8lszCM9UEk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 09 Feb 2025 14:58:05 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ahnfx6gc4k"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/avatars/6f98a843-defb-455d-8e84-ebfeacfac99e.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-nr2I/OvKMzptQK2XjtLqPuXbT1fT44C0c8lszCM9UEk="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/avatars/6f98a843-defb-455d-8e84-ebfeacfac99e.png",
+      "AssetFile": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/6f98a843-defb-455d-8e84-ebfeacfac99e.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "96531"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"nr2I/OvKMzptQK2XjtLqPuXbT1fT44C0c8lszCM9UEk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 09 Feb 2025 14:58:05 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-nr2I/OvKMzptQK2XjtLqPuXbT1fT44C0c8lszCM9UEk="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/avatars/857c60e6-3739-44bf-97fd-c0d39df89516.9s592nrfzq.jpeg",
+      "AssetFile": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/857c60e6-3739-44bf-97fd-c0d39df89516.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "41906"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ifOlYqlen4s7ZIL69J5wWfKNDlKcY+X9n38Ob6GWLn8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 09 Feb 2025 14:58:05 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "9s592nrfzq"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/avatars/857c60e6-3739-44bf-97fd-c0d39df89516.jpeg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-ifOlYqlen4s7ZIL69J5wWfKNDlKcY+X9n38Ob6GWLn8="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/avatars/857c60e6-3739-44bf-97fd-c0d39df89516.jpeg",
+      "AssetFile": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/857c60e6-3739-44bf-97fd-c0d39df89516.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "41906"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ifOlYqlen4s7ZIL69J5wWfKNDlKcY+X9n38Ob6GWLn8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 09 Feb 2025 14:58:05 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-ifOlYqlen4s7ZIL69J5wWfKNDlKcY+X9n38Ob6GWLn8="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/avatars/bc649c69-73fd-4b7e-a557-8217da81a38c.echhap7nba.jpg",
+      "AssetFile": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/bc649c69-73fd-4b7e-a557-8217da81a38c.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "100517"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"8g/VLqAMupfGokusm3E/jliVf1yzkQ13U1ThHYT7KbE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 09 Feb 2025 14:58:05 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "echhap7nba"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/avatars/bc649c69-73fd-4b7e-a557-8217da81a38c.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-8g/VLqAMupfGokusm3E/jliVf1yzkQ13U1ThHYT7KbE="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/avatars/bc649c69-73fd-4b7e-a557-8217da81a38c.jpg",
+      "AssetFile": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/bc649c69-73fd-4b7e-a557-8217da81a38c.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "100517"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"8g/VLqAMupfGokusm3E/jliVf1yzkQ13U1ThHYT7KbE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 09 Feb 2025 14:58:05 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-8g/VLqAMupfGokusm3E/jliVf1yzkQ13U1ThHYT7KbE="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/avatars/cc0e4b5c-baa4-431f-8b9b-5ee1a6c6e316.jpg",
+      "AssetFile": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/cc0e4b5c-baa4-431f-8b9b-5ee1a6c6e316.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "8471"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"QfKVeEgOA5NA5zEt9noLThn4GYKNJCId7he9b9yYlGo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 09:01:34 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-QfKVeEgOA5NA5zEt9noLThn4GYKNJCId7he9b9yYlGo="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/avatars/cc0e4b5c-baa4-431f-8b9b-5ee1a6c6e316.lvts8hkpyb.jpg",
+      "AssetFile": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/cc0e4b5c-baa4-431f-8b9b-5ee1a6c6e316.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "8471"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"QfKVeEgOA5NA5zEt9noLThn4GYKNJCId7he9b9yYlGo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 09:01:34 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "lvts8hkpyb"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/avatars/cc0e4b5c-baa4-431f-8b9b-5ee1a6c6e316.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-QfKVeEgOA5NA5zEt9noLThn4GYKNJCId7he9b9yYlGo="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/avatars/d360134d-dd92-4d4c-9402-da921ae819ae.jpg",
+      "AssetFile": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/d360134d-dd92-4d4c-9402-da921ae819ae.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "196327"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"6IxRkwccAir9m0M9RspPyTlUVGM+jYYrVBd2OUM4ugE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 09 Feb 2025 14:58:05 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-6IxRkwccAir9m0M9RspPyTlUVGM+jYYrVBd2OUM4ugE="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/avatars/d360134d-dd92-4d4c-9402-da921ae819ae.k5xduzsmw8.jpg",
+      "AssetFile": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/d360134d-dd92-4d4c-9402-da921ae819ae.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "196327"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"6IxRkwccAir9m0M9RspPyTlUVGM+jYYrVBd2OUM4ugE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 09 Feb 2025 14:58:05 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "k5xduzsmw8"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/avatars/d360134d-dd92-4d4c-9402-da921ae819ae.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-6IxRkwccAir9m0M9RspPyTlUVGM+jYYrVBd2OUM4ugE="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/avatars/e0186bcb-5a4a-46d1-909d-b60fb1c1e5fc.4269uijmg5.png",
+      "AssetFile": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/e0186bcb-5a4a-46d1-909d-b60fb1c1e5fc.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "5386"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"7JyC8iRW96NMgIgf+lQiB9qrckEjI+ykmFpv/QFAv4o=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 09 Feb 2025 14:58:05 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "4269uijmg5"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/avatars/e0186bcb-5a4a-46d1-909d-b60fb1c1e5fc.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-7JyC8iRW96NMgIgf+lQiB9qrckEjI+ykmFpv/QFAv4o="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/avatars/e0186bcb-5a4a-46d1-909d-b60fb1c1e5fc.png",
+      "AssetFile": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/e0186bcb-5a4a-46d1-909d-b60fb1c1e5fc.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "5386"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"7JyC8iRW96NMgIgf+lQiB9qrckEjI+ykmFpv/QFAv4o=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 09 Feb 2025 14:58:05 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-7JyC8iRW96NMgIgf+lQiB9qrckEjI+ykmFpv/QFAv4o="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/avatars/f01d953f-1d98-4ac9-b090-b7cad5dd43ec.c43azltnjd.png",
+      "AssetFile": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/f01d953f-1d98-4ac9-b090-b7cad5dd43ec.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "362254"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"tMoE6grLtdq21KwqVorGJv8KIg72KzRVmy94wHSXMb8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 09 Feb 2025 14:58:05 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "c43azltnjd"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/avatars/f01d953f-1d98-4ac9-b090-b7cad5dd43ec.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-tMoE6grLtdq21KwqVorGJv8KIg72KzRVmy94wHSXMb8="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/avatars/f01d953f-1d98-4ac9-b090-b7cad5dd43ec.png",
+      "AssetFile": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/f01d953f-1d98-4ac9-b090-b7cad5dd43ec.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "362254"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"tMoE6grLtdq21KwqVorGJv8KIg72KzRVmy94wHSXMb8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 09 Feb 2025 14:58:05 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-tMoE6grLtdq21KwqVorGJv8KIg72KzRVmy94wHSXMb8="
+        }
+      ]
     }
   ]
 }

@@ -1,76 +1,89 @@
 {
   "Files": [
     {
-      "Id": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/images/attraction/attractionID1/926ae0c2-7475-4d5e-a469-5192b9c9a50b.jpg",
-      "PackagePath": "staticwebassets/images/attraction/attractionID1/926ae0c2-7475-4d5e-a469-5192b9c9a50b.jpg"
+      "Id": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/images/attraction/attractionID1/115087c4-4150-446a-8d50-edec87f6e4d5.jpg",
+      "PackagePath": "staticwebassets/images/attraction/attractionID1/115087c4-4150-446a-8d50-edec87f6e4d5.jpg"
     },
     {
-      "Id": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/images/attraction/attractionID2/ec580971-76fb-4cc6-8849-145a80967c70.png",
-      "PackagePath": "staticwebassets/images/attraction/attractionID2/ec580971-76fb-4cc6-8849-145a80967c70.png"
+      "Id": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/images/attraction/attractionID1/9bda7453-0466-4609-a98f-e19368ab0b82.jpg",
+      "PackagePath": "staticwebassets/images/attraction/attractionID1/9bda7453-0466-4609-a98f-e19368ab0b82.jpg"
     },
     {
-      "Id": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/images/hotel/hotelID1/45dd85ba-1ef5-4f27-93ed-a32bb5cbff61.jpg",
-      "PackagePath": "staticwebassets/images/hotel/hotelID1/45dd85ba-1ef5-4f27-93ed-a32bb5cbff61.jpg"
+      "Id": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/images/attraction/attractionID1/d36a4926-cdb3-4c1a-b022-5bbcc0614fd3.jpg",
+      "PackagePath": "staticwebassets/images/attraction/attractionID1/d36a4926-cdb3-4c1a-b022-5bbcc0614fd3.jpg"
     },
     {
-      "Id": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/images/hotel/hotelID1/6ad85f1f-b381-4573-a7d3-48c7322219f4.jpg",
-      "PackagePath": "staticwebassets/images/hotel/hotelID1/6ad85f1f-b381-4573-a7d3-48c7322219f4.jpg"
+      "Id": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/images/hotel/hotelID1/1a602aea-3417-4ce6-a3fe-ddc63b917d93.jpg",
+      "PackagePath": "staticwebassets/images/hotel/hotelID1/1a602aea-3417-4ce6-a3fe-ddc63b917d93.jpg"
     },
     {
-      "Id": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/images/hotel/hotelID1/d5ce57d3-1d7c-4907-aa18-7ac741b9e8a9.png",
-      "PackagePath": "staticwebassets/images/hotel/hotelID1/d5ce57d3-1d7c-4907-aa18-7ac741b9e8a9.png"
+      "Id": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/images/hotel/hotelID1/3e334cde-521c-4626-b9c1-b7cfb3663fd6.jpg",
+      "PackagePath": "staticwebassets/images/hotel/hotelID1/3e334cde-521c-4626-b9c1-b7cfb3663fd6.jpg"
     },
     {
-      "Id": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/images/restaurant/restaurantID1/1354d02f-d658-495a-a7ee-de92232431f2.png",
-      "PackagePath": "staticwebassets/images/restaurant/restaurantID1/1354d02f-d658-495a-a7ee-de92232431f2.png"
+      "Id": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/images/hotel/hotelID1/ea800103-e308-4aa0-a8a5-5d83a65abff0.jpg",
+      "PackagePath": "staticwebassets/images/hotel/hotelID1/ea800103-e308-4aa0-a8a5-5d83a65abff0.jpg"
     },
     {
-      "Id": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/images/transportation/transportationID1/487b2ece-446f-414e-aee9-e069e95e6804.jpg",
-      "PackagePath": "staticwebassets/images/transportation/transportationID1/487b2ece-446f-414e-aee9-e069e95e6804.jpg"
+      "Id": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/images/restaurant/restaurantID1/2e3b18f0-52ee-40f9-8714-648f8f78ca4c.jpg",
+      "PackagePath": "staticwebassets/images/restaurant/restaurantID1/2e3b18f0-52ee-40f9-8714-648f8f78ca4c.jpg"
     },
     {
-      "Id": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/images/transportation/transportationID1/e5f094f7-d1c0-4b1f-a690-a43b9b1e6e0d.png",
-      "PackagePath": "staticwebassets/images/transportation/transportationID1/e5f094f7-d1c0-4b1f-a690-a43b9b1e6e0d.png"
+      "Id": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/images/restaurant/restaurantID1/887073fc-c09f-458a-bea0-98483931f22b.jpg",
+      "PackagePath": "staticwebassets/images/restaurant/restaurantID1/887073fc-c09f-458a-bea0-98483931f22b.jpg"
     },
     {
-      "Id": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/1e2f9be2-f3db-4331-a0b3-0beb4efdbc36.png",
+      "Id": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/images/restaurant/restaurantID1/a2dfc3cb-3c5e-4a98-8c22-4c4cc75fa60b.jpg",
+      "PackagePath": "staticwebassets/images/restaurant/restaurantID1/a2dfc3cb-3c5e-4a98-8c22-4c4cc75fa60b.jpg"
+    },
+    {
+      "Id": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/1e2f9be2-f3db-4331-a0b3-0beb4efdbc36.png",
       "PackagePath": "staticwebassets/uploads/avatars/1e2f9be2-f3db-4331-a0b3-0beb4efdbc36.png"
     },
     {
-      "Id": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/27f8d8ed-e096-4377-bd48-b570d4661b2c.jpg",
+      "Id": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/27f8d8ed-e096-4377-bd48-b570d4661b2c.jpg",
       "PackagePath": "staticwebassets/uploads/avatars/27f8d8ed-e096-4377-bd48-b570d4661b2c.jpg"
     },
     {
-      "Id": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/696d0a16-ca88-420b-b03c-cb6032c0426b.png",
+      "Id": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/696d0a16-ca88-420b-b03c-cb6032c0426b.png",
       "PackagePath": "staticwebassets/uploads/avatars/696d0a16-ca88-420b-b03c-cb6032c0426b.png"
     },
     {
-      "Id": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/6f98a843-defb-455d-8e84-ebfeacfac99e.png",
+      "Id": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/6f98a843-defb-455d-8e84-ebfeacfac99e.png",
       "PackagePath": "staticwebassets/uploads/avatars/6f98a843-defb-455d-8e84-ebfeacfac99e.png"
     },
     {
-      "Id": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/857c60e6-3739-44bf-97fd-c0d39df89516.jpeg",
+      "Id": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/857c60e6-3739-44bf-97fd-c0d39df89516.jpeg",
       "PackagePath": "staticwebassets/uploads/avatars/857c60e6-3739-44bf-97fd-c0d39df89516.jpeg"
     },
     {
-      "Id": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/bc649c69-73fd-4b7e-a557-8217da81a38c.jpg",
+      "Id": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/bc649c69-73fd-4b7e-a557-8217da81a38c.jpg",
       "PackagePath": "staticwebassets/uploads/avatars/bc649c69-73fd-4b7e-a557-8217da81a38c.jpg"
     },
     {
-      "Id": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/d360134d-dd92-4d4c-9402-da921ae819ae.jpg",
+      "Id": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/cc0e4b5c-baa4-431f-8b9b-5ee1a6c6e316.jpg",
+      "PackagePath": "staticwebassets/uploads/avatars/cc0e4b5c-baa4-431f-8b9b-5ee1a6c6e316.jpg"
+    },
+    {
+      "Id": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/d360134d-dd92-4d4c-9402-da921ae819ae.jpg",
       "PackagePath": "staticwebassets/uploads/avatars/d360134d-dd92-4d4c-9402-da921ae819ae.jpg"
     },
     {
-      "Id": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/e0186bcb-5a4a-46d1-909d-b60fb1c1e5fc.png",
+      "Id": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/e0186bcb-5a4a-46d1-909d-b60fb1c1e5fc.png",
       "PackagePath": "staticwebassets/uploads/avatars/e0186bcb-5a4a-46d1-909d-b60fb1c1e5fc.png"
     },
     {
-      "Id": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/f01d953f-1d98-4ac9-b090-b7cad5dd43ec.png",
+      "Id": "/home/fredmt1n/Projects/codecode/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/f01d953f-1d98-4ac9-b090-b7cad5dd43ec.png",
       "PackagePath": "staticwebassets/uploads/avatars/f01d953f-1d98-4ac9-b090-b7cad5dd43ec.png"
     },
     {
+<<<<<<< Updated upstream
       "Id": "/Users/nha/Documents/Project3/Api/Karnel-Api/Karnel-Api/wwwroot/uploads/avatars/f43cdddd-011f-4fd2-8abc-3ee6e9582747.png",
       "PackagePath": "staticwebassets/uploads/avatars/f43cdddd-011f-4fd2-8abc-3ee6e9582747.png"
+=======
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.Karnel-Api.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+>>>>>>> Stashed changes
     },
     {
       "Id": "obj/Debug/net8.0/staticwebassets/msbuild.Karnel-Api.Microsoft.AspNetCore.StaticWebAssets.props",

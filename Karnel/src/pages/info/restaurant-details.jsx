@@ -75,9 +75,11 @@ export default function RestaurantDetails() {
                     <h3 className="text-4xl">{restaurant.title}</h3>
                     <div className="flex flex-col gap-3 pb-4">
                         <div className="flex gap-1.5">
-                            <Rating classes={{iconFilled: "[&>svg]:fill-primary"}} value={restaurant.rating}
-                                    precision={0.5}
-                                    readOnly/>
+                            {restaurant.rating && (
+                                <Rating classes={{iconFilled: "[&>svg]:fill-primary"}} defaultValue={restaurant.rating}
+                                        precision={0.5}
+                                        readOnly/>
+                            )}
                             {restaurant.type && restaurant.type.map((t, index) => (
                                 <span key={index}>&#183; {t}</span>
                             ))}

@@ -22,7 +22,7 @@ namespace Karnel_Api.Controller
             {
                 c.CityName,
                 AttractionsCount = _context.Attractions.Count(a => a.CityID == c.CityID),
-                Image = _context.Images.Where(i => i.EntityID == c.CityID && i.EntityType == "City" && i.ImageUrl.Contains("main")).Select(img => new ImageDto
+                Image = _context.Images.Where(i => i.EntityID == c.CityID && i.EntityType == "City").Select(img => new ImageDto
                 {
                     Id = img.ImageID,
                     Url = img.ImageUrl,

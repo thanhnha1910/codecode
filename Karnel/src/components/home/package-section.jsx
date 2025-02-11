@@ -18,13 +18,17 @@ export default function PackageSection() {
     }, []);
     return (
         <section>
-            <h1 className="text-center pb-12">Awesome Packages</h1>
+            {tours && tours.length !== 0 && (
+                <>
+                    <h1 className="text-center pb-12">Awesome Packages</h1>
 
-            <div className="grid grid-cols-4 gap-x-4 gap-y-5">
-                {tours && tours.map((tour) => (
-                    <TourPackage key={tour.tourId} tourPackage={tour}/>
-                ))}
-            </div>
+                    <div className="grid grid-cols-4 gap-x-4 gap-y-5">
+                        {tours.map((tour) => (
+                            <TourPackage key={tour.tourId} tourPackage={tour}/>
+                        ))}
+                    </div>
+                </>
+            )}
         </section>
 )
 }

@@ -31,22 +31,22 @@ const pageList = [
         items: [
             {
                 title: "Attractions",
-                href: "/info/attractions",
+                href: "/attractions",
                 description: "Explore tourist attractions and landmarks"
             },
             {
                 title: "Hotels",
-                href: "/info/hotels",
+                href: "/hotels",
                 description: "Find comfortable places to stay"
             },
             {
                 title: "Resorts",
-                href: "/info/resorts",
+                href: "/resorts",
                 description: "Discover luxury resorts and accommodations"
             },
             {
                 title: "Restaurants",
-                href: "/info/restaurants",
+                href: "/restaurants",
                 description: "Experience local and international cuisine"
             }
         ]
@@ -59,7 +59,7 @@ const pageList = [
 
 export default function NavigationBar() {
     const navigate = useNavigate();
-    const { user, setUser } = useUser();
+    const {user, setUser} = useUser();
     const [show, setShow] = useState(true);
     let lastScrollYRef = useRef(0);
     const controlNavbar = () => {
@@ -91,7 +91,7 @@ export default function NavigationBar() {
             className={`${show ? 'animate-in slide-in-from-top visible' : 'animate-out slide-out-to-top invisible'} sticky transition-visibility delay-300 duration-500 ease-in-out inset-x-0 top-0 flex justify-between items-center px-4 py-3 border-b bg-background z-10`}>
             <Link to="/test">
                 <div className="flex items-center gap-2">
-                    <img src="/karnel.svg" alt="Karnel Logo" className="h-10 mb-2" />
+                    <img src="/karnel.svg" alt="Karnel Logo" className="h-10 mb-2"/>
                     <h1 className="text-primary font-bold italic">Karnel</h1>
                 </div>
             </Link>
@@ -133,7 +133,7 @@ export default function NavigationBar() {
                 <div className="flex items-center gap-3">
                     <NavLink to="/profile" className="hover:bg-primary/90 rounded-full p-1">
                         <Avatar>
-                            <AvatarImage src={user.avatar || "images/home/User_icon_2.svg.png"} />
+                            <AvatarImage src={user.avatar || "images/home/User_icon_2.svg.png"}/>
                             <AvatarFallback>MN</AvatarFallback>
                         </Avatar>
                     </NavLink>

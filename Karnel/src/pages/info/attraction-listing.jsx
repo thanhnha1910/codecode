@@ -18,6 +18,7 @@ export default function AttractionListing() {
     let [searchParams] = useSearchParams();
     useEffect(() => {
         attractionApi.getAttractionsByCity(cityName, searchParams).then((data) => setAttractions(data));
+        console.log(attractions)
     }, [cityName, searchParams]);
     return (
         <section className="container mx-auto py-8">

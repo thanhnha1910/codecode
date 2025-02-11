@@ -70,7 +70,7 @@ namespace Karnel_Api.Controller
                     Duration = (t.EndDate - t.StartDate).Days,
                     CityName = t.City.CityName,
                     Images = context.Images.Where(img =>
-                        img.EntityType == "Tour" && img.EntityID == t.TourID && img.ImageUrl.Contains("main")).Select(
+                        img.EntityType == "Tour" && img.EntityID == t.TourID).Select(
                         img =>
                             new ImageDto
                             {
@@ -95,7 +95,8 @@ namespace Karnel_Api.Controller
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetTour(int id)
         {
-            var tour = await context.Tours.Where(t => t.TourID == id).Select(t => new TourDetailDto
+            var tour = await context.Tours.Where(t => t.TourID == id)
+                .Select(t => new TourDetailDto
             {
                 TourId = t.TourID,
                 Name = t.TourName,
@@ -107,7 +108,7 @@ namespace Karnel_Api.Controller
                 EndDate = t.EndDate,
                 Duration = (t.EndDate - t.StartDate).Days,
                 CityName = t.City.CityName,
-                Images = context.Images.Where(img => img.EntityType == "Tour" && img.EntityID == t.TourID && img.ImageUrl.Contains("main")).Select(img =>
+                Images = context.Images.Where(img => img.EntityType == "Tour" && img.EntityID == t.TourID).Select(img =>
                     new ImageDto
                     {
                         Id = img.ImageID,
@@ -118,34 +119,34 @@ namespace Karnel_Api.Controller
                 {
                     HotelId = t.Hotel.HotelID,
                     Name = t.Hotel.HotelName,
-                    Image = context.Images.Where(img => img.EntityType == "Hotel" && img.EntityID == t.Hotel.HotelID && img.ImageUrl.Contains("main")).Select(img => new ImageDto
+                    Images = context.Images.Where(img => img.EntityType == "Hotel" && img.EntityID == t.Hotel.HotelID).Select(img => new ImageDto
                     {
                         Id = img.ImageID,
                         Url = img.ImageUrl,
                         AltText = img.AltText
-                    }).FirstOrDefault(),
+                    }).ToList(),
                 },
                 Attractions = t.TourAttractions.Select(ta => new AttractionOverviewDto
                 {
                     AttractionId = ta.Attraction.AttractionID,
                     Name = ta.Attraction.AttractionName,
-                    Image = context.Images.Where(img => img.EntityType == "Attraction" && img.EntityID == ta.Attraction.AttractionID && img.ImageUrl.Contains("main")).Select(img => new ImageDto
+                    Images = context.Images.Where(img => img.EntityType == "Attraction" && img.EntityID == ta.Attraction.AttractionID).Select(img => new ImageDto
                     {
                         Id = img.ImageID,
                         Url = img.ImageUrl,
                         AltText = img.AltText
-                    }).FirstOrDefault(),
+                    }).ToList(),
                 }).ToList(),
                 Restaurants = t.TourRestaurants.Select(tr => new RestaurantOverviewDto
                 {
                     RestaurantId = tr.Restaurant.RestaurantID,
                     Name = tr.Restaurant.RestaurantName,
-                    Image = context.Images.Where(img => img.EntityType == "Restaurant" && img.EntityID == tr.Restaurant.RestaurantID && img.ImageUrl.Contains("main")).Select(img => new ImageDto
+                    Images = context.Images.Where(img => img.EntityType == "Restaurant" && img.EntityID == tr.Restaurant.RestaurantID).Select(img => new ImageDto
                     {
                         Id = img.ImageID,
                         Url = img.ImageUrl,
                         AltText = img.AltText
-                    }).FirstOrDefault(),
+                    }).ToList(),
                 }).ToList(),
                 Reviews = context.Reviews.Any(r => r.TourID == t.TourID)
                     ? new ReviewOverviewDto

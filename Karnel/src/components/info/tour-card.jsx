@@ -52,12 +52,9 @@ export default function TourCard({tour}) {
                     </div>
                 </div>
 
-                <div className="flex flex-col gap-2">
-                    <Button asChild className="rounded-full py-5 px-7 text-sm font-bold">
-                        <NavLink to={`/tours/${tour.tourId}`}>View Details</NavLink>
-                    </Button>
-                    <Button className="rounded-full py-5 px-7 text-sm font-bold" variant="secondary">Download Brochure</Button>
-                </div>
+                <Button asChild className="rounded-full py-5 px-7 text-sm font-bold">
+                    <NavLink to={`/tours/${tour.tourId}`}>View Details</NavLink>
+                </Button>
             </CardContent>
         </Card>
     );

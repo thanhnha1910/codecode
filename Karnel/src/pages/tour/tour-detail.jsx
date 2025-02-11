@@ -1,27 +1,27 @@
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs.jsx";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion.jsx";
-import { Separator } from "@/components/ui/separator.jsx";
-import { Button } from "@/components/ui/button.jsx";
-import { Calendar, Heart, Info, StarIcon, User } from 'lucide-react'
-import { useEffect, useState } from "react";
+import {Tabs, TabsContent, TabsList, TabsTrigger} from "@/components/ui/tabs.jsx";
+import {Accordion, AccordionContent, AccordionItem, AccordionTrigger} from "@/components/ui/accordion.jsx";
+import {Separator} from "@/components/ui/separator.jsx";
+import {Button} from "@/components/ui/button.jsx";
+import {Calendar, Heart, Info, StarIcon, User} from 'lucide-react'
+import {useEffect, useState} from "react";
 import tourApi from "@/services/TourService.js";
-import { useParams } from "react-router";
-import { Card, CardContent, CardHeader, CardImage, CardTitle } from "@/components/ui/card.jsx";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar.jsx";
+import {useParams} from "react-router";
+import {Card, CardContent, CardHeader, CardImage, CardTitle} from "@/components/ui/card.jsx";
+import {Avatar, AvatarFallback, AvatarImage} from "@/components/ui/avatar.jsx";
 import moment from "moment";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel.jsx";
+import {Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious} from "@/components/ui/carousel.jsx";
 import TourPackage from "@/components/tour/tour-package.jsx";
 import reviewApi from "@/services/ReviewService.js";
-import { Rating } from "@mui/material";
-import { Progress } from "@/components/ui/progress.jsx";
+import {Rating} from "@mui/material";
+import {Progress} from "@/components/ui/progress.jsx";
 import Book from '../BookPay/Book';
 
 const rateScale = [
-    { star: 5, label: 'Excellent' },
-    { star: 4, label: 'Good' },
-    { star: 3, label: 'Average' },
-    { star: 2, label: 'Poor' },
-    { star: 1, label: 'Terrible' },
+    {star: 5, label: 'Excellent'},
+    {star: 4, label: 'Good'},
+    {star: 3, label: 'Average'},
+    {star: 2, label: 'Poor'},
+    {star: 1, label: 'Terrible'},
 ]
 
 export default function TourDetail() {
@@ -30,8 +30,8 @@ export default function TourDetail() {
     const [max, setMax] = useState();
     const [recommended, setRecommended] = useState([]);
     const [reviews, setReviews] = useState([]);
-    let { tourId } = useParams();
-    
+    let {tourId} = useParams();
+
 
     function roundHalf(num) {
         return Math.floor(num * 2) / 2;
@@ -100,12 +100,12 @@ export default function TourDetail() {
                             <span className="text-lg font-semilight"><b>{tour.cityName} </b> &#183;
                                 <b> {tour.duration}</b> days &#183; {tour.reviews &&
                                     <b>{tour.reviews.averageRating} <StarIcon
-                                        className="fill-primary stroke-none inline-block mb-[6px]" />
+                                        className="fill-primary stroke-none inline-block mb-[6px]"/>
                                     </b>} ({tour.reviews && tour.reviews.totalReviews} reviews)</span>
                         </div>
                         <div>
                             <Button variant="outline" className="rounded-3xl py-5">
-                                <Heart /> Save
+                                <Heart/> Save
                             </Button>
                         </div>
                     </div>
@@ -113,11 +113,20 @@ export default function TourDetail() {
                     <div className="flex gap-8">
                         {/* Main Content */}
                         <div className="w-2/3 flex flex-col gap-10">
-                            <img src="/images/home/destination-1.jpg" alt="Tour Image"
-                                className="rounded-lg max-h-[500px] object-cover w-full" />
+                            <Carousel className="w-full">
+                                <CarouselContent>
+                                    {tour.images && tour.images.map((image, index) => (
+                                        <CarouselItem key={index}>
+                                            <img src={image.url} alt={image.altText}/>
+                                        </CarouselItem>
+                                    ))}
+                                </CarouselContent>
+                                <CarouselPrevious className="left-3 z-10"/>
+                                <CarouselNext className="right-3 z-10"/>
+                            </Carousel>
                             <span className="text-muted-foreground">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquam architecto autem dolor dolorem doloribus earum et facilis officia rerum tempora veniam vitae, voluptas. Architecto corporis delectus deleniti minima soluta.</span>
 
-                            <Separator className="" />
+                            <Separator className=""/>
 
                             <Tabs defaultValue="attraction">
                                 <TabsList>
@@ -128,15 +137,15 @@ export default function TourDetail() {
 
                                 </TabsList>
                                 <TabsContent value="attraction" className="pt-6">
-                                    <Carousel opts={{ align: "start" }}>
+                                    <Carousel opts={{align: "start"}}>
                                         <CarouselContent className="-ml-6">
                                             {tour.attractions && tour.attractions.map((attraction, index) => (
                                                 <CarouselItem key={index} className="basis-1/3 pl-6">
                                                     <Card
                                                         className="border-0 rounded-none shadow-none flex flex-col gap-3">
-                                                        <CardImage src="/images/home/destination-2.jpg"
-                                                            alt="Hotel Image"
-                                                            className="object-cover min-h-[200px] rounded-lg" />
+                                                        <CardImage src={attraction.images[0] ? (`http://localhost:5128/` + attraction.images[0].url) : "/images/home/placeholder.svg"}
+                                                                   alt={attraction.images[0] ? attraction.images[0].altText : "Attraction Image"}
+                                                                   className="object-cover min-h-[200px] rounded-lg"/>
                                                         <CardHeader className="p-0">
                                                             <CardTitle>{attraction.name}</CardTitle>
                                                         </CardHeader>
@@ -144,43 +153,45 @@ export default function TourDetail() {
                                                 </CarouselItem>
                                             ))}
                                         </CarouselContent>
-                                        <CarouselPrevious className="left-3 z-10" />
-                                        <CarouselNext className="right-3 z-10" />
+                                        <CarouselPrevious className="left-3 z-10"/>
+                                        <CarouselNext className="right-3 z-10"/>
                                     </Carousel>
                                 </TabsContent>
                                 <TabsContent value="restaurant" className="pt-6">
-                                    <Carousel opts={{ align: "start" }}>
+                                    <Carousel opts={{align: "start"}}>
                                         <CarouselContent className="-ml-6">
-                                            {tour.restaurants && tour.restaurants.map((attraction, index) => (
+                                            {tour.restaurants && tour.restaurants.map((restaurant, index) => (
                                                 <CarouselItem key={index} className="basis-1/3 pl-6">
                                                     <Card
                                                         className="border-0 rounded-none shadow-none flex flex-col gap-3">
-                                                        <CardImage src="/images/home/destination-3.jpg"
-                                                            alt="Hotel Image"
-                                                            className="object-cover min-h-[200px] rounded-lg" />
+                                                        <CardImage src={restaurant.images[0] ? (`http://localhost:5128/` + restaurant.images[0].url) : "/images/home/placeholder.svg"}
+                                                                   alt={restaurant.images[0] ? restaurant.images[0].altText : "Restaurant Image"}
+                                                                   className="object-cover min-h-[200px] rounded-lg"/>
                                                         <CardHeader className="p-0">
-                                                            <CardTitle>{attraction.name}</CardTitle>
+                                                            <CardTitle>{restaurant.name}</CardTitle>
                                                         </CardHeader>
                                                     </Card>
                                                 </CarouselItem>
                                             ))}
                                         </CarouselContent>
-                                        <CarouselPrevious className="left-3 z-10" />
-                                        <CarouselNext className="right-3 z-10" />
+                                        <CarouselPrevious className="left-3 z-10"/>
+                                        <CarouselNext className="right-3 z-10"/>
                                     </Carousel>
                                 </TabsContent>
                                 <TabsContent value="hotel" className="pt-6">
-                                    <Card className="border-0 rounded-none shadow-none flex flex-col gap-3 w-1/3">
-                                        <CardImage src="/images/home/destination-2.jpg" alt="Hotel Image"
-                                            className="object-cover min-h-[200px] rounded-lg" />
-                                        <CardHeader className="p-0">
-                                            <CardTitle>{tour.hotel && tour.hotel.name}</CardTitle>
-                                        </CardHeader>
-                                    </Card>
+                                    {tour.hotel && (
+                                        <Card className="border-0 rounded-none shadow-none flex flex-col gap-3 w-1/3">
+                                            <CardImage src={tour.hotel.images[0] ? (`http"://localhost:5128/` + tour.hotel.images[0].url) : "/images/home/placeholder.svg"} alt={tour.hotel.images[0] ? tour.hotel.images[0].altText : "Hotel Image"}
+                                                       className="object-cover min-h-[200px] rounded-lg"/>
+                                            <CardHeader className="p-0">
+                                                <CardTitle>{tour.hotel && tour.hotel.name}</CardTitle>
+                                            </CardHeader>
+                                        </Card>
+                                    )}
                                 </TabsContent>
                             </Tabs>
 
-                            <Separator />
+                            <Separator/>
 
                             <div>
                                 <h3 className="text-3xl pb-6">Itinerary</h3>
@@ -197,17 +208,19 @@ export default function TourDetail() {
                                             >
                                                 <div className="z-10">
                                                     <div className="rounded-full bg-primary p-2">
-                                                        <Info className="text-white" size={18} />
+                                                        <Info className="text-white" size={18}/>
                                                     </div>
                                                 </div>
                                                 <div className="grow pt-1 pb-8 pl-4">
                                                     <AccordionTrigger className="text-lg pt-0">
                                                         <div>
-                                                            <span className="text-muted-foreground pr-1">Day {index + 1}: </span>
+                                                            <span
+                                                                className="text-muted-foreground pr-1">Day {index + 1}: </span>
                                                             {day.title || 'Itinerary'}
                                                         </div>
                                                     </AccordionTrigger>
-                                                    <AccordionContent className="bg-white rounded-lg py-4 px-6 my-2 text-base">
+                                                    <AccordionContent
+                                                        className="bg-white rounded-lg py-4 px-6 my-2 text-base">
                                                         {day.detail}
                                                     </AccordionContent>
                                                 </div>
@@ -220,26 +233,25 @@ export default function TourDetail() {
 
                         {/*  Sticky Sidebar  */}
                         <div className="sticky top-6 w-1/3">
-  <div className="bg-white rounded-lg shadow-lg p-6">
-  {console.log("Tour data being passed to Book:", tour)}
-    {tour && <Book tour={tour} />}
-  </div>
-</div>
+                            <div className="bg-white rounded-lg shadow-lg p-6">
+                                {tour && <Book tour={tour}/>}
+                            </div>
+                        </div>
                     </div>
 
                     {/* Recommended */}
                     <div>
                         <h3 className="text-3xl pb-6">Recommended</h3>
-                        <Carousel opts={{ align: "start" }}>
+                        <Carousel opts={{align: "start"}}>
                             <CarouselContent className="-ml-6">
                                 {recommended && recommended.map((recommend, index) => (
                                     <CarouselItem key={index} className="basis-1/4 pl-6">
-                                        <TourPackage tourPackage={recommend} />
+                                        <TourPackage tourPackage={recommend}/>
                                     </CarouselItem>
                                 ))}
                             </CarouselContent>
-                            <CarouselPrevious className="left-4 z-10 h-10 w-10 border-primary" />
-                            <CarouselNext className="right-4 z-10 h-10 w-10 border-primary" />
+                            <CarouselPrevious className="left-4 z-10 h-10 w-10 border-primary"/>
+                            <CarouselNext className="right-4 z-10 h-10 w-10 border-primary"/>
                         </Carousel>
                     </div>
 
@@ -251,11 +263,11 @@ export default function TourDetail() {
                                 <div className="w-2/3">
                                     {reviews.reviews && reviews.reviews.map((review) => (
                                         <Card key={review.reviewId}
-                                            className="rounded-none border-x-0 border-y-gray-300 shadow-none">
+                                              className="rounded-none border-x-0 border-y-gray-300 shadow-none">
                                             <CardHeader className="flex">
                                                 <CardTitle className="flex gap-3 items-center">
                                                     <Avatar className="h-12 w-12">
-                                                        <AvatarImage src="/images/home/placeholder.svg" />
+                                                        <AvatarImage src="/images/home/placeholder.svg"/>
                                                         <AvatarFallback>JD</AvatarFallback>
                                                     </Avatar>
                                                     <div className="flex flex-col gap-0.5 justify-between">
@@ -274,15 +286,16 @@ export default function TourDetail() {
                                     <div className="w-1/3 flex flex-col">
                                         <div className="flex gap-2 pb-4">
                                             <span className="text-xl font-bold">{tour.reviews.averageRating}</span>
-                                            <Rating classes={{ iconFilled: "[&>svg]:fill-primary" }} precision={0.5}
-                                                value={rateValue} readOnly />
-                                            <span className="text-gray-500 font-medium">{tour.reviews.totalReviews} reviews</span>
+                                            <Rating classes={{iconFilled: "[&>svg]:fill-primary"}} precision={0.5}
+                                                    value={rateValue} readOnly/>
+                                            <span
+                                                className="text-gray-500 font-medium">{tour.reviews.totalReviews} reviews</span>
                                         </div>
                                         <div className="flex flex-col gap-2">
                                             {rateScale.map((scale, index) => (
                                                 <div key={scale.star} className="flex gap-2 items-center">
                                                     <span className="text-sm min-w-[60px]">{scale.label}</span>
-                                                    <Progress value={(reviews.ratings[index].count / max) * 100} />
+                                                    <Progress value={(reviews.ratings[index].count / max) * 100}/>
                                                     <span>{reviews.ratings[index].count}</span>
                                                 </div>
                                             ))}

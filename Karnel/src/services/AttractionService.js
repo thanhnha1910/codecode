@@ -11,9 +11,9 @@ const attractionApi = {
             console.log("Error fetching attraction data", error);
         }
     },
-    getAttractionByName: async (attractionName) => {
+    getAttractionByName: async (cityName, attractionName) => {
         try {
-            const response = await axios.get(`${API_URL}/detail/${attractionName}`);
+            const response = await axios.get(`${API_URL}/detail/${cityName}/${attractionName}`);
             return response.data;
         } catch (error) {
             console.log("Error fetching attraction details", error);

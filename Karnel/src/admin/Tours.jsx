@@ -369,7 +369,7 @@ const Tours = () => {
                   }
                 />
               ) : key === "detail" ? (
-                <ReactQuill
+                <textarea
                   theme="snow"
                   value={formState[key]}
                   onChange={(content) => setFormState({ ...formState, detail: content })}

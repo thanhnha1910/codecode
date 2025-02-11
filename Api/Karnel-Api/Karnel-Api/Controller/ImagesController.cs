@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Karnel_Api.Data;
+﻿using Karnel_Api.Data;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+
+namespace Karnel_Api.Controller;
 
 [Route("api/[controller]")]
 [ApiController]
